@@ -1,7 +1,26 @@
 body {
-    font-family: Arial;
-    padding-top: 100px;
-}
+  background-color: white;
+  height: 100%;
+  width: 100%; 
+  background-image: url("https://images.pexels.com/photos/39671/physiotherapy-weight-training-dumbbell-exercise-balls-39671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%; } 
+
+.page-content {
+  border:none !important;
+  background-color: white;
+  font-family: 'PT Serif';
+  margin-top: 0px;
+  margin-bottom: 0px; }
+  @media (min-width: 768px) {
+    .page-content {
+      border: 2px solid #f8f9fa;
+      margin-top: 50px;
+      margin-bottom: 50px; } 
 
 footer {
     margin-top: 40px;
@@ -10,6 +29,19 @@ footer {
     border-top: 1px solid #ededed;
     color: #A9A9A9;
 }
+
+
+/*Navbar*/
+.navbar-brand {
+    width: 40%;
+    font-size: 30px;
+    padding-left:10px;
+}
+
+.navbar-dark .navbar-brand {
+    color: #17a2b8;
+}
+
 
 .icon-bar {
     background-color: #fff;
@@ -63,4 +95,11 @@ caption p {
 
 .product-description {
     min-height: 40px;
+}
+
+/* Alerts */
+
+ .alert .alert-success .messages{
+    background-color: #17a2b8;
+    border-color: #17a2b8;
 }
