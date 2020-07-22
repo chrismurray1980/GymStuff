@@ -35,9 +35,9 @@
                           Equipment
                         </a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Link 1</a>
-                                        <a class="dropdown-item" href="#">Link 2</a>
-                                        <a class="dropdown-item" href="#">Link 3</a>
+                                        <a class="dropdown-item" href="{% url 'weight_search' %}">Weights</a>
+                                        <a class="dropdown-item" href="{% url 'bench_search' %}">Benches</a>
+                                        <a class="dropdown-item" href="{% url 'accessory_search' %}">>Accessories</a>
                                     </div>
                                 </li>
                                 <!-- Dropdown -->
@@ -46,7 +46,7 @@
                           Nutrition
                         </a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Link 1</a>
+                                        <a class="dropdown-item" href="{% url 'supplement_search' %}">Supplements</a>
                                         <a class="dropdown-item" href="#">Link 2</a>
                                         <a class="dropdown-item" href="#">Link 3</a>
                                     </div>

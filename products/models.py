@@ -3,8 +3,8 @@ from django.db import models
 CATEGORY = (
     ('Weights', 'Weights'),
     ('Benches', 'Benches'),
-    ('Sets', 'Sets'),
-    ('Powders', 'Powders'),
+    ('Accessories', 'Accessories'),
+    ('Supplements', 'Supplements'),
     ('Vitamins', 'Vitamins'),)
 
 # Create your models here.
