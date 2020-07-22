@@ -20,6 +20,9 @@
                         </span>
                     </div>
                 </form>
+                <form>
+                    <button formaction="{% url 'product' product.id %}">View product info</button>
+                </form>
             </div>
         </div>
     {% endfor %}
