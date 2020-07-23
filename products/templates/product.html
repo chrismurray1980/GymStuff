@@ -9,6 +9,8 @@
                 <h3>{{ product.name }}</h3>
                 <p class="product-description">{{ product.description }}</p>
                 <p>{{ product.price }}</p>
+                
+                <p>{{ product.id }}</p>
 
                 <form method="post" action="{% url 'add_to_cart' product.id %}">
                     {% csrf_token %}
@@ -22,7 +24,7 @@
             </div>
         </div>
         <form>
-                <button class="btn btn-primary" formaction="{% url 'customer_reviews' %}">View product reviews</button>
+                <button class="btn btn-primary" formaction="{% url 'customer_reviews' id=product.id %} ">View product reviews</button>
             </form>
 </div>
 {% endblock %}
