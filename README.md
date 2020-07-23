@@ -1,0 +1,1 @@
+django reviews  https://django-rated-reviews.readthedocs.io/en/latest/quickstart.html
