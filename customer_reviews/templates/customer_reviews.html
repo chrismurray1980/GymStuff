@@ -5,18 +5,27 @@
 {% if latest_review_list %}
 <div>
     {% for review in latest_review_list %}
+    <form>
+                <button class="btn btn-primary" formaction="{% url 'product' id=review.product.id %}">View product info</button>
+            </form>
     <div>
-        <h4><a href="{% url 'review_detail' review.id %}">
+        <h4> <a href="{% url 'review_detail' review.id %}">
         {{ review.product.name }}
         </a></h4>
-        <h6>rated {{ review.rating }} of 5 by {{ review.username }}</h6>
+        <h6>rated {{ review.rating }} out of 5 by {{ review.username }}</h6>
         <p>{{ review.review }}</p>
     </div>
+    
+    
+
+    
     {% endfor %}
 </div>
-{% else %}
-<p>No reviews are available.</p>
+    {% else %}
+    <p>No reviews are available.</p>
 {% endif %}
+
+<a href="{% url 'new_review' %}">Add review</a>
 
 
 {% endblock %}

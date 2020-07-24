@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
+{% if products %}
 <div class="row row-flex">
     {% for product in products %}
     <div class="card" style="width: 18rem;">
@@ -14,5 +15,9 @@
         </div>
     </div>
     {% endfor %}
+        {% else %}
+        <p>No reviews are available.</p>
+         <a class="navbar-brand" href="{% url 'index' %}">view other products</a>
+        {% endif %}
 </div>
 {% endblock %}
