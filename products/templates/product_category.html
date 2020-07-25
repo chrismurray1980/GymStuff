@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row">
+    <div class="col-12 title-col">
+        <hr>
+        <h5> Our products</h5>
+        <hr>
+    </div>
+</div>
+
+<div class="row">
+    {% if products %} {% for product in products %}
+    <div class="col-4 product-col">
+
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ product.name }}</h5>
+            </div>
+            <div class="img-container">
+                <img class="card-img-top product-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Image unavailable">
+            </div>
+            <div class="card-body">
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ product.short_description}}</li>
+                    <li class="list-group-item">&euro; {{ product.price }}</li>
+                    <li class="list-group-item"><a href="{% url 'product' product.id %}">View more</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %} {% else %}
+    <div class="col-12">
+        <p>No reviews are available.</p>
+        <a class="navbar-brand" href="{% url 'index' %}">view other products</a>
+    </div>
+    {% endif %}
+    <div class="col-12 link-col">
+        <form>
+            <button class="btn btn-success" formaction="{% url 'index' %}">return</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

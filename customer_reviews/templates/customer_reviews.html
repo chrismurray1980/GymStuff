@@ -16,7 +16,7 @@
         <p>{{ review.review }}</p>
     </div>
     
-    
+    <a href="{% url 'new_review' %}">Add review</a>
 
     
     {% endfor %}
@@ -25,7 +25,7 @@
     <p>No reviews are available.</p>
 {% endif %}
 
-<a href="{% url 'new_review' %}">Add review</a>
+
 
 
 {% endblock %}

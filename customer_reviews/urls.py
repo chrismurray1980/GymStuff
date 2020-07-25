@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^review_detail/(?P<id>\d+)/$', review_detail, name='review_detail'),
     url(r'^new/$', create_or_edit_review, name='new_review'),
    # url(r'^(?P<pk>\d+)/edit/$', create_or_edit_review, name='edit_review')
+   
 ]

@@ -8,7 +8,9 @@
     <title>GymStuff UK</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="/static/css/custom.css">
+    
+    <!--href="{% static 'css/custom.css' %}"-->
 </head>
 <body>
     <!-- CONTENT CONTAINER -->
@@ -36,7 +38,7 @@
                         </a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{% url 'weight_search' %}">Weights</a>
-                                        <a class="dropdown-item" href="{% url 'bench_search' %}">Benches</a>
+                                        <a class="dropdown-item" href="{% url 'bench_search' %}">Racks & Benches</a>
                                         <a class="dropdown-item" href="{% url 'accessory_search' %}">Accessories</a>
                                     </div>
                                 </li>

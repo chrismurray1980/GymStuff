@@ -7,6 +7,7 @@ from products.models import Product
 import datetime
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
+from django.forms import inlineformset_factory
 
 def customer_reviews(request, id):
     latest_review_list = customer_review.objects.filter(product__id=id).order_by('-date')[:9]
