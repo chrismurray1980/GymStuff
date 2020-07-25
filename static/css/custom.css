@@ -107,7 +107,7 @@ caption p {
   }
 
 .img-container{
-    height:60%;
+    height:50%;
 }  
 .card-img-top {
     width: 100%;
@@ -132,6 +132,16 @@ caption p {
     padding-right:2.5%;
 }
 
+.product-title-col {
+       height: 10%;
+    text-align: center;
+    width:90%;
+    padding-left:2.5%;
+    padding-right:2.5%;
+    margin-top:4%;
+    margin-bottom:2%;
+}
+
 .link-col {
     
     text-align: center;
@@ -143,8 +153,20 @@ caption p {
     text-align: center;
 }
 
+.product-view-col {
+    
+    text-align: center;
+        margin-top:4%;
+    margin-bottom:2%;
+} 
+
 .card {
     display: inline-block;
-    height:600px;
+    height:450px;
     width: 95%;
 }
+
+.product-description{
+    text-align: justify;
+}
+    

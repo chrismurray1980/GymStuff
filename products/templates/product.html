@@ -1,6 +1,63 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
+<div class="row product-col">
+    <div class="col-12 product-title-col">
+        <h1>{{ product.name }}</h1>
+    </div>
+    <div class="col-6 offset-3">
+        <img class="card-img-top product-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Image unavailable">
+    </div>
+</div>
+
+<hr>
+<div class="row product-view-col">
+    <div class="col-9">
+        <div class="col-12">
+        <h4>Description</h4>
+        </div>
+        <div class="col-12 product-description">
+        <p>{{ product.description }}<p>
+        </div>
+    </div>   
+    
+        <div class="col-3">
+        <div class="col-12">
+        <h4>Price</h4>
+        </div>
+        <div class="col-12">
+        <p>&euro; {{ product.price }}</p>
+        </div>
+    </div>
+</div>
+    
+<div class="row product-col">
+    <div class="col-4 offset-1">
+        <form method="post" action="{% url 'add_to_cart' product.id %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
+                <span class="input-group-btn">
+                    <button class="btn btn-success" type="submit">Add</button>
+                </span>
+            </div>
+        </form>
+    </div>
+    <div class="col-5 offset-1">
+
+        <form>
+            <button class="btn btn-primary" formaction="{% url 'customer_reviews' id=product.id %} ">View product reviews</button>
+        </form>
+    </div>
+</div>
+<hr>
+<div class="row product-col">
+    <div class="col-12 link-col">
+        <form>
+            <button class="btn btn-success" formaction="{% url 'index' %}">Back to home</button>
+        </form>
+    </div>
+</div>
+<!--
 <div class="row row-flex">
         <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
             <div class="panel-body">
@@ -24,6 +81,6 @@
         <form>
                 <button class="btn btn-primary" formaction="{% url 'customer_reviews' id=product.id %} ">View product reviews</button>
             </form>
-</div>
+</div>-->
 {% endblock %}
 
