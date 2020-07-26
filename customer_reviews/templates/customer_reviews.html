@@ -15,10 +15,6 @@
         <h6>rated {{ review.rating }} out of 5 by {{ review.username }}</h6>
         <p>{{ review.review }}</p>
     </div>
-    
-    <a href="{% url 'new_review' %}">Add review</a>
-
-    
     {% endfor %}
 </div>
     {% else %}

@@ -12,9 +12,9 @@ class customer_review(models.Model):
     )
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     username = models.CharField(max_length=200)
-    review = models.TextField()
+    comment = models.TextField()
     rating = models.IntegerField(choices=RATING_CHOICES)
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.review
+        return self.comment

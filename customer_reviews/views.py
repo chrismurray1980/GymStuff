@@ -18,6 +18,7 @@ def review_detail(request, id):
     review = get_object_or_404(customer_review, pk=id)
     return render(request, 'review_detail.html', {'review': review})
 
+'''
 def create_or_edit_review(request, pk=None):
     """
     Create a view that allows us to create
@@ -33,3 +34,4 @@ def create_or_edit_review(request, pk=None):
     else:
         form = ReviewForm(instance=review)
     return render(request, 'review_form.html', {'form': form})
+'''
