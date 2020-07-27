@@ -149,6 +149,16 @@ caption p {
     margin-bottom: 2%;
 }
 
+.input-group {
+    margin:0;
+    padding:0;
+}
+
+.amend-button {
+    margin-top:10%;
+    margin-bottom:15%;
+}
+
 .product-col {
     
     text-align: center;

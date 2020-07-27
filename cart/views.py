@@ -33,13 +33,17 @@ def adjust_cart(request, id):
     Adjust the quantity of the specified product to the specified
     amount
     """
-    quantity = int(request.POST.get('quantity'))
-    cart = request.session.get('cart', {})
-
-    if quantity > 0:
-        cart[id] = quantity
+    if request.POST.get('quantity') is '':
+        messages.error(request, "Please enter a quantity to add amend cart!")
+        return redirect(reverse('view_cart'))
     else:
-        cart.pop(id)
+        quantity = int(request.POST.get('quantity'))
+        cart = request.session.get('cart', {})
     
-    request.session['cart'] = cart
-    return redirect(reverse('view_cart'))
+        if quantity > 0:
+            cart[id] = quantity
+        else:
+            cart.pop(id)
+        
+        request.session['cart'] = cart
+        return redirect(reverse('view_cart'))

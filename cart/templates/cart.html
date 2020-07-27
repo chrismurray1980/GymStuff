@@ -1,42 +1,65 @@
-{% extends 'base.html' %}
-{% load static from staticfiles %}
-{% load bootstrap_tags %}
+{% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block content %}
 
-{% block content %}
-<div class="row row-flex">
-    {% for item in cart_items %}
-    
-    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-display">
-        
-        <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
-        
-        <div class="caption">
-            <h3>{{ item.product.name }}</h3>
-            <p class="product-description">{{ item.product.description }}</p>
-            <p>{{ item.product.price }}</p>
-            <p>
-                
+<div class="row product-col">
+    <div class="col-12 product-title-col">
+        <h1>Your Cart</h1>
+    </div>
+</div>
+<hr> 
+{% if cart_items %} 
+{% for item in cart_items %}
+<div class="row ">
+    <div class="col-4 offset-4 product-col">
+
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ item.product.name }}</h5>
+            </div>
+            <div class="img-container">
+                <img class="card-img-top product-img" src="{{ MEDIA_URL }}{{ item.product.image }}" alt="Image unavailable">
+            </div>
+            <div class="card-body">
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">&euro; {{ item.product.price }}</li>
+                </ul>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-12">
                 <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
                     {% csrf_token %}
-                    <div class="form-group">
-                        <label for="exampleInputAmount" class="sr-only">New Qty</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">Qty</div>
-                            <input name="quantity" type="number" min="0" max="999" class="form-control">
-                            <div class="input-group-addon">{{item.quantity}}</div>
-                        </div>
+                    <div class="col-9 offset-2 form-group">
+                            <p>Current quantity: {{item.quantity}}</p>
                     </div>
+                    <div class="col-12 input-group">
+                        <input name="quantity" type="number" min="0" max="999" class="form-control" placeholder="Quantity">
+                    </div>
+                    <div class="col-12 amend-button">
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Amend</button>
+                    </div>
                 </form>
-            </p>
+            </div>
         </div>
     </div>
-    {% endfor %}
 </div>
-<div class="row">
-    <p>Total</p>
-    <p><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
-    <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+<hr>
+    {% endfor %} 
+{% else %}
+<div class="row product-col">
+    <div class="col-12 product-title-col">
+        <p>Your cart is currently empty!</p>
+    </div>
 </div>
+<hr>
+{% endif %}
 
-{% endblock %}
+{% if cart_items %}
+<div class="row product-col">
+    <div class="col-12 product-title-col">
+        <h5>Total</h5>
+        <h6><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>&euro; {{ total }}</h6>
+        <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+    </div>
+</div>
+{% endif %} {% endblock %}
