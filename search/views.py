@@ -7,22 +7,22 @@ def do_search(request):
     return render(request, "product_category.html", {"products": products})
 
 def weight_search(request):
-    weights = Product.objects.filter(category='Weights')
+    weights = Product.objects.filter(category='Weights').order_by('price')
     return render(request, "product_category.html", {"products": weights})
     
 def supplement_search(request):
-    supplement = Product.objects.filter(category='Supplements')
+    supplement = Product.objects.filter(category='Supplements').order_by('price')
     return render(request, "product_category.html", {"products": supplement})
     
 def bench_search(request):
-    bench = Product.objects.filter(category='Benches')
+    bench = Product.objects.filter(category='Benches').order_by('price')
     return render(request, "product_category.html", {"products": bench})
     
 def accessory_search(request):
-    accessory = Product.objects.filter(category='Accessories')
+    accessory = Product.objects.filter(category='Accessories').order_by('price')
     return render(request, "product_category.html", {"products": accessory})
 
 def vitamin_search(request):
-    vitamin = Product.objects.filter(category='Vitamins')
+    vitamin = Product.objects.filter(category='Vitamins').order_by('price')
     return render(request, "product_category.html", {"products": vitamin})
     

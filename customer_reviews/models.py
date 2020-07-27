@@ -12,6 +12,7 @@ class customer_review(models.Model):
     )
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     username = models.CharField(max_length=200)
+    headline = models.CharField(max_length=200)
     comment = models.TextField()
     rating = models.IntegerField(choices=RATING_CHOICES)
     date = models.DateTimeField(auto_now_add=True)

@@ -36,7 +36,7 @@
         <form method="post" action="{% url 'add_to_cart' product.id %}">
             {% csrf_token %}
             <div class="input-group">
-                <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
+                <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder='Quantity'>
                 <span class="input-group-btn">
                     <button class="btn btn-success" type="submit">Add</button>
                 </span>
@@ -52,53 +52,33 @@
 </div>
 
 <hr>
-
-<div class="row product-col">
-    <div class="col-12 product-title-col">
-        <h5>Review this product</h5>
+{% if user.is_authenticated %}
+    <div class="row product-col">
+        <div class="col-12 product-title-col">
+            <h5>Review this product</h5>
+        </div>
+        <div class="col-4 offset-4">
+            <form action="{% url 'new_review' product.id %}" method="post">
+                {% csrf_token %} {{ form | as_bootstrap }}
+                <input class="btn btn-primary" type="submit" value="Add review" />
+            </form>
+        </div>
     </div>
+    <hr>
+{% else %}
+    <div class="col-4 offset-4 title-col">
+        <p>Please log-in to review this product. </p>
+    </div>
+    {% endif %}
+
+
+<div class="row link-col">
     <div class="col-4 offset-4">
-        <form action="{% url 'new_review' product.id %}" method="post">
-            {% csrf_token %} {{ form | as_bootstrap }}
-            <input type="submit" value="Add review" />
-        </form>
-    </div>
-</div>
-
-<hr>
-
-<div class="row product-col">
-    <div class="col-12 link-col">
         <form>
             <button class="btn btn-success" formaction="{% url 'index' %}">Back to home</button>
         </form>
     </div>
 </div>
 
-<!--
-<div class="row row-flex">
-        <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
-            <div class="panel-body">
-                <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
-
-                <h3>{{ product.name }}</h3>
-                <p class="product-description">{{ product.description }}</p>
-                <p>{{ product.price }}</p>
-
-                <form method="post" action="{% url 'add_to_cart' product.id %}">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
-                        <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit">Add</button>
-                        </span>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <form>
-                <button class="btn btn-primary" formaction="{% url 'customer_reviews' id=product.id %} ">View product reviews</button>
-            </form>
-</div>-->
 {% endblock %}
 

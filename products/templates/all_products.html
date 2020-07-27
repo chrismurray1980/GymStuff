@@ -2,8 +2,14 @@
 
 <div class="row">
     <div class="col-12 title-col">
+    <p> Welcome to GymStuff, here you will find the best in home gym equipment and accesories alongside a variety of nutrition products to help you achieve your fitness goals. Stay motivated!</p>
+    </div>
+</div>    
+
+<div class="row">
+    <div class="col-12 title-col">
         <hr>
-        <h5>New in Weight Products</h5>
+        <h5>Weight Products</h5>
         <hr>
     </div>
     {% if weights %} 
@@ -30,22 +36,23 @@
     </div>
     {% endfor %} 
     {% else %}
-    <div class="col-12">
-        <p>No reviews are available.</p>
-        <a class="navbar-brand" href="{% url 'index' %}">view other products</a>
+    <div class="col-12 title-col">
+        <p>Sorry, no products are available.</p>
     </div>
     {% endif %}
+    {% if weights %}
     <div class="col-12 link-col">
         <form>
             <button class="btn btn-success" formaction="{% url 'weight_search' %}">All weight products</button>
         </form>
     </div>
+    {% endif %}
 </div>
 
 <div class="row">
     <div class="col-12 title-col">
         <hr>
-        <h5>New in Rack & Bench Products</h5>
+        <h5>Rack & Bench Products</h5>
         <hr>
     </div>
     {% if benches %} 
@@ -72,22 +79,66 @@
     </div>
     {% endfor %} 
     {% else %}
-    <div class="col-12">
-        <p>No reviews are available.</p>
-        <a class="navbar-brand" href="{% url 'index' %}">view other products</a>
+    <div class="col-12 title-col">
+        <p>Sorry, no products are available.</p>
     </div>
     {% endif %}
+    {% if benches %}
     <div class="col-12 link-col">
         <form>
             <button class="btn btn-success" formaction="{% url 'bench_search' %}">All rack and bench products</button>
         </form>
     </div>
+    {% endif %}
 </div>
 
 <div class="row">
     <div class="col-12 title-col">
         <hr>
-        <h5>New in Supplements</h5>
+        <h5>Accesories</h5>
+        <hr>
+    </div>
+    {% if accessory %} 
+    {% for product in accessory %}
+    <div class="col-4 product-col">
+
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ product.name }}</h5>
+            </div>
+            <div class="img-container">
+                <img class="card-img-top product-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Image unavailable">
+            </div>
+            <div class="card-body">
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ product.short_description}}</li>
+                    <li class="list-group-item">&euro; {{ product.price }}</li>
+                    <li class="list-group-item"><a href="{% url 'product' product.id %}">View product</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %} 
+    {% else %}
+    <div class="col-12 title-col">
+        <p>Sorry, no products are available.</p>
+    </div>
+    {% endif %}
+    {% if accessory %}
+    <div class="col-12 link-col">
+        <form>
+            <button class="btn btn-success" formaction="{% url 'accessory_search' %}">All accesories</button>
+        </form>
+    </div>
+    {% endif %}
+</div>
+
+<div class="row">
+    <div class="col-12 title-col">
+        <hr>
+        <h5>Supplements</h5>
         <hr>
     </div>
     {% if supplements %} 
@@ -114,15 +165,59 @@
     </div>
     {% endfor %} 
     {% else %}
-    <div class="col-12">
-        <p>No reviews are available.</p>
-        <a class="navbar-brand" href="{% url 'index' %}">view other products</a>
+    <div class="col-12 title-col">
+        <p>Sorry, no products are available.</p>
     </div>
     {% endif %}
+    {% if supplements %}
     <div class="col-12 link-col">
         <form>
             <button class="btn btn-success" formaction="{% url 'supplement_search' %}">All supplements</button>
         </form>
     </div>
+    {% endif %}
+</div>
+
+<div class="row">
+    <div class="col-12 title-col">
+        <hr>
+        <h5>Vitamins</h5>
+        <hr>
+    </div>
+    {% if vitamins %} 
+    {% for product in vitamins %}
+    <div class="col-4 product-col">
+
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ product.name }}</h5>
+            </div>
+            <div class="img-container">
+                <img class="card-img-top product-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Image unavailable">
+            </div>
+            <div class="card-body">
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ product.short_description}}</li>
+                    <li class="list-group-item">&euro; {{ product.price }}</li>
+                    <li class="list-group-item"><a href="{% url 'product' product.id %}">View product</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %} 
+    {% else %}
+    <div class="col-12 title-col">
+        <p>Sorry, no products are available.</p>
+    </div>
+    {% endif %}
+    {% if vitamins %} 
+    <div class="col-12 link-col">
+        <form>
+            <button class="btn btn-success" formaction="{% url 'vitamin_search' %}">All vitamins</button>
+        </form>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

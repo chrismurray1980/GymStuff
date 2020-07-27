@@ -1,27 +1,48 @@
 {% extends 'base.html' %} {% block content %}
-<h2>Latest reviews</h2>
 
-
-{% if latest_review_list %}
-<div>
-    {% for review in latest_review_list %}
-    <form>
-                <button class="btn btn-primary" formaction="{% url 'product' id=review.product.id %}">View product info</button>
-            </form>
-    <div>
-        <h4> <a href="{% url 'review_detail' review.id %}">
-        {{ review.product.name }}
-        </a></h4>
-        <h6>rated {{ review.rating }} out of 5 by {{ review.username }}</h6>
-        <p>{{ review.review }}</p>
+<div class="row">
+    <div class='col-12 latest-review-col'>
+        <h2> Latest reviews for {{ product.name}} </h2>
     </div>
-    {% endfor %}
+    <div class='col-12'>
+        <hr>
+    </div>
+    {% if latest_review_list %}{% for review in latest_review_list %}
+    <div class='col-6 offset-3 latest-review-review'>
+        <h4> {{ review.headline }} </h4>
+    </div>
+    <div class='col-6 offset-3 latest-review-review'>
+        <h6> Reviewer: </h6>
+        <p>{{ review.username }}</p>
+    </div>
+    
+    <div class='col-6 offset-3 latest-review-review'>
+        <h6> Rating: </h6>
+        <p>{{ review.rating }}/ 5 </p>
+    </div>
+    <div class='col-6 offset-3 latest-review-review'>
+        <h6> Comment: </h6>
+        <p>{{ review.comment }}</p>
+    </div>
+    <div class='col-12'>
+        <hr>
+    </div>
+    {% endfor %}{% else %}
+    <div class='col-6 offset-3 latest-review-review'>
+        <h6> No reviews yet for this product. </h6>
+    </div>
+    <div class='col-12'>
+        <hr>
+    </div>
+    {% endif %}
+
+    <div class='col-4 offset-4 latest-review-col'>
+        <form>
+            <button class="btn btn-primary" formaction="{% url 'product' id=product.id %}"> Back to product </button>
+        </form>
+    </div>
+
+
 </div>
-    {% else %}
-    <p>No reviews are available.</p>
-{% endif %}
-
-
-
 
 {% endblock %}
