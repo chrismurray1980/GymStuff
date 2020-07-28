@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% load bootstrap_tags %} {% block content %}
+<form action="{% url 'bmi_form'  %}" method="post">
+    <fieldset class="form-group">
+        <div class="col-12 message-col">
+            <hr>
+            <h5>BMI calculator</h5>
+            <hr>
+        </div>
+        <div class="col-12 message-col">
+            <p>Please enter your height and weight.</p>
+        </div>
+        {% csrf_token %} {{ form | as_bootstrap }}
+        <div class="col-12 message-col">
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </div>
+    </fieldset>
+</form>
+
+{% endblock %}

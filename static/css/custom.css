@@ -132,6 +132,16 @@ caption p {
     padding-right:2.5%;
 }
 
+.message-col {
+    height: 10%;
+    text-align: center;
+}
+
+.search-col {
+    
+    margin-top:2%;
+}
+
 .product-title-col {
        height: 10%;
     text-align: center;
@@ -154,6 +164,17 @@ caption p {
     padding:0;
 }
 
+.paragraph-margin {
+    margin-top:10%;
+}
+
+.paragraph-margin-home {
+    margin-top:5%;
+}
+
+.td-margin {
+    padding-bottom: 5%;
+}
 .amend-button {
     margin-top:10%;
     margin-bottom:15%;

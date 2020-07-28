@@ -58,7 +58,7 @@
                           Body Calculators
                         </a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Weights</a>
+                                        <a class="dropdown-item" href="{% url 'bmi_form' %}">Calculate BMI</a>
                                         <a class="dropdown-item" href="#">Benches</a>
                                         <a class="dropdown-item" href="#">Accessories</a>
                                     </div>
@@ -94,11 +94,26 @@
                     </nav>
                 </header>
             </div>
-
+    
+    <!--Search bar-->
+    <div class="row">
+    <div class="col-12 title-col paragraph-margin-home">
+    <p> Welcome to GymStuff, here you will find the best in home gym equipment and accesories alongside a variety of nutrition products to help you achieve your fitness goals. Stay motivated!</p>
+    </div>
+</div>  
+    <div class="row">
+        <div class="col-4 offset-4 search-col">
+            <form action="{% url 'search' %}" method="get">
+                                <input type="text" name="q" placeholder="Search..">
+                                <button type="search" class="btn btn-info">Search</button>
+                            </form>
+        </div>
+    </div>
+    
     <!--Messages-->
     {% if messages %}
     <div class="alert alert-success">
-        <div class="messages">
+        <div class="messages col-12 message-col">
             {% for message in messages %} {{ message }} {% endfor %}
         </div>
     </div>
@@ -108,13 +123,15 @@
     </div>
 
     <!--Footer-->
-    <footer>
-        <div class="container">
-            &copy; Copyright 2020 by Christopher Murray
-        </div>
-    </footer>
-        </div>
+        <footer>
+            <div class="row">
+                <div class="col-12 title-col">
+                    <h6>&copy; Copyright 2020 by Christopher Murray</h6>
+                </div>
+            </div>
+        </footer>
     </div>
+</div>
 
 </body>
 
