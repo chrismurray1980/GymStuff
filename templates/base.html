@@ -143,7 +143,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     
     
-    <script type=text/javascript src="{% static 'js/main.js' %}"></script>
+    
     {% block head_js %}
+    <script type=text/javascript src="/static/css/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter2/1.4.0-alpha.6/crossfilter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.1/dc.js"></script>
+    <script type=text/javascript src="/static/css/js/plot.js"></script>
     {% endblock head_js %}
 </html>

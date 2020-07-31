@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import HttpResponseRedirect
-from nutrition.forms import bmi
+from physical.forms import bmi
 from .models import Physical
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
@@ -15,7 +15,7 @@ def bmi_form(request):
         physical = Physical()
         physical.height= height
         physical.weight= weight
-        bmi_calc=round(weight/height**2, 2)   
+        bmi_calc=round(weight/height**2, 2)
         if (bmi_calc < 18.5):
             bmi_category='Underweight'
         elif (bmi_calc >= 18.5) and (bmi_calc < 25):

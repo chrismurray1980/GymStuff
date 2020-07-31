@@ -23,7 +23,7 @@ from search import urls as urls_search
 from checkout import urls as urls_checkout
 from products.views import all_products
 from customer_reviews import urls as urls_customer_reviews
-from nutrition import urls as urls_nutrition
+from physical import urls as urls_physical
 from django.views import static
 from .settings import MEDIA_ROOT
 
@@ -36,7 +36,7 @@ urlpatterns = [
     url(r'^checkout/', include(urls_checkout)),
     url(r'^search/', include(urls_search)),
     url(r'^customer_reviews/', include(urls_customer_reviews)),
-    url(r'^nutrition/', include(urls_nutrition)),
+    url(r'^physical/', include(urls_physical)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
     
 ]

@@ -8,3 +8,4 @@ class Physical(models.Model):
     height = models.FloatField()
     weight = models.FloatField()
 
+
