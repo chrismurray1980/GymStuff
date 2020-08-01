@@ -7,16 +7,12 @@
         </div>
        <div class="col-12 message-col bmi-padding">
            <p>Your calculated BMI is:</p>
-            <h6>{{ bmi_calc}}</h6>
+            <h6>{{ bmr }}</h6>
         </div>
        <div class="col-12 message-col bmi-padding">
            <p>Your BMI category is:</p>
-            <h6>{{ bmi_category }}</h6>
+            <h6>{{ TDEE }}</h6>
         </div>
 </div>
-
-{% for item in details %}
- {{ item.bmi_calc }}
-{% endfor %} 
 
 {% endblock %}
