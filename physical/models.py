@@ -51,7 +51,7 @@ class Macro(models.Model):
     ('heavy exercise', 'heavy exercise'),
     )
     
-   # user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     height = models.FloatField()
     weight = models.FloatField()
     age = models.IntegerField()

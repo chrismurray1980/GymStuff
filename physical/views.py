@@ -45,14 +45,9 @@ def macro_form(request):
         macro_calc.activity_level = activity_level
         bmr=round( macro_calc.bmr_calc(), 2)
         TDEE=round( macro_calc.TDEE_calc(), 2)
-        user = request.user
-        macro_calc.user = user
-        '''
         form_save= form.save(commit=False)
         form_save.user= request.user
         form_save.save()
-        '''
-        form.save()
         
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
