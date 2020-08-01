@@ -14,7 +14,7 @@ class Physical(models.Model):
     date_now = models.DateTimeField(auto_now_add=True)
     
     def calculated_bmi(self):
-        bmi_calc = self.weight/self.height**2
+        bmi_calc = round( self.weight/self.height**2, 2)
         return bmi_calc
         
     def category_calc(self):
@@ -61,7 +61,7 @@ class Macro(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     
     def bmr_calc(self):
-        bmr = 655 + ( 4.35*self.weight*2.205 )+( 4.7*self.height*2.54 ) - ( 4.7*self.age )
+        bmr = round( 655 + ( 4.35*self.weight*2.205 )+( 4.7*self.height*39.37 ) - ( 4.7*self.age ), 2)
         return bmr
         
     def TDEE_calc(self):
@@ -74,7 +74,7 @@ class Macro(models.Model):
             activity=1.55
         elif self.activity_level =='heavy exercise':
             activity=1.725
-        TDEE = self.bmr_calc()*activity
+        TDEE = round( self.bmr_calc()*activity, 2)
         return TDEE
         
     

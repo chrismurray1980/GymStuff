@@ -1,18 +1,28 @@
 {% extends 'base.html' %} {% load bootstrap_tags %} {% block content %}
 <div class="row">
-       <div class="col-12 message-col">
-            <hr>
-            <h5>BMI results</h5>
-            <hr>
-        </div>
-       <div class="col-12 message-col bmi-padding">
-           <p>Your calculated BMI is:</p>
-            <h6>{{ bmr }}</h6>
-        </div>
-       <div class="col-12 message-col bmi-padding">
-           <p>Your BMI category is:</p>
-            <h6>{{ TDEE }}</h6>
-        </div>
+ {% for item in details %}
+  <div class="col-12 message-col">
+       <hr>
+       <h5>Macronutrient results</h5>
+       <hr>
+   </div>
+  <div class="col-12 message-col bmi-padding">
+      <p>Your calculated Base Metabolic Rate (BMR) is:</p>
+       <h6>{{ item.bmr_calc}}</h6>
+   </div>
+  <div class="col-12 message-col bmi-padding">
+      <p>Your Total Daily Energy Expenditure (TDEE) is:</p>
+       <h6>{{ item.TDEE }}</h6>
+   </div>
+ {% endfor %}
+  <div class="col-12 link-col">
+    <hr>
+  </div>
+  <div class="col-12 link-col">
+    <form>
+        <button class="btn btn-success" formaction="{% url 'index' %}">Back to home</button>
+    </form>
+  </div>
 </div>
 
 {% endblock %}

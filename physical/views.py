@@ -43,16 +43,16 @@ def macro_form(request):
         macro_calc.weight= weight
         macro_calc.age = age
         macro_calc.activity_level = activity_level
-        bmr=round( macro_calc.bmr_calc(), 2)
-        TDEE=round( macro_calc.TDEE_calc(), 2)
+        #bmr=round( macro_calc.bmr_calc(), 2)
+        #TDEE=round( macro_calc.TDEE_calc(), 2)
         form_save= form.save(commit=False)
         form_save.user= request.user
         form_save.save()
-        
+        details = Macro.objects.filter(user=request.user).order_by('-date')[:1]
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        return render(request, 'macro_result.html', {'bmr': bmr, 'TDEE': TDEE})
+        return render(request, 'macro_result.html', {'details': details})
     return render(request, 'macro_form.html', {'form': form})    
     
 def macro_result(request):

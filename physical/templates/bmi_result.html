@@ -15,6 +15,16 @@
        <h6>{{ item.bmi_category }}</h6>
    </div>
  {% endfor %}
+  <div class="col-12 link-col">
+    <hr>
+  </div>
+  <div class="col-12 link-col">
+    <form>
+        <button class="btn btn-success" formaction="{% url 'index' %}">Back to home</button>
+    </form>
+  </div>
 </div>
+
+
 
 {% endblock %}
