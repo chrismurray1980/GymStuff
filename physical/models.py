@@ -68,6 +68,9 @@ class Macro(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     aim = models.CharField(choices=aim, default='', max_length=200)
     daily_calorie_goal = models.FloatField(default=0)
+    carb_weight = models.FloatField(default=0)
+    protein_weight = models.FloatField(default=0)
+    fat_weight = models.FloatField(default=0)
     
     def bmr_calc(self):
         bmr = round( 655 + ( 4.35*self.weight*2.205 )+( 4.7*self.height*39.37 ) - ( 4.7*self.age ), 2)
@@ -97,9 +100,53 @@ class Macro(models.Model):
         daily_calorie_goal = round( self.TDEE_calc()*adjustment, 2)
         return daily_calorie_goal    
     
+    def carb_calc(self):
+        carb_ratio = 0
+        if self.aim =='lose weight':
+            carb_ratio = 0.3
+        elif self.aim =='maintain':
+            carb_ratio=0.4
+        elif self.aim =='gain muscle':
+            carb_ratio=0.5
+        carb_ratio = self.calculated_calorie_goal()*carb_ratio
+        carb_weight_per_gram = 4
+        carb_weight = round( carb_ratio/carb_weight_per_gram , 0)
+        return carb_weight
+    
+    def protein_calc(self):
+        protein_ratio = 0
+        if self.aim =='lose weight':
+            protein_ratio = 0.4
+        elif self.aim =='maintain':
+            protein_ratio=0.3
+        elif self.aim =='gain muscle':
+            protein_ratio=0.3
+        protein_ratio = self.calculated_calorie_goal()*protein_ratio
+        protein_weight_per_gram = 4
+        protein_weight = round( protein_ratio/protein_weight_per_gram , 0)
+        return protein_weight
+        
+    def fat_calc(self):
+        fat_ratio = 0
+        if self.aim =='lose weight':
+            fat_ratio = 0.3
+        elif self.aim =='maintain':
+            fat_ratio=0.3
+        elif self.aim =='gain muscle':
+            fat_ratio=0.2
+        fat_ratio = self.calculated_calorie_goal()*fat_ratio
+        fat_weight_per_gram = 9
+        fat_weight = round( fat_ratio/fat_weight_per_gram , 0)
+        return fat_weight
+        
     def save(self, *args, **kwargs):
         self.bmr = self.bmr_calc()
         self.TDEE = self.TDEE_calc()
         self.daily_calorie_goal = self.calculated_calorie_goal()
+        self.carb_weight = self.carb_calc()
+        self.protein_weight = self.protein_calc()
+        self.fat_weight = self.fat_calc()
         super(Macro, self).save(*args, **kwargs)    
+        
+        
         

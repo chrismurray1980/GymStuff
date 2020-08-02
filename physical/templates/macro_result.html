@@ -18,6 +18,12 @@
       <p>To {{ item.aim }} your daily calorie goal is:</p>
        <h6>{{ item.daily_calorie_goal }}</h6>
   </div>
+    <div class="col-12 message-col bmi-padding">
+      <p>You should eat:</p>
+       <h6>{{ item.carb_weight }} grams of carbohydrates per day</h6>
+       <h6>{{ item.protein_weight }} grams of protein per day</h6>
+       <h6>{{ item.fat_weight }} grams of fat per day</h6>
+  </div>
  {% endfor %}
   <div class="col-12 link-col">
     <hr>
