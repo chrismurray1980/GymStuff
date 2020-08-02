@@ -38,13 +38,13 @@ def macro_form(request):
         weight = form.cleaned_data['weight']
         age = form.cleaned_data['age']
         activity_level = form.cleaned_data['activity_level']
+        aim = form.cleaned_data['aim']
         macro_calc = Macro()
         macro_calc.height= height
         macro_calc.weight= weight
         macro_calc.age = age
         macro_calc.activity_level = activity_level
-        #bmr=round( macro_calc.bmr_calc(), 2)
-        #TDEE=round( macro_calc.TDEE_calc(), 2)
+        macro_calc.aim = aim
         form_save= form.save(commit=False)
         form_save.user= request.user
         form_save.save()

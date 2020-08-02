@@ -1,3 +1,1 @@
-<!--<a href="{% url 'review_detail' review.id %}">-->
-
-    <a href="{% url 'new_review' %}">Add review</a>
+find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf

@@ -44,11 +44,18 @@ class Physical(models.Model):
         
 
 class Macro(models.Model):
+    
     activity_level = (
-    ('little exercise', 'little exercise'),
-    ('light exercise','light exercise'),
-    ('moderate exercise', 'moderate exercise'),
-    ('heavy exercise', 'heavy exercise'),
+        ('little exercise', 'little exercise'),
+        ('light exercise','light exercise'),
+        ('moderate exercise', 'moderate exercise'),
+        ('heavy exercise', 'heavy exercise'),
+    )
+    
+    aim = (
+        ('lose weight', 'lose weight'),
+        ('maintain', 'maintain'),
+        ('gain muscle', 'gain muscle'),
     )
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -59,6 +66,8 @@ class Macro(models.Model):
     bmr = models.FloatField(default=0)
     TDEE = models.FloatField(default=0)
     date = models.DateTimeField(auto_now_add=True)
+    aim = models.CharField(choices=aim, default='', max_length=200)
+    daily_calorie_goal = models.FloatField(default=0)
     
     def bmr_calc(self):
         bmr = round( 655 + ( 4.35*self.weight*2.205 )+( 4.7*self.height*39.37 ) - ( 4.7*self.age ), 2)
@@ -76,10 +85,21 @@ class Macro(models.Model):
             activity=1.725
         TDEE = round( self.bmr_calc()*activity, 2)
         return TDEE
-        
+    
+    def calculated_calorie_goal(self):
+        adjustment=0
+        if self.aim =='lose weight':
+            adjustment=0.85
+        elif self.aim =='maintain':
+            adjustment=1
+        elif self.aim =='gain muscle':
+            adjustment=1.15
+        daily_calorie_goal = round( self.TDEE_calc()*adjustment, 2)
+        return daily_calorie_goal    
     
     def save(self, *args, **kwargs):
         self.bmr = self.bmr_calc()
         self.TDEE = self.TDEE_calc()
+        self.daily_calorie_goal = self.calculated_calorie_goal()
         super(Macro, self).save(*args, **kwargs)    
         

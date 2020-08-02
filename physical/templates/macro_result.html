@@ -13,7 +13,11 @@
   <div class="col-12 message-col bmi-padding">
       <p>Your Total Daily Energy Expenditure (TDEE) is:</p>
        <h6>{{ item.TDEE }}</h6>
-   </div>
+  </div>
+  <div class="col-12 message-col bmi-padding">
+      <p>To {{ item.aim }} your daily calorie goal is:</p>
+       <h6>{{ item.daily_calorie_goal }}</h6>
+  </div>
  {% endfor %}
   <div class="col-12 link-col">
     <hr>
