@@ -5,6 +5,7 @@ from .models import Physical, Macro
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 import datetime
+import json
 
 @login_required
 def bmi_form(request):
@@ -27,8 +28,7 @@ def bmi_form(request):
     return render(request, 'bmi_form.html', {'form': form})
 
 def bmi_result(request):
-    physical= Physical.object.get(user=request.user)[:1]
-    return render(request, 'bmi_result.html',{'physical':physical.id})
+    return render(request, 'bmi_result.html')
     
 @login_required
 def macro_form(request):
@@ -49,10 +49,20 @@ def macro_form(request):
         form_save.user= request.user
         form_save.save()
         details = Macro.objects.filter(user=request.user).order_by('-date')[:1]
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return render(request, 'macro_result.html', {'details': details})
+        # Extract weight and percentage data from macro database search
+        for item in details:
+            carb_weight = item.carb_weight
+            protein_weight = item.protein_weight
+            fat_weight = item.fat_weight
+            carb_percent = 100*item.carb_percent
+            protein_percent = 100*item.protein_percent
+            fat_percent = 100*item.fat_percent
+        # Create macro array
+        macros = [carb_weight, protein_weight, fat_weight, carb_percent, protein_percent, fat_percent]
+        # Convert array to JSON
+        macros_json = json.dumps(macros)
+        # Render macro results page passing details and macro_json as arguments
+        return render(request, 'macro_result.html', {'details': details, 'macros': macros_json})
     return render(request, 'macro_form.html', {'form': form})    
     
 def macro_result(request):

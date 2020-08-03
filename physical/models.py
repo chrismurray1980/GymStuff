@@ -71,6 +71,9 @@ class Macro(models.Model):
     carb_weight = models.FloatField(default=0)
     protein_weight = models.FloatField(default=0)
     fat_weight = models.FloatField(default=0)
+    carb_percent = models.FloatField(default=0)
+    protein_percent = models.FloatField(default=0)
+    fat_percent = models.FloatField(default=0)
     
     def bmr_calc(self):
         bmr = round( 655 + ( 4.35*self.weight*2.205 )+( 4.7*self.height*39.37 ) - ( 4.7*self.age ), 2)
@@ -138,6 +141,36 @@ class Macro(models.Model):
         fat_weight_per_gram = 9
         fat_weight = round( fat_ratio/fat_weight_per_gram , 0)
         return fat_weight
+    
+    def carb_percent_calc(self):
+        carb_percent= 0
+        if self.aim =='lose weight':
+            carb_percent = 0.3
+        elif self.aim =='maintain':
+            carb_percent=0.4
+        elif self.aim =='gain muscle':
+            carb_percent=0.5
+        return carb_percent
+        
+    def protein_percent_calc(self):
+        protein_percent = 0
+        if self.aim =='lose weight':
+            protein_percent = 0.4
+        elif self.aim =='maintain':
+            protein_percent=0.3
+        elif self.aim =='gain muscle':
+            protein_percent=0.3
+        return protein_percent
+
+    def fat_percent_calc(self):
+        fat_percent = 0
+        if self.aim =='lose weight':
+            fat_percent = 0.3
+        elif self.aim =='maintain':
+            fat_percent=0.3
+        elif self.aim =='gain muscle':
+            fat_percent=0.2
+        return fat_percent
         
     def save(self, *args, **kwargs):
         self.bmr = self.bmr_calc()
@@ -146,6 +179,9 @@ class Macro(models.Model):
         self.carb_weight = self.carb_calc()
         self.protein_weight = self.protein_calc()
         self.fat_weight = self.fat_calc()
+        self.carb_percent = self.carb_percent_calc()
+        self.protein_percent = self.protein_percent_calc()
+        self.fat_percent = self.fat_percent_calc()
         super(Macro, self).save(*args, **kwargs)    
         
         
