@@ -14,7 +14,7 @@ def all_products(request):
     accessory = Product.objects.filter(category='Accessories').order_by('-price')[:3]
     supplements = Product.objects.filter(category='Supplements').order_by('-price')[:3]
     vitamins = Product.objects.filter(category='Vitamins').order_by('-price')[:3]
-    return render(request, "all_products.html", {"weights": weights, "benches": benches, "accessory":accessory, 'supplements': supplements, 'vitamins': vitamins})
+    return render(request, "all_products.html", {"weights": weights, "benches": benches, "accessory":accessory, "supplements": supplements, "vitamins": vitamins})
 
 #display product page
 def product(request, id):

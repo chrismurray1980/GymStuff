@@ -25,7 +25,7 @@ var macro_percentage_group = macro_dimension.group().reduceSum(function (d) { re
 // Color variable //
 var macro_colors = d3.scaleOrdinal()
         .domain(["Carbs", "Proteins", "Fats"])
-        .range(["blue", "red", "green"]);
+        .range(["#003366", "#990000", "#336600"]);
 
 // Create weight plot //        
 macro_weight_chart
@@ -37,12 +37,13 @@ macro_weight_chart
     .transitionDuration( 500 )
     .colorAccessor(function (d) { return d.key[3]; })
     .colors(macro_colors)
+    .title( function(d) { return 'You should eat ' + d.value + ' grams of ' + d.key + ' per day'; } )
     .x( d3.scaleBand() )
     .xUnits( dc.units.ordinal )
     .xAxisLabel( 'Macronutrient' )
     .yAxisLabel( 'Daily macro weight (g)' )
     .yAxis()
-    .ticks( 10 );
+    .ticks( 5 );
 
 // Create percentage plot //        
 macro_percentage_chart
@@ -53,21 +54,9 @@ macro_percentage_chart
     .colorAccessor(function (d) { return d.key[3]; })
     .colors(macro_colors)
     .label(function(d) {
-    return d.key + ' ' + d.value + '%';});
-    /*.height( 250 )
-    .width( 500 )
-    .margins( { top: 10, right: 50, bottom: 50, left: 50 } )
-    .dimension( macro_dimension )
-    .group( macro_percentage_group)
-    .transitionDuration( 500 )
-    .colorAccessor(function (d) { return d.key[3]; })
-    .colors(macro_colors)*/
-    //.x( d3.scaleBand() )
-    //.xUnits( dc.units.ordinal )
-    //.xAxisLabel( 'Macronutrient' )
-    //.yAxisLabel( 'Daily macro weight (g)' )
-    //.yAxis()
-    //.ticks( 10 );
-    
+    return d.key + ' ' + d.value + '%';})
+    .title(function(d) {
+    return 'Your daily diet should consist of ' + d.value + ' % of calories from ' + d.key;});
+  
 // Render all plots //
 dc.renderAll();

@@ -62,7 +62,6 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{% url 'bmi_form' %}">Calculate BMI</a>
                                         <a class="dropdown-item" href="{% url 'macro_form' %}">Macro calculator</a>
-                                        <a class="dropdown-item" href="#">Accessories</a>
                                     </div>
                                 </li>
                                 <!-- Dropdown -->
@@ -96,22 +95,6 @@
                     </nav>
                 </header>
             </div>
-    
-    <!--Search bar-->
-    <div class="row">
-    <div class="col-12 title-col paragraph-margin-home">
-    <p> Welcome to GymStuff, here you will find the best in home gym equipment and accesories alongside a variety of nutrition products to help you achieve your fitness goals. Stay motivated!</p>
-    </div>
-</div>  
-    <div class="row">
-        <div class="col-4 offset-4 search-col">
-            <form action="{% url 'search' %}" method="get">
-                                <input type="text" name="q" placeholder="Search..">
-                                <button type="search" class="btn btn-info">Search</button>
-                            </form>
-        </div>
-    </div>
-    
     <!--Messages-->
     {% if messages %}
     <div class="alert alert-success">

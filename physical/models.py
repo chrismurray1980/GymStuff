@@ -47,7 +47,6 @@ class Macro(models.Model):
     
     activity_level = (
         ('little exercise', 'little exercise'),
-        ('light exercise','light exercise'),
         ('moderate exercise', 'moderate exercise'),
         ('heavy exercise', 'heavy exercise'),
     )
