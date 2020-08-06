@@ -319,6 +319,7 @@ caption p {
 }
 
 #btn-review {
+    margin-top:2%;
     background-color:#5F9EA0!important;
     border-color:#5F9EA0!important;
 }
@@ -355,6 +356,7 @@ a:hover {
 
 .line-padding {
     margin-bottom:4%;
+    margin-top:4%;
 }
 
 .hide {

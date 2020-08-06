@@ -37,7 +37,7 @@ macro_weight_chart
     .transitionDuration( 500 )
     .colorAccessor(function (d) { return d.key[3]; })
     .colors(macro_colors)
-    .title( function(d) { return 'You should eat ' + d.value + ' grams of ' + d.key + ' per day'; } )
+    .title( function(d) { return 'You should eat ' + d.value + 'g of ' + d.key + ' per day'; } )
     .x( d3.scaleBand() )
     .xUnits( dc.units.ordinal )
     .xAxisLabel( 'Macronutrient' )
@@ -56,7 +56,7 @@ macro_percentage_chart
     .label(function(d) {
     return d.key + ' ' + d.value + '%';})
     .title(function(d) {
-    return 'Your daily diet should consist of ' + d.value + ' % of calories from ' + d.key;});
+    return 'Your daily diet should consist of ' + d.value + '% of calories from ' + d.key;});
   
 // Render all plots //
 dc.renderAll();

@@ -56,15 +56,15 @@
 <hr class="line-padding">
 {% if user.is_authenticated %}
     <div class="row product-col">
-        <div class="col-12 product-title-col">
+        <div class="col-12">
+            <h5>Review this product</h5>
+        </div>
+        <div class="col-12">
         <button class="btn btn-info" id="btn-review">Add review</button>
         </div>
     </div>
     <div class="row product-col hide" id="review-form">
-        <div class="col-12 product-title-col">
-            <h5>Review this product</h5>
-        </div>
-        <div class="col-4 offset-4">
+        <div class="col-4 offset-4  product-title-col">
             <form action="{% url 'new_review' product.id %}" method="post">
                 {% csrf_token %} {{ form | as_bootstrap }}
                 <input class="btn btn-info add-review-btn" id="btn-add" type="submit" value="Submit review" />

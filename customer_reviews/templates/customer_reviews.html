@@ -1,12 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="row">
-    <div class='col-12 latest-review-col'>
-        <h2> Latest reviews for {{ product.name}} </h2>
-    </div>
-    <div class='col-12'>
+    <div class="col-12 title-col">
+        <hr>
+        <h5>Latest reviews for {{ product.name }}</h5>
         <hr>
     </div>
+</div>
+
+<div class="row">
     {% if latest_review_list %}{% for review in latest_review_list %}
     <div class='col-6 offset-3 latest-review-review'>
         <h4> {{ review.headline }} </h4>
@@ -18,7 +20,7 @@
     
     <div class='col-6 offset-3 latest-review-review'>
         <h6> Rating: </h6>
-        <p>{{ review.rating }}/ 5 </p>
+        <p>{{ review.rating }}/5 </p>
     </div>
     <div class='col-6 offset-3 latest-review-review'>
         <h6> Comment: </h6>
@@ -38,7 +40,7 @@
 
     <div class='col-4 offset-4 latest-review-col'>
         <form>
-            <button class="btn btn-info" formaction="{% url 'product' id=product.id %}"> Back to product </button>
+            <button class="btn btn-info" id="btn-info" formaction="{% url 'product' id=product.id %}"> Back to product </button>
         </form>
     </div>
 
