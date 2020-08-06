@@ -25,7 +25,7 @@ var macro_percentage_group = macro_dimension.group().reduceSum(function (d) { re
 // Color variable //
 var macro_colors = d3.scaleOrdinal()
         .domain(["Carbs", "Proteins", "Fats"])
-        .range(["#003366", "#990000", "#336600"]);
+        .range(["#5F9EA0", "#B22222", "#556B2F"]);
 
 // Create weight plot //        
 macro_weight_chart

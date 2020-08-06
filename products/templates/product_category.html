@@ -10,7 +10,7 @@
 
 <div class="row">
     {% if products %} {% for product in products %}
-    <div class="col-4 product-col">
+    <div class="col-4 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -23,7 +23,7 @@
 
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{ product.short_description}}</li>
-                    <li class="list-group-item">&euro; {{ product.price }}</li>
+                    <li class="list-group-item">&pound; {{ product.price }}</li>
                     <li class="list-group-item"><a href="{% url 'product' product.id %}">View more</a></li>
                 </ul>
 
@@ -37,7 +37,7 @@
     {% endif %}
     <div class="col-12 link-col">
         <form>
-            <button class="btn btn-success" formaction="{% url 'index' %}">Back to home</button>
+            <button class="btn btn-success" id="btn-home" formaction="{% url 'index' %}">Back to home</button>
         </form>
     </div>
 </div>

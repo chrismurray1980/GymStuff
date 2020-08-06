@@ -1,48 +1,46 @@
 {% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block content %}
 
-<div class="row product-col">
-    <div class="col-12 product-title-col">
-        <h1>Your Cart</h1>
+<div class="row ">
+    <div class="col-12 title-col">
+        <hr>
+        <h5> Your Cart</h5>
+        <hr>
     </div>
 </div>
-<hr> 
 {% if cart_items %} 
 {% for item in cart_items %}
-<div class="row ">
+
     <div class="col-4 offset-4 product-col">
 
-        <div class="card">
+        <div class="card" id="cart-card">
             <div class="card-header">
                 <h5>{{ item.product.name }}</h5>
             </div>
-            <div class="img-container">
+            <div class="cart-img-container">
                 <img class="card-img-top product-img" src="{{ MEDIA_URL }}{{ item.product.image }}" alt="Image unavailable">
             </div>
             <div class="card-body">
 
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">&euro; {{ item.product.price }}</li>
+                    <li class="list-group-item">Price: &pound; {{ item.product.price }}</li>
+                    <li class="list-group-item">Quantity: {{ item.quantity }}</li>
                 </ul>
             </div>
         </div>
-        <div class='row'>
+        <div class='row cart-card-padding'>
             <div class="col-12">
                 <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
                     {% csrf_token %}
-                    <div class="col-9 offset-2 form-group">
-                            <p>Current quantity: {{item.quantity}}</p>
-                    </div>
                     <div class="col-12 input-group">
                         <input name="quantity" type="number" min="0" max="999" class="form-control" placeholder="Quantity">
                     </div>
                     <div class="col-12 amend-button">
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Amend</button>
+                    <button type="submit" class="btn btn-primary" id="btn-info"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Adjust</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
 <hr>
     {% endfor %} 
 {% else %}
@@ -52,14 +50,21 @@
     </div>
 </div>
 <hr>
+<div class="col-12 link-col">
+    <form>
+        <button class="btn btn-success" id="btn-home" formaction="{% url 'index' %}">Back to home</button>
+    </form>
+</div>
 {% endif %}
 
 {% if cart_items %}
 <div class="row product-col">
     <div class="col-12 product-title-col">
         <h5>Total</h5>
-        <h6><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>&euro; {{ total }}</h6>
-        <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+        <h5><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>&pound; {{ total }}</h5>
+    </div>
+    <div class="col-12 title-col">
+        <a href="{% url 'checkout' %}" class="btn btn-success"  id="btn-add" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Check Out</a>
     </div>
 </div>
 {% endif %} {% endblock %}

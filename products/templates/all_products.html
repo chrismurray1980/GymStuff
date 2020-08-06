@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="row">
-    <div class="col-12 title-col paragraph-margin-home">
-    <p> Welcome to GymStuff, here you will find the best in home gym equipment and accesories alongside a variety of nutrition products to help you achieve your fitness goals. Stay motivated!</p>
+    <div class="col-8 offset-2 title-col paragraph-margin-home">
+    <p>  Welcome to GymStuff!<br><br> Here you will find the best in home gym equipment and accesories alongside a variety of nutrition products to help you achieve your fitness goals. <br><br>Stay motivated!<br></p>
     </div>
 </div>    
 
@@ -14,7 +14,7 @@
     </div>
     {% if weights %} 
     {% for product in weights %}
-    <div class="col-4 product-col">
+    <div class="col-4 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -27,7 +27,7 @@
 
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{ product.short_description}}</li>
-                    <li class="list-group-item">&euro; {{ product.price }}</li>
+                    <li class="list-group-item">&pound; {{ product.price }}</li>
                     <li class="list-group-item"><a href="{% url 'product' product.id %}">View product</a></li>
                 </ul>
 
@@ -43,7 +43,7 @@
     {% if weights %}
     <div class="col-12 link-col">
         <form>
-            <button class="btn btn-success" formaction="{% url 'weight_search' %}">All weight products</button>
+            <button class="btn btn-info" id="btn-info" formaction="{% url 'weight_search' %}">All weight products</button>
         </form>
     </div>
     {% endif %}
@@ -57,7 +57,7 @@
     </div>
     {% if benches %} 
     {% for product in benches %}
-    <div class="col-4 product-col">
+    <div class="col-4 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -70,7 +70,7 @@
 
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{ product.short_description}}</li>
-                    <li class="list-group-item">&euro; {{ product.price }}</li>
+                    <li class="list-group-item">&pound; {{ product.price }}</li>
                     <li class="list-group-item"><a href="{% url 'product' product.id %}">View product</a></li>
                 </ul>
 
@@ -86,7 +86,7 @@
     {% if benches %}
     <div class="col-12 link-col">
         <form>
-            <button class="btn btn-success" formaction="{% url 'bench_search' %}">All rack and bench products</button>
+            <button class="btn btn-info" id="btn-info" formaction="{% url 'bench_search' %}">All rack and bench products</button>
         </form>
     </div>
     {% endif %}
@@ -95,12 +95,12 @@
 <div class="row">
     <div class="col-12 title-col">
         <hr>
-        <h5>Accesories</h5>
+        <h5>Accessories</h5>
         <hr>
     </div>
     {% if accessory %} 
     {% for product in accessory %}
-    <div class="col-4 product-col">
+    <div class="col-4 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -113,7 +113,7 @@
 
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{ product.short_description}}</li>
-                    <li class="list-group-item">&euro; {{ product.price }}</li>
+                    <li class="list-group-item">&pound; {{ product.price }}</li>
                     <li class="list-group-item"><a href="{% url 'product' product.id %}">View product</a></li>
                 </ul>
 
@@ -129,7 +129,7 @@
     {% if accessory %}
     <div class="col-12 link-col">
         <form>
-            <button class="btn btn-success" formaction="{% url 'accessory_search' %}">All accesories</button>
+            <button class="btn btn-info" id="btn-info" formaction="{% url 'accessory_search' %}">All accessories</button>
         </form>
     </div>
     {% endif %}
@@ -143,7 +143,7 @@
     </div>
     {% if supplements %} 
     {% for product in supplements %}
-    <div class="col-4 product-col">
+    <div class="col-4 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -156,7 +156,7 @@
 
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{ product.short_description}}</li>
-                    <li class="list-group-item">&euro; {{ product.price }}</li>
+                    <li class="list-group-item">&pound; {{ product.price }}</li>
                     <li class="list-group-item"><a href="{% url 'product' product.id %}">View product</a></li>
                 </ul>
 
@@ -172,7 +172,7 @@
     {% if supplements %}
     <div class="col-12 link-col">
         <form>
-            <button class="btn btn-success" formaction="{% url 'supplement_search' %}">All supplements</button>
+            <button class="btn btn-info" id="btn-info" formaction="{% url 'supplement_search' %}">All supplements</button>
         </form>
     </div>
     {% endif %}
@@ -186,7 +186,7 @@
     </div>
     {% if vitamins %} 
     {% for product in vitamins %}
-    <div class="col-4 product-col">
+    <div class="col-4 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -199,7 +199,7 @@
 
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{ product.short_description}}</li>
-                    <li class="list-group-item">&euro; {{ product.price }}</li>
+                    <li class="list-group-item">&pound; {{ product.price }}</li>
                     <li class="list-group-item"><a href="{% url 'product' product.id %}">View product</a></li>
                 </ul>
 
@@ -215,7 +215,7 @@
     {% if vitamins %} 
     <div class="col-12 link-col">
         <form>
-            <button class="btn btn-success" formaction="{% url 'vitamin_search' %}">All vitamins</button>
+            <button class="btn btn-info" id="btn-info" formaction="{% url 'vitamin_search' %}">All vitamins</button>
         </form>
     </div>
     {% endif %}

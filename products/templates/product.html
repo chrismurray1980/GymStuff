@@ -14,21 +14,21 @@
 <hr>
 
 <div class="row product-view-col">
-    <div class="col-9">
-        <div class="col-12">
+    <div class="col-5 offset-1">
+        <div class="col-12 product-info">
         <h4>Description</h4>
         </div>
-        <div class="col-12 product-description">
+        <div class="col-12 product-description product-info">
         <p>{{ product.description }}<p>
         </div>
     </div>   
     
-        <div class="col-3">
+        <div class="col-3 offset-1">
         <div class="col-12">
         <h4>Price</h4>
         </div>
         <div class="col-12">
-        <p>&euro; {{ product.price }}</p>
+        <p>&pound; {{ product.price }}</p>
         </div>
     </div>
 </div>
@@ -40,7 +40,7 @@
             <div class="input-group">
                 <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder='Quantity'>
                 <span class="input-group-btn">
-                    <button class="btn btn-success" type="submit">Add</button>
+                    <button class="btn btn-danger" id="btn-add" type="submit">Add</button>
                 </span>
             </div>
         </form>
@@ -48,12 +48,12 @@
     <div class="col-5 offset-1">
 
         <form>
-            <button class="btn btn-primary" formaction="{% url 'customer_reviews' id=product.id %} ">View product reviews</button>
+            <button class="btn btn-info" id="btn-info" formaction="{% url 'customer_reviews' id=product.id %} ">View product reviews</button>
         </form>
     </div>
 </div>
 
-<hr>
+<hr class="line-padding">
 {% if user.is_authenticated %}
     <div class="row product-col">
         <div class="col-12 product-title-col">
@@ -62,22 +62,18 @@
         <div class="col-4 offset-4">
             <form action="{% url 'new_review' product.id %}" method="post">
                 {% csrf_token %} {{ form | as_bootstrap }}
-                <input class="btn btn-primary" type="submit" value="Add review" />
+                <input class="btn btn-info add-review-btn" id="btn-info" type="submit" value="Add review" />
             </form>
         </div>
     </div>
-    <hr>
-{% else %}
-    <div class="col-4 offset-4 title-col">
-        <p>Please log-in to review this product. </p>
-    </div>
+    <hr class="line-padding">
     {% endif %}
 
 
 <div class="row link-col">
     <div class="col-4 offset-4">
         <form>
-            <button class="btn btn-success" formaction="{% url 'index' %}">Back to home</button>
+            <button class="btn btn-success"  id="btn-home" formaction="{% url 'index' %}">Back to home</button>
         </form>
     </div>
 </div>
