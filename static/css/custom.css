@@ -318,6 +318,12 @@ caption p {
     border-color:#B22222!important;
 }
 
+#btn-review {
+    background-color:#5F9EA0!important;
+    border-color:#5F9EA0!important;
+}
+
+
 #submit_payment_btn {
     background-color:#B22222!important;
     border-color:#B22222!important;
@@ -349,4 +355,8 @@ a:hover {
 
 .line-padding {
     margin-bottom:4%;
+}
+
+.hide {
+    display:none;
 }
