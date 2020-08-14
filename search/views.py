@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from products.models import Product
+from django.db.models import Q
 
 # Create your views here.
 def do_search(request):
-    products = Product.objects.filter(name__icontains=request.GET['q'])
+    products = Product.objects.filter(Q(name__icontains=request.GET['q']) |  Q(category__icontains=request.GET['q']))
     return render(request, "product_category.html", {"products": products})
 
 def weight_search(request):
