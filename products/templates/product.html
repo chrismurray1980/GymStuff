@@ -35,7 +35,7 @@
     
 <div class="row product-col">
     <div class="col-4 offset-1">
-        <form method="post" action="{% url 'add_to_cart' product.id %}">
+        <form method="post" action="{% url 'add_to_cart' id=product.id %}">
             {% csrf_token %}
             <div class="input-group">
                 <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder='Quantity'>
@@ -64,7 +64,7 @@
         </div>
     </div>
     <div class="row product-col hide" id="review-form">
-        <div class="col-4 offset-4  product-title-col">
+        <div class="col-4 offset-4 product-title-col">
             <form action="{% url 'new_review' product.id %}" method="post">
                 {% csrf_token %} {{ form | as_bootstrap }}
                 <input class="btn btn-info add-review-btn" id="btn-add" type="submit" value="Submit review" />

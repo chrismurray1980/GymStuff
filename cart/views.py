@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
 from products.models import Product
 from customer_reviews.forms import ReviewForm
 from django.contrib import messages
@@ -23,9 +23,9 @@ def add_to_cart(request, id):
             cart[id] = int(cart[id]) + quantity      
         else:
             cart[id] = cart.get(id, quantity) 
-    
         request.session['cart'] = cart
-        return redirect(reverse('index'))
+        product = Product.objects.get(id=id)
+        return HttpResponseRedirect(reverse('product', args=(product.id,)))
         
         
 def adjust_cart(request, id):
