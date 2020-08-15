@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 import datetime
 from django.utils import timezone
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
 class Physical(models.Model):
@@ -14,8 +14,8 @@ class Physical(models.Model):
     )
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    height = models.FloatField(validators=[MinValueValidator(0)],)
-    weight = models.FloatField(validators=[MinValueValidator(0)],)
+    height = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(300)],)
+    weight = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(500)],)
     unit_height = models.FloatField(default=0)
     unit_weight = models.FloatField(default=0)
     bmi_calc = models.FloatField(default=0)
@@ -91,9 +91,9 @@ class Macro(models.Model):
     )
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    height = models.FloatField(validators=[MinValueValidator(0)],)
-    weight = models.FloatField(validators=[MinValueValidator(0)],)
-    age = models.IntegerField(validators=[MinValueValidator(0)],)
+    height = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(300)],)
+    weight = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(500)],)
+    age = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(120)],)
     unit_height = models.FloatField(default=0)
     unit_weight = models.FloatField(default=0)
     activity_level = models.CharField(choices=activity_level, default='', max_length=200)

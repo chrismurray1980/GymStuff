@@ -9,10 +9,6 @@ $(document).ready(function() {
       //function(){$("review-form").hide()});
       $( "#review-form" ).toggleClass( "hide" );
   });
-      
-      
-      
-      
 });
 
 

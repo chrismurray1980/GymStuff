@@ -268,12 +268,6 @@ caption p {
     padding-bottom:2%;
 }
 
-#search-button {
-    width:100%;
-        background-color:#5F9EA0!important;
-        border-color:#5F9EA0!important;
-}
-
 .search-bar {
     padding-top:3%;
 }
@@ -282,7 +276,13 @@ caption p {
     color: #fbfbfb;
     margin-right: 0;
     padding: 0;
+    transition: all 0.1s ease-in-out;
 }
+
+#brand:hover {
+  transform: scale(1.01);
+}
+
 
 .card {
     display: inline-block;
@@ -300,14 +300,35 @@ caption p {
     padding-bottom:5%;
 }
 
+#search-button {
+    width:100%;
+        background-color:#5F9EA0!important;
+        border-color:#5F9EA0!important;
+        transition: all 0.25s ease-in-out;
+}
+
+#search-button:hover {
+  font-size:16.5px;
+}
+
 #btn-info {
     background-color:#5F9EA0!important;
     border-color:#5F9EA0!important;
+        transition: all 0.25s ease-in-out;
+}
+
+#btn-info:hover {
+  font-size:16.5px;
 }
 
 #btn-home {
     background-color:#556B2F!important;
     border-color:#556B2F!important;
+        transition: all 0.25s ease-in-out;
+}
+
+#btn-home:hover {
+  font-size:16.5px;
 }
 
 #cart-badge {
@@ -318,18 +339,32 @@ caption p {
 #btn-add {
     background-color:#B22222!important;
     border-color:#B22222!important;
+    transition: all 0.25s ease-in-out;
+}
+
+#btn-add:hover {
+  font-size:16.5px;
 }
 
 #btn-review {
     margin-top:2%;
     background-color:#5F9EA0!important;
     border-color:#5F9EA0!important;
+    transition: all 0.25s ease-in-out;
 }
 
+#btn-review:hover {
+  font-size:16.5px;
+}
 
 #submit_payment_btn {
     background-color:#B22222!important;
     border-color:#B22222!important;
+    transition: all 0.25s ease-in-out;
+}
+
+#submit_payment_btn:hover {
+  font-size:16.5px;
 }
 
 #submit-payment {
@@ -348,6 +383,7 @@ caption p {
 
 a{
     color:#808080;
+    transition: 0.5s ease-in-out;
 }
 
 
@@ -372,6 +408,3 @@ a:hover {
 #brand-container {
     padding-top:0;
 }
-
-
-
