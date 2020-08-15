@@ -84,10 +84,17 @@ class Macro(models.Model):
         ('gain muscle', 'gain muscle'),
     )
     
+    unit_type = (
+        ('Imperial', 'Imperial ( Inch/Pound )'),
+        ('Metric', 'Metric ( Cm/Kg )'),
+    )
+    
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     height = models.FloatField()
     weight = models.FloatField()
     age = models.IntegerField()
+    unit_height = models.FloatField(default=0)
+    unit_weight = models.FloatField(default=0)
     activity_level = models.CharField(choices=activity_level, default='', max_length=200)
     bmr = models.FloatField(default=0)
     TDEE = models.FloatField(default=0)
@@ -100,9 +107,26 @@ class Macro(models.Model):
     carb_percent = models.FloatField(default=0)
     protein_percent = models.FloatField(default=0)
     fat_percent = models.FloatField(default=0)
+    unit_type = models.CharField(choices=unit_type, default='Metric', max_length=200)
     
+    def calculate_unit_height(self):
+        if self.unit_type == 'Metric':
+            unit_height = self.height/100
+        else:
+            unit_height = self.height*2.54/100
+        return unit_height
+        
+    def calculate_unit_weight(self):
+        if self.unit_type == 'Metric':
+            unit_weight = self.weight
+        else:
+            unit_weight = round(self.weight*0.453592)
+        return unit_weight
+        
     def bmr_calc(self):
-        bmr = round( 655 + ( 4.35*self.weight*2.205 )+( 4.7*self.height*39.37 ) - ( 4.7*self.age ), 2)
+        height=self.calculate_unit_height()
+        weight=self.calculate_unit_weight()
+        bmr = round( 655 + ( 4.35*weight*2.205 )+( 4.7*height*39.37 ) - ( 4.7*self.age ), 2)
         return bmr
         
     def TDEE_calc(self):
@@ -208,6 +232,8 @@ class Macro(models.Model):
         self.carb_percent = self.carb_percent_calc()
         self.protein_percent = self.protein_percent_calc()
         self.fat_percent = self.fat_percent_calc()
+        self.unit_height= self.calculate_unit_height()
+        self.unit_weight= self.calculate_unit_weight()
         super(Macro, self).save(*args, **kwargs)    
         
         

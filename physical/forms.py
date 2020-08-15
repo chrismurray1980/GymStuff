@@ -13,4 +13,4 @@ class macro(forms.ModelForm):
 
     class Meta:
         model = Macro
-        fields = ('height','weight', 'age', 'activity_level', 'aim')
+        fields = ('unit_type', 'height','weight', 'age', 'activity_level', 'aim')

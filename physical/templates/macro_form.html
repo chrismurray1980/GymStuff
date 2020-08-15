@@ -6,7 +6,7 @@
             <h5>Macro calculator</h5>
             <hr>
         </div>
-        <div class="col-12 message-col">
+        <div class="col-12 message-col"  id='bmi-info'>
             <p>Please enter your height, weight, age, activity level and aim.</p>
         </div>
         {% csrf_token %} {{ form | as_bootstrap }}
