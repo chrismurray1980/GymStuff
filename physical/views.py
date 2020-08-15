@@ -13,9 +13,11 @@ def bmi_form(request):
     if form.is_valid():
         height = form.cleaned_data['height']
         weight = form.cleaned_data['weight']
+        unit_type = form.cleaned_data['unit_type']
         physical = Physical()
         physical.height= height
         physical.weight= weight
+        physical.unit_type = unit_type
         physical.date_now = datetime.datetime.now()
         form_save= form.save(commit=False)
         form_save.user= request.user
@@ -26,7 +28,7 @@ def bmi_form(request):
         # user hits the Back button.
         return render(request, 'bmi_result.html', {'details':details})
     return render(request, 'bmi_form.html', {'form': form})
-
+    
 def bmi_result(request):
     return render(request, 'bmi_result.html')
     

@@ -6,15 +6,40 @@ from django.utils import timezone
 
 # Create your models here.
 class Physical(models.Model):
+    
+    unit_type = (
+    ('Imperial', 'Imperial ( Inch/Pound )'),
+    ('Metric', 'Metric ( Cm/Kg )'),
+    )
+    
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     height = models.FloatField()
     weight = models.FloatField()
+    unit_height = models.FloatField(default=0)
+    unit_weight = models.FloatField(default=0)
     bmi_calc = models.FloatField(default=0)
     bmi_category = models.CharField(default='', max_length=200)
     date_now = models.DateTimeField(auto_now_add=True)
+    unit_type = models.CharField(choices=unit_type, default='Metric', max_length=200)
+    
+    def calculate_unit_height(self):
+        if self.unit_type == 'Metric':
+            unit_height = self.height/100
+        else:
+            unit_height = self.height*2.54/100
+        return unit_height
+        
+    def calculate_unit_weight(self):
+        if self.unit_type == 'Metric':
+            unit_weight = self.weight
+        else:
+            unit_weight = round(self.weight*0.453592)
+        return unit_weight
     
     def calculated_bmi(self):
-        bmi_calc = round( self.weight/self.height**2, 2)
+        height=self.calculate_unit_height()
+        weight=self.calculate_unit_weight()
+        bmi_calc = round( weight/height**2, 2)
         return bmi_calc
         
     def category_calc(self):
@@ -40,6 +65,8 @@ class Physical(models.Model):
     def save(self, *args, **kwargs):
         self.bmi_calc = self.calculated_bmi()
         self.bmi_category = self.category_calc()
+        self.unit_height= self.calculate_unit_height()
+        self.unit_weight= self.calculate_unit_weight()
         super(Physical, self).save(*args, **kwargs)    
         
 

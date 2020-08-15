@@ -362,3 +362,7 @@ a:hover {
 .hide {
     display:none;
 }
+
+#bmi-info {
+    margin:3% 0;
+}

@@ -6,7 +6,7 @@ class bmi(forms.ModelForm):
 
     class Meta:
         model = Physical
-        fields = ('height','weight')
+        fields = ('unit_type', 'height','weight')
         
 
 class macro(forms.ModelForm):
