@@ -46,3 +46,11 @@ def create_or_edit_review(request, product_id):
 
     return render(request, 'product.html', {'product': product, 'form': form})
 
+def view_similar_products(request, product_id):
+    product = Product.objects.get(id=product_id)
+    product_category = product.category
+    category = Product.objects.filter(category=product_category).order_by('price')
+    return render(request, "product_category.html", {"products": category})
+    
+    
+    

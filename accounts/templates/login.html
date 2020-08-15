@@ -6,6 +6,9 @@
             <h5>Log In</h5>
             <hr>
         </div>
+        <div class="col-12 message-col">
+            <p>Don't have an account? <a href="{% url 'register' %}"> Register here!</a></p>
+        </div>
         {% csrf_token %} {{ user_form | as_bootstrap }}
         <div class="col-12 message-col">
             <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>

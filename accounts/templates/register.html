@@ -10,7 +10,7 @@
             <hr>
         </div>
         <div class="col-12 message-col">
-            <p>Already got an account? <a href="{% url 'login' %}">Log In</a></p>
+            <p>Already got an account? <a href="{% url 'login' %}"> Log In here!</a></p>
         </div>
         {% csrf_token %} {{ user_form | as_bootstrap }}
         <div class="col-12 message-col">
