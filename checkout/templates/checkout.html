@@ -9,8 +9,8 @@
         Stripe.publishableKey = '{{ publishable }}';
     //]]>
 </script>
-<script type="text/javascript" src="/static/js/stripe.js"></script> 
-<!--{% static 'js/stripe.js' %}-->
+<script type="text/javascript" src="{% static 'js/stripe.js' %}"></script> 
+<!--/static/js/stripe.js-->
 {% endblock %}
 
 {% block content %}
