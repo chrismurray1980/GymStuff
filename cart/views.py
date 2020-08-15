@@ -25,6 +25,7 @@ def add_to_cart(request, id):
             cart[id] = cart.get(id, quantity) 
         request.session['cart'] = cart
         product = Product.objects.get(id=id)
+        messages.success(request, "This product has been added to your cart!")
         return HttpResponseRedirect(reverse('product', args=(product.id,)))
         
         

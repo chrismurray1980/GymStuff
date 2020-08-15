@@ -6,6 +6,7 @@ from customer_reviews.models import customer_review
 import datetime
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # display all products
 def all_products(request):
@@ -39,6 +40,7 @@ def create_or_edit_review(request, product_id):
         review.headline = headline
         review.date = datetime.datetime.now()
         review.save()
+        messages.success(request, "You have successfully reviewed this product")
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.

@@ -280,6 +280,8 @@ caption p {
 
 #brand{
     color: #fbfbfb;
+    margin-right: 0;
+    padding: 0;
 }
 
 .card {
@@ -366,3 +368,10 @@ a:hover {
 #bmi-info {
     margin:3% 0;
 }
+
+#brand-container {
+    padding-top:0;
+}
+
+
+
