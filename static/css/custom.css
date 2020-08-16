@@ -1,3 +1,7 @@
+html {
+    height:100%;
+}
+
 /* BODY */
 
 body {
@@ -13,8 +17,6 @@ body {
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 100%;
-        width: 100%;
     }
 }
 
@@ -41,12 +43,19 @@ body {
 /* FOOTER */
 
 footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-top: 1px solid #ededed;
-    color: #A9A9A9;
-    background-color: #343a40;
+    display:none;
+}
+
+@media (min-width: 768px) {
+    footer {
+        margin-top: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-top: 1px solid #ededed;
+        color: #A9A9A9;
+        background-color: #343a40;
+        display:block;
+    }
 }
 
 
@@ -93,6 +102,7 @@ footer {
 
 .navbar-toggler {
     font-size: 1rem;
+    margin-bottom:5%;
 }
 
 @media (min-width: 600px) {
@@ -322,6 +332,22 @@ a:hover {
     margin-bottom: 2%;
 }
 
+.product-title-col>h1 {
+       font-size:1.5rem; 
+}
+
+@media (min-width: 600px){
+    .product-title-col>h1{
+        font-size:2rem;
+    }
+}
+
+@media (min-width: 900px){
+    .product-title-col>h1 {
+        font-size:2.5rem;
+    }
+}
+
 .product-col {
     text-align: center;
 }
@@ -329,6 +355,34 @@ a:hover {
 .product-description {
     text-align: justify;
     padding-bottom: 5%;
+}
+
+.product-no-padding {
+    padding:0 5%;
+}
+
+@media (min-width: 576px){
+    .product-no-padding {
+        padding:0;
+    }
+}
+
+.product-align-left {
+    text-align:center;
+    padding-top:5%;
+    padding-bottom: 5%;
+}
+    
+@media (min-width: 500px){
+    .product-align-left {
+        padding-bottom:0;
+    }
+}
+@media (min-width: 992px){
+    .product-align-left {
+        text-align:left;
+        padding-top:0;
+    }
 }
 
 .hide {
@@ -340,6 +394,41 @@ a:hover {
 
 .img-container {
     height: 50%;
+}
+
+@media (min-width: 403px){
+    .img-container {
+        width: 80%;
+        margin-left:10%;
+    }
+}
+
+@media (min-width: 500px){
+    .img-container {
+        width: 76%;
+        margin-left:12%;
+    }
+}
+
+@media (min-width: 804px){
+    .img-container {
+        width: 70%;
+        margin-left:15%;
+    }
+}
+
+@media (min-width: 919px){
+    .img-container {
+        width: 66%;
+        margin-left:17%;
+    }
+}
+
+@media (min-width: 992px){
+    .img-container {
+        width: 100%;
+        margin-left:0%;
+    }
 }
 
 .card-img-top {
@@ -362,6 +451,36 @@ a:hover {
     display: inline-block;
     height: 550px;
     width: 95%;
+    }
+
+@media (min-width: 403px){
+.card {
+    height: 530px;
+    }
+}
+
+@media (min-width: 447px){
+.card {
+    height: 500px;
+    }
+}
+
+@media (min-width: 576px){
+.card {
+    height: 500px;
+    }
+}
+
+@media (min-width: 768px){
+.card {
+    height: 460px;
+    }
+}
+   
+@media (min-width: 992px){
+.card {
+    height: 550px;
+    }
 }
 
 .card-bottom-margin {
@@ -398,12 +517,29 @@ a:hover {
 }
 
 
-/* ACCOUNT FORM */
+/* MACRO CHARTS */
+
+#macro-weight-chart{
+    overflow-x: scroll; 
+}
+
+/* ACCOUNT FORMS */
 
 .accountform {
     padding-top: 20px;
 }
 
+.email-reset > input{
+    width:80%;
+}
+
+.confirm-password-margin {
+    margin:0 0 4% 0;
+}
+
+.confirm-password-button{
+    margin:8% 0;
+}
 
 /* PASSWORD RESET */
 
@@ -431,6 +567,41 @@ a:hover {
     height: 60%;
 }
 
+@media (min-width: 403px){
+    .cart-img-container {
+        width: 80%;
+        margin-left:10%;
+    }
+}
+
+@media (min-width: 500px){
+    .cart-img-container {
+        width: 76%;
+        margin-left:12%;
+    }
+}
+
+@media (min-width: 804px){
+    .cart-img-container {
+        width: 70%;
+        margin-left:15%;
+    }
+}
+
+@media (min-width: 919px){
+    .cart-img-container {
+        width: 66%;
+        margin-left:17%;
+    }
+}
+
+@media (min-width: 992px){
+    .cart-img-container {
+        width: 100%;
+        margin-left:0%;
+    }
+}
+
 .amend-button {
     margin-top: 10%;
     margin-bottom: 15%;
@@ -449,6 +620,9 @@ a:hover {
     border-radius: 9px;
 }
 
+.check-out-button {
+    margin: 2% 0 5% 0;
+}
 
 /* SUBMIT PAYMENT */
 

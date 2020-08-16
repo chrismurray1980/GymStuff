@@ -14,7 +14,7 @@
     </div>
     {% if weights %} 
     {% for product in weights %}
-    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-4 offset-md-0 product-col card-bottom-margin">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-lg-4 offset-lg-0 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -43,7 +43,7 @@
     {% if weights %}
     <div class="col-12 link-col">
         <form>
-            <button class="btn btn-info" id="btn-info" formaction="{% url 'weight_search' %}">All weight products</button>
+            <button class="btn btn-info" id="btn-add" formaction="{% url 'weight_search' %}">All weight products</button>
         </form>
     </div>
     {% endif %}
@@ -57,7 +57,7 @@
     </div>
     {% if benches %} 
     {% for product in benches %}
-    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-4 offset-md-0 product-col card-bottom-margin">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-lg-4 offset-lg-0 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -86,7 +86,7 @@
     {% if benches %}
     <div class="col-12 link-col">
         <form>
-            <button class="btn btn-info" id="btn-info" formaction="{% url 'bench_search' %}">All rack and bench products</button>
+            <button class="btn btn-info" id="btn-add" formaction="{% url 'bench_search' %}">All rack and bench products</button>
         </form>
     </div>
     {% endif %}
@@ -100,7 +100,7 @@
     </div>
     {% if accessory %} 
     {% for product in accessory %}
-    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-4 offset-md-0 product-col card-bottom-margin">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-lg-4 offset-lg-0 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -129,7 +129,7 @@
     {% if accessory %}
     <div class="col-12 link-col">
         <form>
-            <button class="btn btn-info" id="btn-info" formaction="{% url 'accessory_search' %}">All accessories</button>
+            <button class="btn btn-info" id="btn-add" formaction="{% url 'accessory_search' %}">All accessories</button>
         </form>
     </div>
     {% endif %}
@@ -143,7 +143,7 @@
     </div>
     {% if supplements %} 
     {% for product in supplements %}
-    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-4 offset-md-0 product-col card-bottom-margin">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-lg-4 offset-lg-0 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -172,7 +172,7 @@
     {% if supplements %}
     <div class="col-12 link-col">
         <form>
-            <button class="btn btn-info" id="btn-info" formaction="{% url 'supplement_search' %}">All supplements</button>
+            <button class="btn btn-info" id="btn-add" formaction="{% url 'supplement_search' %}">All supplements</button>
         </form>
     </div>
     {% endif %}
@@ -186,7 +186,7 @@
     </div>
     {% if vitamins %} 
     {% for product in vitamins %}
-    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-4 offset-md-0 product-col card-bottom-margin">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-lg-4 offset-lg-0 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -215,7 +215,7 @@
     {% if vitamins %} 
     <div class="col-12 link-col">
         <form>
-            <button class="btn btn-info" id="btn-info" formaction="{% url 'vitamin_search' %}">All vitamins</button>
+            <button class="btn btn-info" id="btn-add" formaction="{% url 'vitamin_search' %}">All vitamins</button>
         </form>
     </div>
     {% endif %}

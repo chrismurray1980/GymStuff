@@ -10,7 +10,7 @@
 {% if cart_items %} 
 {% for item in cart_items %}
 
-    <div class="col-4 offset-4 product-col">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-lg-4 offset-lg-4 product-col">
 
         <div class="card" id="cart-card">
             <div class="card-header">
@@ -64,7 +64,7 @@
         <h5><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>&pound; {{ total }}</h5>
     </div>
     <div class="col-12 title-col">
-        <a href="{% url 'checkout' %}" class="btn btn-success"  id="btn-add" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Check Out</a>
+        <a href="{% url 'checkout' %}" class="btn btn-success check-out-button"  id="btn-add" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Check Out</a>
     </div>
 </div>
 {% endif %} {% endblock %}

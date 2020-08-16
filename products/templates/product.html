@@ -13,8 +13,8 @@
 
 <hr>
 
-<div class="row product-view-col">
-    <div class="col-5 offset-1">
+<div class="row">
+    <div class="col-12 col-md-5 offset-md-1 product-no-padding">
         <div class="col-12 product-info">
         <h4>Description</h4>
         </div>
@@ -23,18 +23,18 @@
         </div>
     </div>   
     
-        <div class="col-3 offset-1">
-        <div class="col-12">
+        <div class="col-12 col-md-3 offset-md-1 product-no-padding">
+        <div class="col-12 product-info">
         <h4>Price</h4>
         </div>
-        <div class="col-12">
+        <div class="col-12 product-description product-info">
         <p>&pound; {{ product.price }}</p>
         </div>
     </div>
 </div>
     
 <div class="row product-col">
-    <div class="col-4 offset-1">
+    <div class="col-10 offset-1 col-lg-5 offset-lg-1 product-no-padding">
         <form method="post" action="{% url 'add_to_cart' id=product.id %}">
             {% csrf_token %}
             <div class="input-group">
@@ -45,8 +45,7 @@
             </div>
         </form>
     </div>
-    <div class="col-5 offset-1">
-
+    <div class="col-10 offset-1 col-lg-5 offset-lg-1 product-no-padding product-align-left">
         <form>
             <button class="btn btn-info" id="btn-info" formaction="{% url 'customer_reviews' id=product.id %} ">View product reviews</button>
         </form>
@@ -64,7 +63,7 @@
         </div>
     </div>
     <div class="row product-col hide" id="review-form">
-        <div class="col-4 offset-4 product-title-col">
+        <div class="col-10 offset-1 col-lg-4 offset-lg-4 product-title-col">
             <form action="{% url 'new_review' product.id %}" method="post">
                 {% csrf_token %} {{ form | as_bootstrap }}
                 <input class="btn btn-info add-review-btn" id="btn-add" type="submit" value="Submit review" />
@@ -76,7 +75,7 @@
 
 
 <div class="row link-col">
-    <div class="col-4 offset-4">
+    <div class="col-12 col-lg-4 offset-lg-4">
         <form>
             <button class="btn btn-success"  id="btn-home" formaction="{% url 'similar_products' product.id %}">View similar products</button>
         </form>
