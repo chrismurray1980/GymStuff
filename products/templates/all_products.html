@@ -14,7 +14,7 @@
     </div>
     {% if weights %} 
     {% for product in weights %}
-    <div class="col-4 product-col card-bottom-margin">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-4 offset-md-0 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -57,7 +57,7 @@
     </div>
     {% if benches %} 
     {% for product in benches %}
-    <div class="col-4 product-col card-bottom-margin">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-4 offset-md-0 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -100,7 +100,7 @@
     </div>
     {% if accessory %} 
     {% for product in accessory %}
-    <div class="col-4 product-col card-bottom-margin">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-4 offset-md-0 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -143,7 +143,7 @@
     </div>
     {% if supplements %} 
     {% for product in supplements %}
-    <div class="col-4 product-col card-bottom-margin">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-4 offset-md-0 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -186,7 +186,7 @@
     </div>
     {% if vitamins %} 
     {% for product in vitamins %}
-    <div class="col-4 product-col card-bottom-margin">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-4 offset-md-0 product-col card-bottom-margin">
 
         <div class="card">
             <div class="card-header">
@@ -219,5 +219,12 @@
         </form>
     </div>
     {% endif %}
+</div>
+
+<div class="col-12 link-col">
+    <hr>
+    <form>
+        <button class="btn btn-success" id="btn-home" formaction="{% url 'index' %}">Back to home</button>
+    </form>
 </div>
 {% endblock %}
