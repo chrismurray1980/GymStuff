@@ -276,11 +276,11 @@ caption p {
     color: #fbfbfb;
     margin-right: 0;
     padding: 0;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 #brand:hover {
-  transform: scale(1.01);
+  color:rgba(255,255,255,.5);
 }
 
 
@@ -304,31 +304,31 @@ caption p {
     width:100%;
         background-color:#5F9EA0!important;
         border-color:#5F9EA0!important;
-        transition: all 0.25s ease-in-out;
+        transition: all 0.5s ease-in-out;
 }
 
 #search-button:hover {
-  font-size:16.5px;
+  opacity:0.9;
 }
 
 #btn-info {
     background-color:#5F9EA0!important;
     border-color:#5F9EA0!important;
-        transition: all 0.25s ease-in-out;
+        transition: all 0.5s ease-in-out;
 }
 
 #btn-info:hover {
-  font-size:16.5px;
+    opacity:0.9;
 }
 
 #btn-home {
     background-color:#556B2F!important;
     border-color:#556B2F!important;
-        transition: all 0.25s ease-in-out;
+        transition: all 0.5s ease-in-out;
 }
 
 #btn-home:hover {
-  font-size:16.5px;
+    opacity:0.9;
 }
 
 #cart-badge {
@@ -339,32 +339,32 @@ caption p {
 #btn-add {
     background-color:#B22222!important;
     border-color:#B22222!important;
-    transition: all 0.25s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 #btn-add:hover {
-  font-size:16.5px;
+  opacity:0.9;
 }
 
 #btn-review {
     margin-top:2%;
     background-color:#5F9EA0!important;
     border-color:#5F9EA0!important;
-    transition: all 0.25s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 #btn-review:hover {
-  font-size:16.5px;
+  opacity:0.9;
 }
 
 #submit_payment_btn {
     background-color:#B22222!important;
     border-color:#B22222!important;
-    transition: all 0.25s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 #submit_payment_btn:hover {
-  font-size:16.5px;
+  opacity:0.9;
 }
 
 #submit-payment {
