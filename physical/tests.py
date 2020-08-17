@@ -6,8 +6,8 @@ class BMITests(TestCase):
     
     # Test setup by creating new bmi model
     def setUp(self):
-        user1 = User.objects.create(id=1)
-        user2 = User.objects.create(id=2)
+        user1 = User.objects.create(id=1, username='Bob', email='bigbadbob@notgotajob')
+        user2 = User.objects.create(id=2, username='Jill', email='sillylittlejilly@notgotawilly')
         Physical.objects.create(
             user =user1,
             height = 160,
