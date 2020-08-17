@@ -185,21 +185,22 @@ class MacroTests(TestCase):
         """Carb percent calculated correctly"""
         metric = Macro.objects.get(unit_type="Metric")
         imperial = Macro.objects.get(unit_type="Imperial")
-        self.assertEqual(metric.carb_percent_calc(), 30.00)
-        self.assertEqual(imperial.carb_percent_calc(), 40.00)
+        self.assertEqual(metric.carb_percent_calc()*100, 30.00)
+        self.assertEqual(imperial.carb_percent_calc()*100, 40.00)
 
     # Calculate user daily protein weight:
     def test_calculate_daily_protein_percent(self):
         """Protein percent calculated correctly"""
         metric = Macro.objects.get(unit_type="Metric")
         imperial = Macro.objects.get(unit_type="Imperial")
-        self.assertEqual(metric.protein_percent_calc(), 40.00)
-        self.assertEqual(imperial.protein_percent_calc(), 30.00)        
+        self.assertEqual(metric.protein_percent_calc()*100, 40.00)
+        self.assertEqual(imperial.protein_percent_calc()*100, 30.00)        
 
     # Calculate user daily fat percent:
     def test_calculate_daily_fat_percent(self):
         """Fat weight calculated correctly"""
         metric = Macro.objects.get(unit_type="Metric")
         imperial = Macro.objects.get(unit_type="Imperial")
-        self.assertEqual(metric.fat_percent_calc(), 30.00)
-        self.assertEqual(imperial.fat_percent_calc(), 30.00)  
+        self.assertEqual(metric.fat_percent_calc()*100, 30.00)
+        self.assertEqual(imperial.fat_percent_calc()*100, 30.00)  
+        
