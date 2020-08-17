@@ -23,6 +23,22 @@ class BMITests(TestCase):
             unit_type = 'Imperial'
             )
 
+    # Get height from user id
+    def test_get_height_from_user_id(self):
+        """Height correctly retrieved by user id"""
+        height1 = Physical.objects.get(user1__id=1)
+        height2 = Physical.objects.get(user2__id=2)
+        self.assertEqual(height1.height, 160.00)
+        self.assertEqual(height2.height, 80.00)
+        
+    # Get weight from user id
+    def test_get_weight_from_user_id(self):
+        """Weight correctly retrieved by user id"""
+        weight1 = Physical.objects.get(user1__id=1)
+        weight2 = Physical.objects.get(user2__id=2)
+        self.assertEqual(weight1.weight, 80.00)
+        self.assertEqual(weight2.weight, 200.00)
+        
     # Calculate user unit height:
     def test_calculate_unit_height(self):
         """Unit height calculated correctly"""
@@ -54,8 +70,3 @@ class BMITests(TestCase):
         imperial = Physical.objects.get(unit_type="Imperial")
         self.assertEqual(metric.category_calc(), 'Obese')
         self.assertEqual(imperial.category_calc(), 'Healthy')
-        
-            #unit_height = Physical.calculate_unit_height(),
-            #unit_weight = calculate_unit_weight(self),
-            #bmi_calc = calculated_bmi(self),
-            #bmi_category = category_calc(self),
