@@ -22,12 +22,12 @@ class BMITests(TestCase):
             )
 
     
-    def test_calculate_unit_height(self):
+    def test_calculate_bmi(self):
         """Bmi correctly calculated"""
         metric = Physical.objects.get(unit_type="Metric")
         imperial = Physical.objects.get(unit_type="Imperial")
-        self.assertEqual(metric.calculated_bmi(), '31.25')
-        self.assertEqual(imperial.calculated_bmi(), '22.04')
+        self.assertEqual(metric.calculated_bmi(), 31.25)
+        self.assertEqual(imperial.calculated_bmi(), 22.04)
         
             #unit_height = Physical.calculate_unit_height(),
             #unit_weight = calculate_unit_weight(self),
