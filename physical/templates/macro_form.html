@@ -1,11 +1,15 @@
 {% extends "base.html" %} {% load bootstrap_tags %} {% block content %}
+
+<div class="col-12 message-col">
+    <hr>
+    <h5>Macro calculator</h5>
+    <hr>
+</div>
+<div class="col-12 message-col info-col">
+    <p>Note, for Imperial calculations, there are 14 pounds in 1 stone and 12 inches in 1 foot</p>
+</div>
 <form action="{% url 'macro_form'  %}" method="post">
     <fieldset class="form-group">
-        <div class="col-12 message-col">
-            <hr>
-            <h5>Macro calculator</h5>
-            <hr>
-        </div>
         <div class="col-12 message-col"  id='bmi-info'>
             <p>Please enter your height, weight, age, activity level and aim.</p>
         </div>
