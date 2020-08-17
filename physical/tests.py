@@ -1,19 +1,21 @@
 from django.test import TestCase
-from .models import Physical, Macro
+from .models import User, Physical, Macro
 
 # BMI model tests.
 class BMITests(TestCase):
     
     # Test setup by creating new bmi model
     def setUp(self):
+        user1 = User.objects.create(id=1)
+        user2 = User.objects.create(id=2)
         Physical.objects.create(
-            user =1,
+            user =user1,
             height = 160,
             weight = 80,
             unit_type = 'Metric'
             )
         Physical.objects.create(
-            user=2,
+            user=user2,
             height = 80,
             weight = 200,
             unit_type = 'Imperial'
