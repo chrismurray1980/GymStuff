@@ -27,4 +27,4 @@ class ProductTests(TestCase):
         test_name_object_1 = Product.objects.get(short_description="A weight plate")
         test_name_object_2 = Product.objects.get(short_description="A pull up bar")
         self.assertEqual(str(test_name_object_1), '10kg weight')
-        self.assertEqual(str(test_name_object_1), 'pull up bar')
+        self.assertEqual(str(test_name_object_2), 'pull up bar')
