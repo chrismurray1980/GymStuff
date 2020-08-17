@@ -24,18 +24,18 @@ class BMITests(TestCase):
             )
 
     # Get height from user id
-    def test_get_height_from_user_id(self):
-        """Height correctly retrieved by user id"""
-        height1 = Physical.objects.get(user1__id=1)
-        height2 = Physical.objects.get(user2__id=2)
+    def test_get_height_from_user(self):
+        """Height correctly retrieved by user"""
+        height1 = Physical.objects.get(user='user1')
+        height2 = Physical.objects.get(user='user2')
         self.assertEqual(height1.height, 160.00)
         self.assertEqual(height2.height, 80.00)
         
     # Get weight from user id
-    def test_get_weight_from_user_id(self):
-        """Weight correctly retrieved by user id"""
-        weight1 = Physical.objects.get(user1__id=1)
-        weight2 = Physical.objects.get(user2__id=2)
+    def test_get_weight_from_user(self):
+        """Weight correctly retrieved by user"""
+        weight1 = Physical.objects.get(user='user1')
+        weight2 = Physical.objects.get(user='user2')
         self.assertEqual(weight1.weight, 80.00)
         self.assertEqual(weight2.weight, 200.00)
         
@@ -70,3 +70,27 @@ class BMITests(TestCase):
         imperial = Physical.objects.get(unit_type="Imperial")
         self.assertEqual(metric.category_calc(), 'Obese')
         self.assertEqual(imperial.category_calc(), 'Healthy')
+        
+        
+# Macro model tests.
+class MacroTests(TestCase):
+    
+    # Test setup by creating new bmi models
+    def setUp(self):
+        #create user models 
+        user1 = User.objects.create(id=1, username='Bob', email='bob@example.com')
+        user2 = User.objects.create(id=2, username='Jan', email='jan@example.com')
+        #create model objects
+        Macro.objects.create(
+            user = user1,
+            height = 160.00,
+            weight = 80.00,
+            unit_type = 'Metric'
+            )
+        Macro.objects.create(
+            user= user2,
+            height = 80.00,
+            weight = 200.00,
+            unit_type = 'Imperial'
+            )
+
