@@ -103,11 +103,11 @@ class ProductTests(TestCase):
         self.assertEqual(str(test_short_description_object_1.short_description), 'A weight plate')
         self.assertEqual(str(test_short_description_object_2.short_description), 'A pull up bar')
 
-    # Test short description field of product model from name
+    # Test short description field of product model from category
     def test_short_description_from_category(self):
         """Short_description correctly identified from category"""
         test_short_description_object_1 = Product.objects.get(category="Weights")
-        test_short_description_object_2 = Product.objects.get(name="Accessories")
+        test_short_description_object_2 = Product.objects.get(category="Accessories")
         self.assertEqual(str(test_short_description_object_1.short_description), 'A weight plate')
         self.assertEqual(str(test_short_description_object_2.short_description), 'A pull up bar')        
         
