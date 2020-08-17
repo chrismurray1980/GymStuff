@@ -3,6 +3,4 @@ python:
 - "3.6"
 install: "pip install -r requirements.txt"
 script:
-
-travis encrypt SECRET_KEY="secretvalue" --add
-- SECRET_KEY="secretvalue" ./manage.py test
+SECRET_KEY="whatever" python manage.py test
