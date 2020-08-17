@@ -4,7 +4,6 @@ from .models import Product
 # Product model tests.
 class ProductTests(TestCase):
     
-    
     # Test setup by creating new products
     def setUp(self):
         Product.objects.create(
@@ -119,21 +118,83 @@ class ProductTests(TestCase):
         self.assertEqual(str(test_short_description_object_1.short_description), 'A weight plate')
         self.assertEqual(str(test_short_description_object_2.short_description), 'A pull up bar') 
         
-        
     # Test short description field of product model from price
     def test_short_description_from_price(self):
-        """Name correctly identified from price"""
+        """Short_description correctly identified from price"""
         test_short_description_object_1 = Product.objects.get(price="50")
         test_short_description_object_2 = Product.objects.get(price="30")
         self.assertEqual(str(test_short_description_object_1.short_description), 'A weight plate')
         self.assertEqual(str(test_short_description_object_2.short_description), 'A pull up bar')
 
 
-    ###### SHORT DESCRIPTION TESTING ######
+    ###### DESCRIPTION TESTING ######
+        
+    # Test description field of product model from name
+    def test_description_from_name(self):
+        """Description correctly identified from name"""
+        test_description_object_1 = Product.objects.get(name="10kg weight")
+        test_description_object_2 = Product.objects.get(name="pull up bar")
+        self.assertEqual(str(test_description_object_1.description), 'A light weight plate')
+        self.assertEqual(str(test_description_object_2.description), 'A door mounted pull up bar')
+
+    # Test description field of product model from category
+    def test_description_from_category(self):
+        """Description correctly identified from category"""
+        test_description_object_1 = Product.objects.get(category="Weights")
+        test_description_object_2 = Product.objects.get(category="Accessories")
+        self.assertEqual(str(test_description_object_1.description), 'A light weight plate')
+        self.assertEqual(str(test_description_object_2.description), 'A door mounted pull up bar')        
+        
+    # Test description field of product model from short description
+    def test_description_from_short_description(self):
+        """Description correctly identified from short description"""
+        test_description_object_1 = Product.objects.get(short_description="A weight plate")
+        test_description_object_2 = Product.objects.get(short_description="A pull up bar")
+        self.assertEqual(str(test_description_object_1.description), 'A light weight plate')
+        self.assertEqual(str(test_description_object_2.description), 'A door mounted pull up bar') 
+        
+        
+    # Test description field of product model from price
+    def test_description_from_price(self):
+        """Description correctly identified from price"""
+        test_description_object_1 = Product.objects.get(price="50")
+        test_description_object_2 = Product.objects.get(price="30")
+        self.assertEqual(str(test_description_object_1.description), 'A light weight plate')
+        self.assertEqual(str(test_description_object_2.description), 'A door mounted pull up bar')
     
     
-    
-    
-    
-    
+    ###### PRICE TESTING ######
+        
+    # Test price field of product model from name
+    def test_price_from_name(self):
+        """Price correctly identified from name"""
+        test_price_object_1 = Product.objects.get(name="10kg weight")
+        test_price_object_2 = Product.objects.get(name="pull up bar")
+        self.assertEqual(str(test_price_object_1.price), '50')
+        self.assertEqual(str(test_price_object_2.price), '30')
+
+    # Test price field of product model from category
+    def test_price_from_category(self):
+        """Price correctly identified from category"""
+        test_price_object_1 = Product.objects.get(category="Weights")
+        test_price_object_2 = Product.objects.get(category="Accessories")
+        self.assertEqual(str(test_price_object_1.price), '50')
+        self.assertEqual(str(test_price_object_2.price), '30')        
+        
+    # Test price field of product model from short description
+    def test_price_from_short_description(self):
+        """Price correctly identified from short description"""
+        test_price_object_1 = Product.objects.get(short_description="A weight plate")
+        test_price_object_2 = Product.objects.get(short_description="A pull up bar")
+        self.assertEqual(str(test_price_object_1.price), '50')
+        self.assertEqual(str(test_price_object_2.price), '30') 
+        
+        
+    # Test price field of product model from description
+    def test_price_from_description_(self):
+        """Price correctly identified from description"""
+        test_price_object_1 = Product.objects.get(description='A light weight plate')
+        test_price_object_2 = Product.objects.get(description='A door mounted pull up bar')
+        self.assertEqual(str(test_price_object_1.price), '50')
+        self.assertEqual(str(test_price_object_2.price), '30')
     
