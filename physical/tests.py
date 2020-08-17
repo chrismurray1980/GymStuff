@@ -7,11 +7,13 @@ class BMITests(TestCase):
     # Test setup by creating new bmi model
     def setUp(self):
         Physical.objects.create(
+            user =1,
             height = 160,
             weight = 80,
             unit_type = 'Metric'
             )
         Physical.objects.create(
+            user=2,
             height = 80,
             weight = 200,
             unit_type = 'Imperial'
