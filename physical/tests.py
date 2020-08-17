@@ -29,7 +29,7 @@ class BMITests(TestCase):
         metric = Physical.objects.get(unit_type="Metric")
         imperial = Physical.objects.get(unit_type="Imperial")
         self.assertEqual(metric.calculate_unit_height(), 1.60)
-        self.assertEqual(imperial.calculate_unit_height(), 2.03)
+        self.assertEqual(imperial.calculate_unit_height(), 2.032)
 
     # Calculate user unit weight:
     def test_calculate_unit_weight(self):
@@ -37,7 +37,7 @@ class BMITests(TestCase):
         metric = Physical.objects.get(unit_type="Metric")
         imperial = Physical.objects.get(unit_type="Imperial")
         self.assertEqual(metric.calculate_unit_weight(), 80.00)
-        self.assertEqual(imperial.calculate_unit_weight(), 90.72)
+        self.assertEqual(imperial.calculate_unit_weight(), 91.00)
         
     # Calculate user BMI
     def test_calculate_bmi(self):
@@ -46,6 +46,14 @@ class BMITests(TestCase):
         imperial = Physical.objects.get(unit_type="Imperial")
         self.assertEqual(metric.calculated_bmi(), 31.25)
         self.assertEqual(imperial.calculated_bmi(), 22.04)
+        
+    # Calculate user BMI category
+    def test_calculate_bmi_category(self):
+        """Bmi category correctly calculated"""
+        metric = Physical.objects.get(unit_type="Metric")
+        imperial = Physical.objects.get(unit_type="Imperial")
+        self.assertEqual(metric.category_calc(), 'Obese')
+        self.assertEqual(imperial.category_calc(), 'Healthy')
         
             #unit_height = Physical.calculate_unit_height(),
             #unit_weight = calculate_unit_weight(self),
