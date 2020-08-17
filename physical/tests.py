@@ -85,7 +85,7 @@ class MacroTests(TestCase):
             user = user1,
             height = 160.00,
             weight = 80.00,
-            age=30.00,
+            age=40.00,
             unit_type = 'Metric',
             activity_level = 'little exercise',
             aim ='lose weight'
@@ -132,17 +132,74 @@ class MacroTests(TestCase):
         self.assertEqual(metric.calculate_unit_weight(), 80.00)
         self.assertEqual(imperial.calculate_unit_weight(), 91.00)
     
+    # Calculate user bmr:
+    def test_calculate_bmr(self):
+        """BMR calculated correctly"""
+        metric = Macro.objects.get(unit_type="Metric")
+        imperial = Macro.objects.get(unit_type="Imperial")
+        self.assertEqual(metric.bmr_calc(), 1530.40)
+        self.assertEqual(imperial.bmr_calc(), 1791.05)
     
+    # Calculate user TDEE:
+    def test_calculate_TDEE(self):
+        """TDEE calculated correctly"""
+        metric = Macro.objects.get(unit_type="Metric")
+        imperial = Macro.objects.get(unit_type="Imperial")
+        self.assertEqual(metric.TDEE_calc(), 1836.48)
+        self.assertEqual(imperial.TDEE_calc(), 3089.56)
     
+    # Calculate user daily calorie goal:
+    def test_calculate_daily_calorie_goal(self):
+        """Calorie goal calculated correctly"""
+        metric = Macro.objects.get(unit_type="Metric")
+        imperial = Macro.objects.get(unit_type="Imperial")
+        self.assertEqual(metric.calculated_calorie_goal(), 1561.01)
+        self.assertEqual(imperial.calculated_calorie_goal(), 3089.56)
     
-        #self.bmr = self.bmr_calc()
-        #self.TDEE = self.TDEE_calc()
-        #self.daily_calorie_goal = self.calculated_calorie_goal()
-        #self.carb_weight = self.carb_calc()
-        #self.protein_weight = self.protein_calc()
-        #self.fat_weight = self.fat_calc()
-        #self.carb_percent = self.carb_percent_calc()
-        #self.protein_percent = self.protein_percent_calc()
-        #self.fat_percent = self.fat_percent_calc()
-        #self.unit_height= self.calculate_unit_height()
-        #self.unit_weight= self.calculate_unit_weight()
+    # Calculate user daily carb weight:
+    def test_calculate_daily_carb_weight(self):
+        """Carb weight calculated correctly"""
+        metric = Macro.objects.get(unit_type="Metric")
+        imperial = Macro.objects.get(unit_type="Imperial")
+        self.assertEqual(metric.carb_calc(), 117.00)
+        self.assertEqual(imperial.carb_calc(), 309.00)
+
+    # Calculate user daily protein weight:
+    def test_calculate_daily_protein_weight(self):
+        """Protein weight calculated correctly"""
+        metric = Macro.objects.get(unit_type="Metric")
+        imperial = Macro.objects.get(unit_type="Imperial")
+        self.assertEqual(metric.protein_calc(), 156.00)
+        self.assertEqual(imperial.protein_calc(), 232.00)        
+
+    # Calculate user daily fat weight:
+    def test_calculate_daily_fat_weight(self):
+        """Fat weight calculated correctly"""
+        metric = Macro.objects.get(unit_type="Metric")
+        imperial = Macro.objects.get(unit_type="Imperial")
+        self.assertEqual(metric.fat_calc(), 52.00)
+        self.assertEqual(imperial.fat_calc(), 103.00)  
+
+    # Calculate user daily carb percent:
+    def test_calculate_daily_carb_percent(self):
+        """Carb percent calculated correctly"""
+        metric = Macro.objects.get(unit_type="Metric")
+        imperial = Macro.objects.get(unit_type="Imperial")
+        self.assertEqual(metric.carb_percent_calc(), 30.00)
+        self.assertEqual(imperial.carb_percent_calc(), 40.00)
+
+    # Calculate user daily protein weight:
+    def test_calculate_daily_protein_percent(self):
+        """Protein percent calculated correctly"""
+        metric = Macro.objects.get(unit_type="Metric")
+        imperial = Macro.objects.get(unit_type="Imperial")
+        self.assertEqual(metric.protein_percent_calc(), 40.00)
+        self.assertEqual(imperial.protein_percent_calc(), 30.00)        
+
+    # Calculate user daily fat percent:
+    def test_calculate_daily_fat_percent(self):
+        """Fat weight calculated correctly"""
+        metric = Macro.objects.get(unit_type="Metric")
+        imperial = Macro.objects.get(unit_type="Imperial")
+        self.assertEqual(metric.fat_percent_calc(), 30.00)
+        self.assertEqual(imperial.fat_percent_calc(), 30.00)  
