@@ -85,12 +85,64 @@ class MacroTests(TestCase):
             user = user1,
             height = 160.00,
             weight = 80.00,
-            unit_type = 'Metric'
+            age=30.00,
+            unit_type = 'Metric',
+            activity_level = 'little exercise',
+            aim ='lose weight'
             )
         Macro.objects.create(
             user= user2,
             height = 80.00,
             weight = 200.00,
-            unit_type = 'Imperial'
+            age=24.00,
+            unit_type = 'Imperial',
+            activity_level = 'heavy exercise',
+            aim ='maintain'
             )
+    
+    # Get height from user id
+    def test_get_height_from_user(self):
+        """Height correctly retrieved by user"""
+        height1 = Macro.objects.get(user=1)
+        height2 = Macro.objects.get(user=2)
+        self.assertEqual(height1.height, 160.00)
+        self.assertEqual(height2.height, 80.00)
+        
+    # Get weight from user id
+    def test_get_weight_from_user(self):
+        """Weight correctly retrieved by user"""
+        weight1 = Macro.objects.get(user=1)
+        weight2 = Macro.objects.get(user=2)
+        self.assertEqual(weight1.weight, 80.00)
+        self.assertEqual(weight2.weight, 200.00)
+        
+    # Calculate user unit height:
+    def test_calculate_unit_height(self):
+        """Unit height calculated correctly"""
+        metric = Macro.objects.get(unit_type="Metric")
+        imperial = Macro.objects.get(unit_type="Imperial")
+        self.assertEqual(metric.calculate_unit_height(), 1.60)
+        self.assertEqual(imperial.calculate_unit_height(), 2.032)
 
+    # Calculate user unit weight:
+    def test_calculate_unit_weight(self):
+        """Unit weight calculated correctly"""
+        metric = Macro.objects.get(unit_type="Metric")
+        imperial = Macro.objects.get(unit_type="Imperial")
+        self.assertEqual(metric.calculate_unit_weight(), 80.00)
+        self.assertEqual(imperial.calculate_unit_weight(), 91.00)
+    
+    
+    
+    
+        #self.bmr = self.bmr_calc()
+        #self.TDEE = self.TDEE_calc()
+        #self.daily_calorie_goal = self.calculated_calorie_goal()
+        #self.carb_weight = self.carb_calc()
+        #self.protein_weight = self.protein_calc()
+        #self.fat_weight = self.fat_calc()
+        #self.carb_percent = self.carb_percent_calc()
+        #self.protein_percent = self.protein_percent_calc()
+        #self.fat_percent = self.fat_percent_calc()
+        #self.unit_height= self.calculate_unit_height()
+        #self.unit_weight= self.calculate_unit_weight()
