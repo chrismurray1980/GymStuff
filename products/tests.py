@@ -195,6 +195,6 @@ class ProductTests(TestCase):
         """Price correctly identified from description"""
         test_price_object_1 = Product.objects.get(description='A light weight plate')
         test_price_object_2 = Product.objects.get(description='A door mounted pull up bar')
-        self.assertEqual(str(test_price_object_1.price), '50.00.00')
-        self.assertEqual(str(test_price_object_2.price), '30.00.00')
+        self.assertEqual(str(test_price_object_1.price), '50.00')
+        self.assertEqual(str(test_price_object_2.price), '30.00')
     
