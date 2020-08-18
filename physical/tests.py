@@ -87,8 +87,8 @@ class BMI_Model_Tests(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'bmi_result.html')
-
-
+        self.assertContains(response, 'Company Name XYZ')
+    
 # Macro model tests.
 class Macro_Model_Tests(TestCase):
     
