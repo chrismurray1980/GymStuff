@@ -15,9 +15,8 @@ class BMITests(TestCase):
     
     # Get bmi result view
     #def test_bmi_result_view(self):
-        """Height correctly retrieved by user"""
+    """Height correctly retrieved by user"""
 
-        
         
     def test_whatever_list_view(self):
         url = reverse(".views.bmi_result")
