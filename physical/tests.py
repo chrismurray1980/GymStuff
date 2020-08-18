@@ -1,6 +1,12 @@
 from django.test import TestCase
 from .models import User, Physical, Macro
 from django.test import Client
+from .views import bmi_result
+from django.shortcuts import render, get_object_or_404, redirect, reverse
+
+from django.test.utils import setup_test_environment
+
+setup_test_environment()
 
 c=Client()
 
@@ -8,10 +14,15 @@ c=Client()
 class BMITests(TestCase):
     
     # Get bmi result view
-    def test_bmi_result_view(self):
+    #def test_bmi_result_view(self):
         """Height correctly retrieved by user"""
-        response = c.get('/bmi_result/',{'bmi_result': 22.50, 'bmi_category': 'healthy'})
-        self.assertEqual(response.status_code, 200)
+
+        
+        
+    def test_whatever_list_view(self):
+        url = reverse(".views.bmi_result")
+        resp = self.client.get(url)
+        self.assertEqual(resp.status_code, 200)
     
     # Test setup by creating new BMI models
     def setUp(self):
