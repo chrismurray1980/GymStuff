@@ -4,9 +4,6 @@ from django.test import Client
 from .views import bmi_result
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 
-from django.test.utils import setup_test_environment
-
-setup_test_environment()
 
 c=Client()
 
