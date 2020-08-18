@@ -1,10 +1,22 @@
 from django.test import TestCase
+from django.test.utils import setup_test_environment
 from .models import User, Physical, Macro
+from django.test import Client
 
-# BMI model tests.
+setup_test_environment()
+
+c=Client()
+
+# BMI Tests.
 class BMITests(TestCase):
     
-    # Test setup by creating new bmi models
+    # Get bmi result view
+    def test_bmi_result_view(self):
+        """Height correctly retrieved by user"""
+        response = c.get('/bmi_result/')
+        self.assertEqual(response.status_code, 200)
+    
+    # Test setup by creating new BMI models
     def setUp(self):
         #create user models 
         user1 = User.objects.create(id=1, username='Bob', email='bob@example.com')
