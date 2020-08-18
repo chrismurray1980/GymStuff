@@ -9,6 +9,8 @@ class BMI_Model_Tests(TestCase):
     
     # Test setup by creating new BMI models
     def setUp(self):
+        # Client setup
+        self.client = Client()
         #create user models 
         user1 = User.objects.create(id=1, username='Bob', email='bob@example.com')
         user2 = User.objects.create(id=2, username='Jan', email='jan@example.com')
@@ -25,7 +27,9 @@ class BMI_Model_Tests(TestCase):
             weight = 200.00,
             unit_type = 'Imperial'
             )
-
+    
+    ####### Model tests #######
+    
     # Get height from user id
     def test_get_height_from_user(self):
         """Height correctly retrieved by user"""
@@ -74,13 +78,11 @@ class BMI_Model_Tests(TestCase):
         self.assertEqual(metric.category_calc(), 'Obese')
         self.assertEqual(imperial.category_calc(), 'Healthy')
         
-#BMI view tests
-class BMI_View_Tests(TestCase):
+        
+    ####### View tests #######
     
-    def setUp(self):
-       self.client = Client()
-
-    def test_index_page(self):
+    # Test bmi results page rendered
+    def test_bmi_result_page(self):
         url = reverse('bmi_result')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
