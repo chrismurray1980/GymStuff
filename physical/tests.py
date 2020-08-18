@@ -4,21 +4,8 @@ from django.test import Client
 from .views import bmi_result
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 
-
-c=Client()
-
-# BMI Tests.
-class BMITests(TestCase):
-    
-    # Get bmi result view
-    #def test_bmi_result_view(self):
-    """Height correctly retrieved by user"""
-
-        
-    def test_whatever_list_view(self):
-        url = reverse(".views.bmi_result")
-        resp = self.client.get(url)
-        self.assertEqual(resp.status_code, 200)
+# BMI Model Tests.
+class BMI_Model_Tests(TestCase):
     
     # Test setup by creating new BMI models
     def setUp(self):
@@ -87,9 +74,21 @@ class BMITests(TestCase):
         self.assertEqual(metric.category_calc(), 'Obese')
         self.assertEqual(imperial.category_calc(), 'Healthy')
         
-        
+#BMI view tests
+class BMI_View_Tests(TestCase):
+    
+    def setUp(self):
+       self.client = Client()
+
+    def test_index_page(self):
+        url = reverse('bmi_result')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'bmi_result.html')
+
+
 # Macro model tests.
-class MacroTests(TestCase):
+class Macro_Model_Tests(TestCase):
     
     # Test setup by creating new bmi models
     def setUp(self):
