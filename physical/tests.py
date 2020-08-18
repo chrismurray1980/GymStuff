@@ -2,8 +2,6 @@ from django.test import TestCase
 from .models import User, Physical, Macro
 from django.test import Client
 
-setup_test_environment()
-
 c=Client()
 
 # BMI Tests.
