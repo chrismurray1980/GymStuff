@@ -10,7 +10,7 @@ class BMITests(TestCase):
     # Get bmi result view
     def test_bmi_result_view(self):
         """Height correctly retrieved by user"""
-        response = c.get('/bmi_result/')
+        response = c.get('/bmi_result/',{'bmi_result': 22.50, 'bmi_category': 'healthy'})
         self.assertEqual(response.status_code, 200)
     
     # Test setup by creating new BMI models
