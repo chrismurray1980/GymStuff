@@ -215,4 +215,5 @@ class MacroTests(TestCase):
         imperial = Macro.objects.get(unit_type="Imperial")
         self.assertEqual(metric.fat_percent_calc()*100, 30.00)
         self.assertEqual(imperial.fat_percent_calc()*100, 30.00)  
-        
+
+teardown_test_environment()
