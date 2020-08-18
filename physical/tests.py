@@ -1,5 +1,4 @@
 from django.test import TestCase
-from django.test.utils import setup_test_environment
 from .models import User, Physical, Macro
 from django.test import Client
 
@@ -216,4 +215,4 @@ class MacroTests(TestCase):
         self.assertEqual(metric.fat_percent_calc()*100, 30.00)
         self.assertEqual(imperial.fat_percent_calc()*100, 30.00)  
 
-teardown_test_environment()
+
