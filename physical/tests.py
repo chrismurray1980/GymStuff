@@ -83,11 +83,12 @@ class BMI_Model_Tests(TestCase):
     
     # Test bmi results page rendered
     def test_bmi_result_page(self):
+        details = Physical.objects.get(unit_type="Metric")
         url = reverse('bmi_result')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'bmi_result.html')
-        self.assertContains(response, 'Company Name XYZ')
+        self.assertTemplateUsed(response, 'bmi_result.html', {'details':details})
+        self.assertEqual(response.user, 1)
     
 # Macro model tests.
 class Macro_Model_Tests(TestCase):
