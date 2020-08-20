@@ -88,14 +88,20 @@ class BMI_Model_Tests(TestCase):
        # self.assertEqual(response.status_code, 200)
         #self.assertTemplateUsed(response, 'bmi_result.html')
 
-    def test_bmi_result_page(self):
-        details = Physical.objects.get(unit_type="Metric")
-        response = self.client.post(reverse('bmi_result'), details.height)
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'bmi_result.html')
-        self.assertEqual(response, 160.00)
+    #def test_bmi_result_page(self):
+     #   details = Physical.objects.get(unit_type="Metric")
+      #  response = self.client.post(reverse('bmi_result'), details.height)
+       # self.assertEqual(response.status_code, 200)
+        #self.assertTemplateUsed(response, 'bmi_result.html')
+        #self.assertEqual(response, 160.00)
+        
     
-    
+    def test_my_view(self):
+        data = {'param': 'fiesta'}
+        response = self.client.post(reverse('my-view'), data)
+        self.assertEqual(response, 'fiesta') 
+        
+        
 # Macro model tests.
 class Macro_Model_Tests(TestCase):
     
