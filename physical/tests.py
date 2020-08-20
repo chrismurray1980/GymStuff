@@ -97,9 +97,9 @@ class BMI_Model_Tests(TestCase):
         
     
     def test_my_view(self):
-        data = {'param': 'fiesta'}
+        data = {'height': 180.00}
         response = self.client.post(reverse('bmi_result'), data)
-        self.assertEqual(response, 'fiesta') 
+        self.assertEqual(response, 180.00) 
         
         
 # Macro model tests.
