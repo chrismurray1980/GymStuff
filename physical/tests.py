@@ -90,9 +90,9 @@ class BMI_Model_Tests(TestCase):
 
     def test_bmi_result_page(self):
         details = Physical.objects.get(unit_type="Metric")
-        url = reverse('bmi_result', {'details':details})
+        url = reverse('bmi_result', {'details':details.user})
         response = self.client.get(url)
-        post_request = self.client.post('/bmi_result/', {'details':details})
+        post_request = self.client.post('/bmi_result/', {'details':details.user})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(post_request, 'bmi_result.html')
         self.assertEqual(post_request.user, 1)
