@@ -90,10 +90,10 @@ class BMI_Model_Tests(TestCase):
 
     def test_bmi_result_page(self):
         details = Physical.objects.get(unit_type="Metric")
-        response = self.client.post(reverse('bmi_result'), details.user)
+        response = self.client.post(reverse('bmi_result'), details.height)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'bmi_result.html')
-        self.assertEqual(response, 1)
+        self.assertEqual(response, 160.00)
     
     
 # Macro model tests.
