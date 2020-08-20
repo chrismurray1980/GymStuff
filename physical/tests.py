@@ -89,7 +89,7 @@ class BMI_Model_Tests(TestCase):
         post_request = self.client.post('/bmi_result/', {'details':details})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(post_request, 'bmi_result.html', {'details':'details'})
-        self.assertEqual(post_request .user, 1)
+        self.assertEqual(post_request.user, 1)
     
 # Macro model tests.
 class Macro_Model_Tests(TestCase):
