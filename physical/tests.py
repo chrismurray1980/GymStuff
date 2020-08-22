@@ -1,6 +1,5 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from .models import User, Physical, Macro
-from django.test import Client
 from .views import bmi_result
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 
@@ -97,10 +96,8 @@ class BMI_Model_Tests(TestCase):
         
     
     def test_my_view(self):
-        response = self.client.post(reverse('bmi_result'), {'height': 180.00})
-        self.assertEqual(response.status_code, 200)
-        self.assertIn(180.00, response.content)
-
+        response = self.client.get(reverse('bmi_result'))
+        self.assertTemplateUsed(response, 'bmi_result.html')
         
         
 # Macro model tests.
