@@ -96,8 +96,10 @@ class BMI_Model_Tests(TestCase):
         
     
     def test_my_view(self):
-        response = self.client.get(reverse('bmi_result'))
+        details = Physical.objects.get(unit_type="Metric")
+        response = self.client.get(reverse('bmi_result'), details)
         self.assertTemplateUsed(response, 'bmi_result.html')
+        print(response.context[-1]['object_list'])
         
         
 # Macro model tests.
