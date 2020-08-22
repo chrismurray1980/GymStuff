@@ -97,10 +97,8 @@ class BMI_Model_Tests(TestCase):
         
     
     def test_my_view(self):
-        data = {'height': 180.00}
-        response = self.client.post(reverse('bmi_result'), data)
-        value=str(180.00).encode('utf-8')
-        self.assertEqual(response, value)
+        response = self.client.get(reverse('bmi_result'), data={'height': 180.00})
+        self.assertEqual(response, 180.00)
 
         
         
