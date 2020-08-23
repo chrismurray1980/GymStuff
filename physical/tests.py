@@ -93,7 +93,7 @@ class BMI_Model_Tests(TestCase):
         self.assertTemplateUsed(response, 'bmi_result.html')
         
     def test_get(self):
-        response = self.client.get(reverse('bmi_form'))
+        response = self.client.get('/physical/')
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "<h5>BMI calculator</h5>", html=True)
 
