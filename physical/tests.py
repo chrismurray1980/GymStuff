@@ -1,9 +1,11 @@
+#Import libraries views and models
 from django.test import TestCase, Client
 from .models import User, Physical, Macro
 from .views import bmi_result
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 
-# BMI Model Tests.
+
+############################### BMI Testing.
 class BMI_Model_Tests(TestCase):
     
     # Test setup by creating new BMI models
@@ -76,6 +78,9 @@ class BMI_Model_Tests(TestCase):
         imperial = Physical.objects.get(unit_type="Imperial")
         self.assertEqual(metric.category_calc(), 'Obese')
         self.assertEqual(imperial.category_calc(), 'Healthy')
+    
+    
+    ####### Form tests #######    
         
         
     ####### View tests #######
@@ -86,8 +91,10 @@ class BMI_Model_Tests(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'bmi_result.html')
+        self.assertContains(response, "<h5>BMI results</h5>", html=True)
 
-# Macro model tests.
+
+################################## Macro model tests.
 class Macro_Model_Tests(TestCase):
     
     # Test setup by creating new bmi models
