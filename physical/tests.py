@@ -91,7 +91,11 @@ class BMI_Model_Tests(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'bmi_result.html')
-        self.assertContains(response, "<h5>BMI results</h5>", html=True)
+        
+    def test_get(self):
+        response = self.client.get('bmi_form')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "<h5>BMI calculator</h5>", html=True)
 
 
 ################################## Macro model tests.
