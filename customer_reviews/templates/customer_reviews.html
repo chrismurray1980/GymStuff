@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
+<!--Review title-->
 <div class="row">
     <div class="col-12 title-col">
         <hr>
@@ -7,21 +8,24 @@
         <hr>
     </div>
 </div>
-
+<!--Show review-->
 <div class="row">
     {% if latest_review_list %}{% for review in latest_review_list %}
+    <!--Review headline-->
     <div class='col-6 offset-3 latest-review-review'>
         <h4> {{ review.headline }} </h4>
     </div>
+    <!--Reviewer name-->
     <div class='col-6 offset-3 latest-review-review'>
         <h6> Reviewer: </h6>
         <p>{{ review.username }}</p>
     </div>
-    
+    <!--Reviewer rating-->
     <div class='col-6 offset-3 latest-review-review'>
         <h6> Rating: </h6>
         <p>{{ review.rating }}/5 </p>
     </div>
+    <!--Reviewer comment-->
     <div class='col-6 offset-3 latest-review-review'>
         <h6> Comment: </h6>
         <p>{{ review.comment }}</p>
@@ -30,6 +34,7 @@
         <hr>
     </div>
     {% endfor %}{% else %}
+    <!--Inform user that no reviews yet-->
     <div class='col-6 offset-3 latest-review-review'>
         <h6> No reviews yet for this product. </h6>
     </div>
@@ -37,14 +42,11 @@
         <hr>
     </div>
     {% endif %}
-
+    <!--Home button-->
     <div class='col-12 latest-review-col'>
         <form>
             <button class="btn btn-info" id="btn-info" formaction="{% url 'product' id=product.id %}"> Back to product </button>
         </form>
     </div>
-
-
 </div>
-
 {% endblock %}

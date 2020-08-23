@@ -1,15 +1,21 @@
 {% extends "base.html" %} {% load bootstrap_tags %} {% block content %}
+
+<!--Login form for user account-->
 <form method="post" action="{% url 'login' %}?next={{ next }}" class="accountform">
     <fieldset class="form-group">
+        <!--Page title-->
         <div class="col-12 message-col">
             <hr>
             <h5>Log In</h5>
             <hr>
         </div>
+        <!--Link to registration page-->
         <div class="col-12 message-col">
             <p>Don't have an account? <a href="{% url 'register' %}"> Register here!</a></p>
         </div>
+        <!--Login form-->
         {% csrf_token %} {{ user_form | as_bootstrap }}
+        <!--Forgot password link and login button-->
         <div class="col-12 message-col">
             <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
             <button type="submit" class="btn btn-info" id="btn-info">Login</button>

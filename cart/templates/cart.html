@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block content %}
 
+<!--Cart page title-->
 <div class="row ">
     <div class="col-12 title-col">
         <hr>
@@ -7,64 +8,72 @@
         <hr>
     </div>
 </div>
-{% if cart_items %} 
-{% for item in cart_items %}
-
-    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-lg-4 offset-lg-4 product-col">
-
-        <div class="card" id="cart-card">
-            <div class="card-header">
-                <h5>{{ item.product.name }}</h5>
-            </div>
-            <div class="cart-img-container">
-                <img class="card-img-top product-img" src="{{ MEDIA_URL }}{{ item.product.image }}" alt="Image unavailable">
-            </div>
-            <div class="card-body">
-
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Price: &pound; {{ item.product.price }}</li>
-                    <li class="list-group-item">Quantity: {{ item.quantity }}</li>
-                </ul>
-            </div>
+<!--If items in cart display them-->
+{% if cart_items %} {% for item in cart_items %}
+<div class="col-10 offset-1 col-sm-8 offset-sm-2 col-lg-4 offset-lg-4 product-col">
+    <!--Display product card-->
+    <div class="card" id="cart-card">
+        <!--Display product name-->
+        <div class="card-header">
+            <h5>{{ item.product.name }}</h5>
         </div>
-        <div class='row cart-card-padding'>
-            <div class="col-12">
-                <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
-                    {% csrf_token %}
-                    <div class="col-12 input-group">
-                        <input name="quantity" type="number" min="0" max="999" class="form-control" placeholder="Quantity">
-                    </div>
-                    <div class="col-12 amend-button">
-                    <button type="submit" class="btn btn-primary" id="btn-info"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Adjust</button>
-                    </div>
-                </form>
-            </div>
+        <!--Display product image-->
+        <div class="cart-img-container">
+            <img class="card-img-top product-img" src="{{ MEDIA_URL }}{{ item.product.image }}" alt="Image unavailable">
+        </div>
+        <!-- Dispaly product information-->
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Price: &pound; {{ item.product.price }}</li>
+                <li class="list-group-item">Quantity: {{ item.quantity }}</li>
+            </ul>
         </div>
     </div>
-<hr>
-    {% endfor %} 
-{% else %}
+    <!--Product quantity adjustment form-->
+    <div class='row cart-card-padding'>
+        <div class="col-12">
+            <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
+                {% csrf_token %}
+                <!--Adjust quantity input-->
+                <div class="col-12 input-group">
+                    <input name="quantity" type="number" min="0" max="999" class="form-control" placeholder="Quantity">
+                </div>
+                <!--Submit quantity amended-->
+                <div class="col-12 amend-button">
+                    <button type="submit" class="btn btn-primary" id="btn-info"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Adjust</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<hr> 
+<!--If cart is empty-->
+{% endfor %} {% else %}
+<!--Inform user that cart is empty-->
 <div class="row product-col">
     <div class="col-12 product-title-col">
         <p>Your cart is currently empty!</p>
     </div>
 </div>
 <hr>
+<!--Return to home page button when cart empty-->
 <div class="col-12 link-col">
     <form>
         <button class="btn btn-success" id="btn-home" formaction="{% url 'index' %}">Back to home</button>
     </form>
 </div>
-{% endif %}
-
+{% endif %} 
+<!--When items in cart-->
 {% if cart_items %}
 <div class="row product-col">
+    <!--Display total cost-->
     <div class="col-12 product-title-col">
         <h5>Total</h5>
         <h5><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>&pound; {{ total }}</h5>
     </div>
+    <!--Provide checkout link to user-->
     <div class="col-12 title-col">
-        <a href="{% url 'checkout' %}" class="btn btn-success check-out-button"  id="btn-add" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Check Out</a>
+        <a href="{% url 'checkout' %}" class="btn btn-success check-out-button" id="btn-add" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Check Out</a>
     </div>
 </div>
 {% endif %} {% endblock %}

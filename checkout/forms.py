@@ -1,9 +1,11 @@
+# Import libraries and models
 from django import forms
 from .models import Order
 
-
+# Create make payment form
 class MakePaymentForm(forms.Form):
-
+    
+    #Create form choices
     MONTH_CHOICES = [(i, i) for i in range(1, 12)]
     YEAR_CHOICES = [(i, i) for i in range(2019, 2036)]
 
@@ -13,7 +15,7 @@ class MakePaymentForm(forms.Form):
     expiry_year = forms.ChoiceField(label='Year', choices=YEAR_CHOICES, required=False)
     stripe_id = forms.CharField(widget=forms.HiddenInput)
 
-
+# Create order form
 class OrderForm(forms.ModelForm):
 
     class Meta:
@@ -23,3 +25,4 @@ class OrderForm(forms.ModelForm):
             'town_or_city', 'street_address1', 'street_address2',
             'county'
         )
+        

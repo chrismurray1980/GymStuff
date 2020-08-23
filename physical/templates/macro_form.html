@@ -1,23 +1,27 @@
 {% extends "base.html" %} {% load bootstrap_tags %} {% block content %}
 
+<!--Page title-->
 <div class="col-12 message-col">
     <hr>
     <h5>Macro calculator</h5>
     <hr>
 </div>
+<!--User information-->
 <div class="col-12 message-col info-col">
     <p>Note, for Imperial calculations, there are 14 pounds in 1 stone and 12 inches in 1 foot</p>
 </div>
+<!--Macro form-->
 <form action="{% url 'macro_form'  %}" method="post">
     <fieldset class="form-group">
-        <div class="col-12 message-col"  id='bmi-info'>
+        <div class="col-12 message-col" id='bmi-info'>
             <p>Please enter your height, weight, age, activity level and aim.</p>
         </div>
+        <!--Generate form-->
         {% csrf_token %} {{ form | as_bootstrap }}
+        <!--Submit form-->
         <div class="col-12 message-col">
             <button type="submit" class="btn btn-info" id="btn-info">Calculate</button>
         </div>
     </fieldset>
 </form>
-
 {% endblock %}

@@ -1,6 +1,8 @@
+# Import libraries and views
 from django.conf.urls import url
 from .views import view_cart, add_to_cart, adjust_cart
 
+# URL patterns for cart app
 urlpatterns = [
     url(r'^$', view_cart, name='view_cart'),
     url(r'^add/(?P<id>\d+)', add_to_cart, name='add_to_cart'),

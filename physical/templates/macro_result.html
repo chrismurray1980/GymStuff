@@ -1,42 +1,48 @@
 {% extends 'base.html' %} {% load bootstrap_tags %} {% block content %}
+
 <div class="row">
     {% for item in details %}
+    <!--Page title-->
     <div class="col-12 message-col">
         <hr>
         <h5>Macronutrient results</h5>
         <hr>
     </div>
+    <!--Show calculated BMR-->
     <div class="col-12 message-col bmi-padding">
         <p>Your calculated Base Metabolic Rate (BMR) is:</p>
         <h6>{{ item.bmr_calc}} calories</h6>
     </div>
+    <!--Show calculated TDEE-->
     <div class="col-12 message-col bmi-padding">
         <p>Your Total Daily Energy Expenditure (TDEE) is:</p>
         <h6>{{ item.TDEE }} calories</h6>
     </div>
+    <!--Show calculated daily calorie goal-->
     <div class="col-12 message-col bmi-padding">
         <p>To {{ item.aim }} your daily calorie goal is:</p>
         <h6>{{ item.daily_calorie_goal }} calories</h6>
     </div>
     {% endfor %}
-
+    <!--Get macro data passed from view-->
     <div hidden id="macro_weight_data">
         {{ macros }}
     </div>
+    <!-- Macro percentage plot-->
     <div class="col-12 message-col bmi-padding">
         <h6> Your macronutrient percentage breakdown:</h6>
     </div>
     <div class="col-12 message-col bmi-padding">
         <div id='macro-percentage-chart' class="col-12 message-col"></div>
     </div>
-
     <div class="col-12 message-col bmi-padding">
         <h6> You should eat the following weight of each macronutrient daily:</h6>
     </div>
+    <!-- Macro weight plot-->
     <div class="col-12 message-col bmi-padding">
         <div id='macro-weight-chart' class="col-12 message-col"></div>
     </div>
-
+    <!--Home button-->
     <div class="col-12 link-col">
         <hr>
     </div>
@@ -46,5 +52,4 @@
         </form>
     </div>
 </div>
-
 {% endblock %}

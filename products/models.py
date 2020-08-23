@@ -1,5 +1,7 @@
+# Import libraries
 from django.db import models
 
+# Create product categories
 CATEGORY = (
     ('Weights', 'Weights'),
     ('Benches', 'Benches'),
@@ -7,8 +9,9 @@ CATEGORY = (
     ('Supplements', 'Supplements'),
     ('Vitamins', 'Vitamins'),)
 
-# Create your models here.
+# Create product model
 class Product(models.Model):
+    
     name = models.CharField(max_length=254, default='')
     category = models.CharField(max_length=30, choices=CATEGORY, default='Weights')
     short_description = models.CharField(max_length=254, default='')

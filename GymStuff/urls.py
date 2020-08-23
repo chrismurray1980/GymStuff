@@ -1,4 +1,4 @@
-"""ecommerce URL Configuration
+"""Gymstuff URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 
+# Import libraries, views and urls
 from django.conf.urls import url, include
 from django.contrib import admin
 from accounts import urls as urls_accounts
@@ -27,6 +28,7 @@ from physical import urls as urls_physical
 from django.views import static
 from .settings import MEDIA_ROOT
 
+# Project URL patterns
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', all_products, name='index'),
@@ -38,5 +40,4 @@ urlpatterns = [
     url(r'^customer_reviews/', include(urls_customer_reviews)),
     url(r'^physical/', include(urls_physical)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
-    
 ]

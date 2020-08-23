@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from .views import do_search, weight_search, supplement_search, bench_search, accessory_search, vitamin_search
 
+# URLs for search
 urlpatterns = [
     url(r'^$', do_search, name='search'),
     url(r'^weights/$', weight_search, name='weight_search'),

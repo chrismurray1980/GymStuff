@@ -1,30 +1,31 @@
 {% extends 'base.html' %} {% load bootstrap_tags %} {% block content %}
 <div class="row">
  {% for item in details %}
-  <div class="col-12 message-col">
-       <hr>
-       <h5>BMI results</h5>
-       <hr>
-   </div>
-  <div class="col-12 message-col bmi-padding">
-      <p>Your calculated BMI is:</p>
-       <h6>{{ item.bmi_calc}}</h6>
-   </div>
-  <div class="col-12 message-col bmi-padding">
-      <p>Your BMI category is:</p>
-       <h6>{{ item.bmi_category }}</h6>
-   </div>
+ <!--Page title-->
+ <div class="col-12 message-col">
+  <hr>
+  <h5>BMI results</h5>
+  <hr>
+ </div>
+ <!--Show calculated bmi-->
+ <div class="col-12 message-col bmi-padding">
+  <p>Your calculated BMI is:</p>
+  <h6>{{ item.bmi_calc}}</h6>
+ </div>
+ <!--Show calculated bmi category-->
+ <div class="col-12 message-col bmi-padding">
+  <p>Your BMI category is:</p>
+  <h6>{{ item.bmi_category }}</h6>
+ </div>
  {% endfor %}
-  <div class="col-12 link-col">
-    <hr>
-  </div>
-  <div class="col-12 link-col">
-    <form>
-        <button class="btn btn-success" id="btn-home" formaction="{% url 'index' %}">Back to home</button>
-    </form>
-  </div>
+ <!--Return to home button-->
+ <div class="col-12 link-col">
+  <hr>
+ </div>
+ <div class="col-12 link-col">
+  <form>
+   <button class="btn btn-success" id="btn-home" formaction="{% url 'index' %}">Back to home</button>
+  </form>
+ </div>
 </div>
-
-
-
 {% endblock %}

@@ -1,11 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 
+<!--Opening page text-->
 <div class="row">
     <div class="col-8 offset-2 title-col paragraph-margin-home">
-    <p>  Welcome to GymStuff!<br><br> Here you will find the best in home gym equipment and accesories alongside a variety of nutrition products to help you achieve your fitness goals. <br><br>Stay motivated!<br></p>
+    <p> Welcome to GymStuff!<br><br> Here you will find the best in home gym equipment and accesories alongside a variety of nutrition products to help you achieve your fitness goals. <br><br>Stay motivated!<br></p>
     </div>
 </div>    
-
+<!--Weight products-->
 <div class="row">
     <div class="col-12 title-col">
         <hr>
@@ -15,32 +16,34 @@
     {% if weights %} 
     {% for product in weights %}
     <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-lg-4 offset-lg-0 product-col card-bottom-margin">
-
         <div class="card">
+            <!--Product name-->
             <div class="card-header">
                 <h5>{{ product.name }}</h5>
             </div>
+            <!--Product image-->
             <div class="img-container">
                 <img class="card-img-top product-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Image unavailable">
             </div>
+            <!--Product information-->
             <div class="card-body">
-
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{ product.short_description}}</li>
                     <li class="list-group-item">&pound; {{ product.price }}</li>
                     <li class="list-group-item"><a href="{% url 'product' product.id %}">View product</a></li>
                 </ul>
-
             </div>
         </div>
     </div>
     {% endfor %} 
     {% else %}
+    <!--If no products available-->
     <div class="col-12 title-col">
         <p>Sorry, no products are available.</p>
     </div>
     {% endif %}
     {% if weights %}
+    <!--View all weight products-->
     <div class="col-12 link-col">
         <form>
             <button class="btn btn-info" id="btn-add" formaction="{% url 'weight_search' %}">All weight products</button>
@@ -48,7 +51,7 @@
     </div>
     {% endif %}
 </div>
-
+<!--Bench products-->
 <div class="row">
     <div class="col-12 title-col">
         <hr>
@@ -58,31 +61,33 @@
     {% if benches %} 
     {% for product in benches %}
     <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-lg-4 offset-lg-0 product-col card-bottom-margin">
-
         <div class="card">
+            <!--Product name-->
             <div class="card-header">
                 <h5>{{ product.name }}</h5>
             </div>
+            <!-- Product image-->
             <div class="img-container">
                 <img class="card-img-top product-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Image unavailable">
             </div>
+            <!--Product information-->
             <div class="card-body">
-
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{ product.short_description}}</li>
                     <li class="list-group-item">&pound; {{ product.price }}</li>
                     <li class="list-group-item"><a href="{% url 'product' product.id %}">View product</a></li>
                 </ul>
-
             </div>
         </div>
     </div>
     {% endfor %} 
     {% else %}
+    <!--If no products available-->
     <div class="col-12 title-col">
         <p>Sorry, no products are available.</p>
     </div>
     {% endif %}
+    <!--Link to all bench products-->
     {% if benches %}
     <div class="col-12 link-col">
         <form>
@@ -91,7 +96,7 @@
     </div>
     {% endif %}
 </div>
-
+<!--Accessory products-->
 <div class="row">
     <div class="col-12 title-col">
         <hr>
@@ -101,31 +106,33 @@
     {% if accessory %} 
     {% for product in accessory %}
     <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-lg-4 offset-lg-0 product-col card-bottom-margin">
-
         <div class="card">
+            <!--Product name-->
             <div class="card-header">
                 <h5>{{ product.name }}</h5>
             </div>
+            <!--Product image-->
             <div class="img-container">
                 <img class="card-img-top product-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Image unavailable">
             </div>
+            <!--Product information-->
             <div class="card-body">
-
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{ product.short_description}}</li>
                     <li class="list-group-item">&pound; {{ product.price }}</li>
                     <li class="list-group-item"><a href="{% url 'product' product.id %}">View product</a></li>
                 </ul>
-
             </div>
         </div>
     </div>
     {% endfor %} 
     {% else %}
+    <!--If no products available-->
     <div class="col-12 title-col">
         <p>Sorry, no products are available.</p>
     </div>
     {% endif %}
+    <!--Link to all accessories-->
     {% if accessory %}
     <div class="col-12 link-col">
         <form>
@@ -134,7 +141,7 @@
     </div>
     {% endif %}
 </div>
-
+<!--Supplement products-->
 <div class="row">
     <div class="col-12 title-col">
         <hr>
@@ -144,31 +151,33 @@
     {% if supplements %} 
     {% for product in supplements %}
     <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-lg-4 offset-lg-0 product-col card-bottom-margin">
-
         <div class="card">
+            <!--Product name-->
             <div class="card-header">
                 <h5>{{ product.name }}</h5>
             </div>
+            <!--Product image-->
             <div class="img-container">
                 <img class="card-img-top product-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Image unavailable">
             </div>
+            <!--Product information-->
             <div class="card-body">
-
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{ product.short_description}}</li>
                     <li class="list-group-item">&pound; {{ product.price }}</li>
                     <li class="list-group-item"><a href="{% url 'product' product.id %}">View product</a></li>
                 </ul>
-
             </div>
         </div>
     </div>
     {% endfor %} 
     {% else %}
+    <!--If no products available-->
     <div class="col-12 title-col">
         <p>Sorry, no products are available.</p>
     </div>
     {% endif %}
+    <!--Link to all supplements-->
     {% if supplements %}
     <div class="col-12 link-col">
         <form>
@@ -177,7 +186,7 @@
     </div>
     {% endif %}
 </div>
-
+<!--Vitamin products-->
 <div class="row">
     <div class="col-12 title-col">
         <hr>
@@ -187,31 +196,33 @@
     {% if vitamins %} 
     {% for product in vitamins %}
     <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-lg-4 offset-lg-0 product-col card-bottom-margin">
-
         <div class="card">
+            <!--Product name-->
             <div class="card-header">
                 <h5>{{ product.name }}</h5>
             </div>
+            <!--Product image-->
             <div class="img-container">
                 <img class="card-img-top product-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Image unavailable">
             </div>
+            <!--Product information-->
             <div class="card-body">
-
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{ product.short_description}}</li>
                     <li class="list-group-item">&pound; {{ product.price }}</li>
                     <li class="list-group-item"><a href="{% url 'product' product.id %}">View product</a></li>
                 </ul>
-
             </div>
         </div>
     </div>
     {% endfor %} 
+    <!--If no products available-->
     {% else %}
     <div class="col-12 title-col">
         <p>Sorry, no products are available.</p>
     </div>
     {% endif %}
+    <!--Link to all vitamins-->
     {% if vitamins %} 
     <div class="col-12 link-col">
         <form>
@@ -220,7 +231,7 @@
     </div>
     {% endif %}
 </div>
-
+<!--Link to home button-->
 <div class="col-12 link-col">
     <hr>
     <form>

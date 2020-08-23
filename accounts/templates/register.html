@@ -1,18 +1,21 @@
-{% extends "base.html" %}
-{% load bootstrap_tags %}
-{% block content %}
+{% extends "base.html" %} {% load bootstrap_tags %} {% block content %}
 
+<!--Registration form for user-->
 <form method="post" action="{% url 'register' %}" class="accountform">
     <fieldset class="form-group">
+        <!--Page title-->
         <div class="col-12 message-col">
             <hr>
             <h5>Register</h5>
             <hr>
         </div>
+        <!--Link to login page-->
         <div class="col-12 message-col">
             <p>Already got an account? <a href="{% url 'login' %}"> Log In here!</a></p>
         </div>
+        <!--Registration form-->
         {% csrf_token %} {{ user_form | as_bootstrap }}
+        <!--Create account button-->
         <div class="col-12 message-col">
             <button type="submit" class="btn btn-info" id="btn-info">Create account</button>
         </div>
@@ -20,4 +23,3 @@
 </form>
 
 {% endblock %}
-
