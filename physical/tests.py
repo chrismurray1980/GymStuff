@@ -97,7 +97,7 @@ class BMI_Model_Tests(TestCase):
     
     def test_my_view(self):
         details = Physical.objects.get(unit_type="Metric")
-        response = self.client.get(reverse('bmi_result'), details.height)
+        response = self.client.get(reverse('bmi_result'))
         self.assertTemplateUsed(response, 'bmi_result.html')
         print(response.context[-1]['object_list'])
         
