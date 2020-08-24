@@ -118,6 +118,12 @@ The cook accesses the site and searches for the recipe. The cook then clicks the
 
 ## Page content and wireframes Base page layout
 
+![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/gumstuff_home_wireframe.JPG)
+
+![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/all_products.JPG)
+
+![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/bmi_calc.JPG)
+
 ### Header: contains site name, links to: log-in if not already completed, personal favourites, home, edit/delete recipe, add recipe, and search.
 
 ### Footer: copyright

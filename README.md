@@ -17,6 +17,16 @@ fgdfhfdhdfhdfhdfhdf
 
 ![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/home2.JPG)
 
+![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/home3.JPG)
+
+![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/all_products.JPG)
+
+![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/all_products_complete.JPG)
+
+![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/bmi_calc.JPG)
+
+![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/bmi_calc_actual.JPG)
+
 ## Final database schema
 
 ## Site configuration
