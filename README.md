@@ -8,11 +8,11 @@ The planning undertaken prior to beginning the project is described in the follo
 
 ## Wireframe/site configuration development
 
-![Image not available](/media/images/gymstuff_home_wireframe.JPG)
+![Image not available](s3://chris-m-ecommerce/media/images/gymstuff_home_wireframe.JPG)
 
-![Image not available](home1.JPG)
+![Image not available](s3://chris-m-ecommerce/media/images/home1.JPG)
 
-![Image not available](home2.JPG)
+![Image not available](s3://chris-m-ecommerce/media/images/home2.JPG)
 
 ## Final database schema
 
