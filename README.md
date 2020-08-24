@@ -1,35 +1,155 @@
 # Gymstuff.com : Ecommerce Site
 
-This project is a web-based e-commerce site which allows users to view gym products, supplements and vitamins to aid their fitness goals. The user can search products by name or by category. In addition to this, the user can input their current physical attirubutes and gain insights such as current body mass index; recommended daily calorie intake for a selected aim; and recommended daily macronutrient intake.
-The user is required to register and log-in to access the physical attribute features, the user must also log-in to purchase their chosen products and review products they have purchased. All products, users and physical attributes on the site are located in PostgreSQL database.
+This project is a web-based e-commerce site which allows users to view gym products, supplements and vitamins to aid their fitness goals. The user can search products by name or by category. In addition to this, the user can input their current physical attributes and gain insights such as current body mass index; recommended daily calorie intake for a selected aim; and recommended daily macronutrient intake.
+The user is required to register and log-in to access the physical attribute features, the user must also log-in to purchase their chosen products and review products they have purchased. All products, users and physical attributes on the site are located in a PostgreSQL database.
 
 ## Planning of Gymstuff.com
 The planning undertaken prior to beginning the project is described in the following document: [Project planning document](https://github.com/chrismurray1980/GymStuff/blob/master/PLANNING.md)
 
 ## Wireframe/site configuration development
+
+The basic layout of the web page consists of all the page content surrounded by the background image. The header, content and footer are all contained within this main container. The header consists of the site brand; navigation links; and a search bar. The header is uniform across all the site's pages. Below the header is where the current page content is shown. Following the current page content is the footer which contains information of the site designer and the date.
+
+### Landing page
+
+The home page of the site shows the top products from each of the product categories. Each category is separated by the category label and shows the three most expensive products for each category. These products are followed by a button to show all products of this specific category. At the bottom of the home page is a Home button to take the user back to the top of the page. The wireframe designed for the home page is shown below.
+
 ![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/gumstuff_home_wireframe.JPG)
 
-kbkjbkjbkjbkjb
+Fortunately, the layout used gives a clean, clear user experience and needed little modification from the initial wireframe design. The layout of the final homepage are shown in the images below. The products are shown as cards containing product title, image, information and price.
+
+The header of the site, shown below, remains uniform and as stated previously contains the brand, links and search bar.
 
 ![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/home1.JPG)
 
-fgdfhfdhdfhdfhdfhdf
+The weight category product cards are shown in the image below.
 
 ![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/home2.JPG)
 
+Finally, the category section is completed with a link to all products in that category. This is followed by the section showing the three most expensive products in the rack and bench category. This layout is repeated for all five product categories in the database.
+
 ![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/home3.JPG)
+
+### Product category
+
+When selecting a product category from the navigation bar or by clicking the 'view similar products' link on the landing page, the user will be shown the product category page. This page contains all products of a particular category ordered from least to most expensive. Again, the products are shown as cards to give a clear layout and instantly convey the product information to the user. The wireframe for the all products page is shown below and is the same for all product categories. After all the products have been listed the user is given the option of returning home via the home button.
 
 ![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/all_products.JPG)
 
+The final layout of this page is shown below with the last three products and the home button shown.
+
 ![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/all_products_complete.JPG)
+
+### Product page
+
+Within the product cards on the landing page and the category pages, the user is given the opportunity to view the specific product in more detail by clicking the 'view more' link. This will take the user to the product page for that specific product. 
+
+The product page conatins the name of the product, a larger product image and a more in-depth product description. In addition to this, the page contains the add to cart form and button and the 'product reviews' button. The product reviews button lists the reviews of the product given by registered users. At the bottom of the page is the 'add review' button which allows logged in users to add a review for that product: this button and form is hidden for unauthorised users.
+
+![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/product_page.JPG)
+
+The final layout of the page is shown below. When the 'add review' button is clicked the add review form is revealed.
+
+![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/product_page-actual.JPG)
+
+### Calculator pages
+
+The site also contains the BMI and Macro calculator features. The user inputs their physical attributes into the BMI or Macro calculator forms and their results are calculated and displayed to the user. The forms use simple bootstrao layout and the wireframe for the BMI form is shown below.
 
 ![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/bmi_calc.JPG)
 
+Again, implementation of this varied very little from the initial wireframe design, the final version is shown below.
+
 ![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/bmi_calc_actual.JPG)
 
-## Final database schema
+## Database schema
 
+As stated in the project planning document, the database for the application consisted of database schemes based on several different app models, related via foreign keys within the database. As the project developed the database model for each app did also. The model definitions for the products themselves and the unique models added to this project are shown below.
+
+### Product model
+
+The product model, shown below, contains all information related to the product, including a field to upload the product image. The category field is populated by means of choices supplied in the product model.
+
+    name = models.CharField(max_length=254, default='')
+    category = models.CharField(max_length=30, choices=CATEGORY, default='Weights')
+    short_description = models.CharField(max_length=254, default='')
+    description = models.TextField()
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+    image = models.ImageField(upload_to='images')
+
+### Physical model
+
+The Physical model, for calculating user BMI, contained within the physical app has the following model definition:
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    height = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(300)],)
+    weight = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(500)],)
+    unit_height = models.FloatField(default=0)
+    unit_weight = models.FloatField(default=0)
+    bmi_calc = models.FloatField(default=0)
+    bmi_category = models.CharField(default='', max_length=200)
+    date_now = models.DateTimeField(auto_now_add=True)
+    unit_type = models.CharField(choices=unit_type, default='Metric', max_length=200)
+
+In this case the user is the foreign key used to link tables within the database. The site user is able to select the 'unit\_type' field based on choices defined within the model itself. The model fields from 'unit\_height' onwards, excluding 'unit\_type', are obtained via methods within the BMI model class.
+
+### Macro model
+
+The Macro model contained within the physical app has the following model definition:
+    
+    user = models.ForeignKey(settings.AUTH\_USER\_MODEL, on_delete=models.CASCADE)
+    height = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(300)],)
+    weight = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(500)],)
+    age = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(120)],)
+    unit_height = models.FloatField(default=0)
+    unit_weight = models.FloatField(default=0)
+    activity\_level = models.CharField(choices=activity\_level, default='', max_length=200)
+    bmr = models.FloatField(default=0)
+    TDEE = models.FloatField(default=0)
+    date = models.DateTimeField(auto\_now_add=True)
+    aim = models.CharField(choices=aim, default='', max_length=200)
+    daily\_calorie_goal = models.FloatField(default=0)
+    carb_weight = models.FloatField(default=0)
+    protein_weight = models.FloatField(default=0)
+    fat_weight = models.FloatField(default=0)
+    carb_percent = models.FloatField(default=0)
+    protein_percent = models.FloatField(default=0)
+    fat_percent = models.FloatField(default=0)
+    unit\_type = models.CharField(choices=unit\_type, default='Metric', max_length=200)
+
+Again, the user is the foreign key used to link tables within the database. The site user is able to select the 'unit\_type' field based on choices defined within the model itself. This also goes for the 'aim' and 'activity\_level' fields. Again, the majority of the fields are populated by means of methods contained within the model class.
+
+### Customer Review model
+
+The customer review model is contained within the customer-review app. In this case the product itself is used as the foreign key to link the review to a specific product. In this case the user is given choices for the rating which are defined within the model itself.
+
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    username = models.CharField(max_length=200)
+    headline = models.CharField(max_length=200)
+    comment = models.TextField()
+    rating = models.IntegerField(choices=RATING_CHOICES)
+    date = models.DateTimeField(auto_now_add=True)
+    
 ## Site configuration
+
+The Gymstuff.com project consists of several applications working together to generate the final website. The applications within this project are:  
+
+    - Accounts  
+    - Cart  
+    - Checkout  
+    - Customer reviews  
+    - Physical  
+    - Products  
+    - Search  
+
+### Settings
+
+### URLs
+
+
+### Apps
+
+
 
 ## Site features
 
