@@ -134,13 +134,13 @@ The customer review model is contained within the customer-review app. In this c
 
 The Gymstuff.com project consists of several applications working together to generate the final website. The applications within this project are:  
 
-    - Accounts  
-    - Cart  
-    - Checkout  
-    - Customer reviews  
-    - Physical  
-    - Products  
-    - Search  
+- Accounts  
+- Cart  
+- Checkout  
+- Customer reviews  
+- Physical  
+- Products  
+- Search  
 
 ### Settings
 
@@ -384,30 +384,81 @@ A category search feature was added to allow navigation links to query the datab
 
 For clarity, site features will be outlined in terms of how they are implemented in each of the HTML templates.
 
+#### base.html
+
+This template is used as the basis for the more content specific html templates on the site: each of which will add unique content to the standard base.html. The base.html template consists of a navbar which contains the site logo; the navigation links for the the pages on the site; and a search bar for the user to search for products. The site logo, itself, provides a link anchor which will return the user to the landing page upon click. This allows the user to easily access the home page from any other page on the website. In addition to this, the navigation account links are log-in status specific. At the bottom of the page is where the footer is located and this contains copyright information for the website.
+
+#### login.html
+
+When the user clicks the log-in link on the navbar they are directed to the 'login.html' page. This page contains input fields for the user's email and password. If the user inserts an incorrect username or password the page is refreshed and the user is informed that an incorrect username or password has been entered. Once the user has logged-in they are redirected back to the home page unless the log-in was triggered by a request for a page that requires authentication wherein the user will be redirected to the originally requested page.
+
+#### register.html
+
+The register user page allows new users to be added to the website's datasbase. This consists of an html form with fields for username; email; password; and confirm password. If the password and confirm password do not match the user is informed of this and the register user page is reloaded. Upon submission, the user is added to the database and redirected to the login page to enter the website.
+
+#### cart.html
+
+This page displays the products added to the cart by the user and their quantities. In addition to this, the page displays the total cost of all cart items and a button to take the user to the checkout page. If the user visits their cart but hasn't added any products; they will be informed that their cart is empty and no checkout button will be visible.
+
+#### checkout.html
+
+The checkout page contains the forms used to insert the user's personal details for delivery and to insert payment details. At the bottom of the page is the 'Submit payment' button which will initiate interaction with Stripe API.
+
+#### customer\_reviews.html
+
+This page lists the customer reviews related to a specific product obtained by querying the database using the 'customer_reviews' function.
+
+#### bmi\_form.html
+
+This page contains the form used to submit user information for the bmi calculation. The user has the option of using either Metric or Imperial unit systems.
+
+#### bmi\_result.html
+
+This page displays the output of the bmi entry in the database created by the submission of the bmi form. This page displays the calculated bmi of the user and the bmi category of the user.
+
+#### macro\_form.html
+
+This page contains the form used to submit user information for the macro calculation. The user has the option of using either Metric or Imperial unit systems.
+
+#### macro\_result.html
+
+This page displays the output of the macro entry in the database created by the submission of the macro form. This page displays the calculated bmr of the user; TDEE; and daily calorie goal. In addition to this, information passed from the macro_form view, in json format, is used to generate a pie chart of recommended macro percentage and a bar chart of recommended macro weight using dc.js.
+
+#### all\_products.html
+
+This is the landing page of the entire site and displays the three most expensive products from each of the product categories, displayed as card elements. In each of these product cards there is a link to view the product in more detail and within each of the category sections there is a link to view all products of that particular category.
+
+#### product.html
+
+This page displays a specific product in more detail. The page contains a form to add a quantity of the product to the user cart and a button to view reviews of the product by registered users. In addition to this, if logged in, the user can add a review of the current product.
+
+#### product\_category.html
+
+This page displays all products, in the form of product cards, of a specific category in the product model.
+
 ## Features Left to Implement
 
 Due to time constraints the following features, which would produce a more enjoyable user experience and more professional website, were not implemented:
+
+- Email to user to confirm successful payment and estimated delivery date
+- In bmi and macro forms, a calculator to help users to convert stone to pounds and foot to inches
+- Instead of the three most expensive products in each category on home page: a carousel showing the products bought most frequently
+- A counter to the rating of each product and the number of likes shown on the landing page and the product page
 
 ## Technologies Used
 
 The following technologies were used in the development of the application:
 
-Flask: A microframework for Python
-MongoDB Atlas: Automated cloud mongoDB service
-JQuery: A javascript library used for event handling and DOM manipulation
-Bootstrap 4: A toolkit for developing HTML, CSS, and JS
-SASS: A professional level CSS extension language
-Jinja: Templating language for Python
-Heroku: A cloud platform as a service
-dc.js: Dimensional charting javascript library
-d3.js: Javascript library for manipulating documents based on data
-Ming: An object document mapper for mongoDB which extends Pymongo
-AWS S3: Amazon simple storage device
-flask_login: Provides user session management for Flask applications
-flask_sslify: Converts all incoming requests from application to https
-Flask-testing: Provides unittesting utilities for Flask
-GitHub: used to store and save versions of the application
-Cloud9: online IDE used to develop the application
+- [Django](https://www.djangoproject.com/): A  high-level Python Web framework
+- [PostgreSQL](https://www.postgresql.org/): A powerful, open source object-relational database 
+- [JQuery](https://jquery.com/): A javascript library used for event handling and DOM manipulation
+- [Bootstrap 4](https://getbootstrap.com/): A toolkit for developing HTML, CSS, and JS
+- [Heroku](https://dashboard.heroku.com/): A cloud platform as a service
+- [dc.js](https://dc-js.github.io/dc.js/): Dimensional charting javascript library
+- [d3.js](https://d3js.org/): Javascript library for manipulating documents based on data
+- [AWS S3](https://aws.amazon.com/s3/): Amazon simple storage device
+- [GitHub](https://github.com/): used to store and save versions of the application  
+- [AWS Cloud9](https://aws.amazon.com/cloud9/): online IDE used to develop the application 
 
 ## Testing
 
@@ -425,49 +476,39 @@ The HTML, CSS and JS code was run through code validation to detect any errors.
 
 The W3C Markup validation service was used to check the quality of the HTML language used. This was run for all the document templates and the base template as follows:
 
-W3C_base.html
-W3C_add_recipe.html
-W3C_edit_recipe.html
-W3C_favourites.html
-W3C_index.html
-W3C_login.html
-W3C_my_recipes.html
-W3C_register.html
-W3C_search_results.html
-W3C_show_recipe.html
-
-The the main issues found were due to the use of Jinja.
+[W3C_base.html]()
+[W3C_login.html]()
+[W3C_register.html]()
 
 ### CSS validation
 
-The W3C CSS validation service was used to check the quality of the CSS used. The results are show here: W3C_CSS
+The W3C CSS validation service was used to check the quality of the CSS used. The results are show here: 
+
+[W3C_CSS]()
 
 ### JS validation
 
 The written in the main.js and plot.js files was run through JSHint with no major errors as follows:
 
-    JSHint_main.js
-    JSHint_plot.js
+[JSHint_main.js]()
+[JSHint_plot.js]()
 
 ## Deployment
 
-To deploy the application to Heroku firstly, a new project was created in Heroku. A Procfile was created which was used to tell Heroku how to run the application. In addition to this a requirements.txt file was created which told Heroku which Python modules were needed to run the application. In addition to this, environment variables had to be configured in Heroku. This was achieved by going to the project settings in Heroku and implementing the IP and PORT to be used by the application in the config variables settings. In addition to this the name of the mongoDB collection and the URI of the database were added to these settings. In addition to this, for security within Flask, a secret key for the application was also added to these variables. The variables used by S3 such as the access key, secret key and bucket name were configured for use with Heroku by running:
+To deploy the application to Heroku firstly, a new project was created in Heroku. A Procfile was created which was used to tell Heroku how to run the application. In addition to this a requirements.txt file was created which told Heroku which Python modules were needed to run the application. In addition to this, environment variables had to be configured in Heroku. This was achieved by going to the project settings in Heroku and manually inputting the environment variables to be used by the application such as AWS S3 bucket settings; email settings; and the database url. In addition to this, for security within Django, a secret key for the application was also added to these variables. 
 
-$heroku config:set S3_KEY=****** S3_SECRET=******* S3_BUCKET=*********
+The project was deployed to Heroku by going to the deploy tab and manually deploying the master branch of the project's GitHub repository. Once the project was successfully deployed, the project was opened by clicking the 'view app' button in Heroku: this was achieved with a minimal number of issues.
 
-in the console of the Cloud9 application. The project was deployed to Heroku by going to the deploy tab and manually deploying the master branch of the project's GitHub repository. Once the project was successfully deployed, the project was opened by clicking the 'view app' button in Heroku: this was achieved with minimal number of issues.
-
-There is no difference between the deployed and development versions of the application other than in development version debug is set to 'True' whereas in deployment debug is set to 'False'. The site can be accessed here The Good Grub Guide
+There is no difference between the deployed and development versions of the application other than in development version debug is set to 'True' whereas in deployment debug is set to 'False'. The site can be accessed here The [GymStuff.com](https://gymstuff.herokuapp.com/).
 
 ### Credits
 
 The following websites were used for guidance and code snippets used within this application:
 
+- django reviews  https://django-rated-reviews.readthedocs.io/en/latest/quickstart.html
 
 ### Media
 
 The background image used on the website was obtained from Pexels.
-
-django reviews  https://django-rated-reviews.readthedocs.io/en/latest/quickstart.html
 
 
