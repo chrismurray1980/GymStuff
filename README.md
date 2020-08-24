@@ -7,12 +7,11 @@ The user is required to register and log-in to access the physical attribute fea
 The planning undertaken prior to beginning the project is described in the following document: [Project planning document](https://github.com/chrismurray1980/GymStuff/blob/master/PLANNING.md)
 
 ## Wireframe/site configuration development
+![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/gymstuff_home_wireframe.JPG)
 
-![Image not available](s3://chris-m-ecommerce/media/images/gymstuff_home_wireframe.JPG)
+![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/home1.JPG)
 
-![Image not available](s3://chris-m-ecommerce/media/images/home1.JPG)
-
-![Image not available](s3://chris-m-ecommerce/media/images/home2.JPG)
+![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/home2.JPG)
 
 ## Final database schema
 
