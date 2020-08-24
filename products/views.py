@@ -24,6 +24,7 @@ def all_products(request):
 def product(request, id):
     # Get product via id
     product = Product.objects.get(pk=id)
+    # Generate review form
     form = ReviewForm()
     # Get product page
     return render(request, 'product.html', {'product': product, 'form':form })
