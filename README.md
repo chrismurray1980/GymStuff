@@ -474,24 +474,20 @@ The HTML, CSS and JS code was run through code validation to detect any errors.
 
 ### HTML validation
 
-The W3C Markup validation service was used to check the quality of the HTML language used. This was run for all the document templates and the base template as follows:
-
-[W3C_base.html]()
-[W3C_login.html]()
-[W3C_register.html]()
+The W3C Markup validation service was used to check the quality of the HTML language used however the site advised me that the tool is an ongoing experiment in better HTML checking, and its behavior remains subject to change. This resulted in constant fatal errors occuring, I believe, due to the templating language used and therefore cannot be utilised at this time.
 
 ### CSS validation
 
 The W3C CSS validation service was used to check the quality of the CSS used. The results are show here: 
 
-[W3C_CSS]()
+- [W3C_CSS](https://chris-m-ecommerce.s3.amazonaws.com/media/images/W3C_CSS.JPG)
 
 ### JS validation
 
 The written in the main.js and plot.js files was run through JSHint with no major errors as follows:
 
-[JSHint_main.js]()
-[JSHint_plot.js]()
+- [JSHint_main.js](https://chris-m-ecommerce.s3.amazonaws.com/media/images/JS_HINT_main.JPG)
+- [JSHint_plot.js](https://chris-m-ecommerce.s3.amazonaws.com/media/images/JS_HINT_plot.JPG)
 
 ## Deployment
 
@@ -499,16 +495,16 @@ To deploy the application to Heroku firstly, a new project was created in Heroku
 
 The project was deployed to Heroku by going to the deploy tab and manually deploying the master branch of the project's GitHub repository. Once the project was successfully deployed, the project was opened by clicking the 'view app' button in Heroku: this was achieved with a minimal number of issues.
 
-There is no difference between the deployed and development versions of the application other than in development version debug is set to 'True' whereas in deployment debug is set to 'False'. The site can be accessed here The [GymStuff.com](https://gymstuff.herokuapp.com/).
+There is no difference between the deployed and development versions of the application other than in development version debug is set to 'True' whereas in deployment debug is set to 'False'. The site can be accessed here [GymStuff.com](https://gymstuff.herokuapp.com/).
 
 ### Credits
 
 The following websites were used for guidance and code snippets used within this application:
 
-- django reviews  https://django-rated-reviews.readthedocs.io/en/latest/quickstart.html
+- [django reviews](https://django-rated-reviews.readthedocs.io/en/latest/quickstart.html)
 
 ### Media
 
-The background image used on the website was obtained from Pexels.
+The background image used on the website was obtained from Pexels (https://images.pexels.com/photos/669582/pexels-photo-669582.jpeg?cs=srgb&dl=pexels-lukas-669582.jpg&fm=jpg).
 
 

@@ -1,4 +1,4 @@
-/* global dc , d3 , crossfilter , $, jQuery */
+/* global $*/
 
 $(document).ready(function() {
     $(".dropdown-toggle").dropdown();
