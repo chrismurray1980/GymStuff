@@ -164,35 +164,221 @@ The URLs script within the Gymstuff project directory itself allows each of the 
 
 ### Apps
 
-Rather than reinventing the wheel several of the core apps were imported from Code Institute's Ecommerce project. In this case, the link will be given to the app code rather providing a description of the code and functionality itself. In the case that the code was either personally generated or heavily modified: a more detailed description will be given.
+Rather than reinventing the wheel; several of the core apps were imported from Code Institute's Ecommerce project. In this case, the link will be given to the app code rather providing a description of the code and functionality itself. In the case that the code was either personally generated or heavily modified: a more detailed description will be given.
 
 #### Accounts
 
-The accounts app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/accounts).
+The accounts app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/accounts). This app allows users to register, login, logout and provides 'forgot my password' reset functionality.
 
 #### Cart  
 
-The cart app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/cart).
+The cart app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/cart). This app allows users to add products to their cart via a form and amen or remove these products from their cart. The only modification made to this app is detailed below.
+
+##### add\_to\_cart function
+
+Minor modifications were made to this function primarily, to return the user back to the product page they were viewing rather than the landing page of the site. This was modified to provide a better user experience and achieved using the following code:
+
+    return HttpResponseRedirect(reverse('product', args=(product.id,)))
+    
+Further minor modifications were made in returning more messages to the user to further improve their experience.
 
 #### Checkout  
 
-The checkout app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/checkout).
+The checkout app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/checkout). This app allows customers to pay for their chosen products using the Stripe API.
 
 #### Customer reviews  
 
+This is a relatively simple app and contains only the functionality used to display the customer reviews based on the specific product. The single view of the app is detailed below.
+
+##### Customer review 
+
+The function gets the product ID and queries the databse for all reviews associated with that product. The query will return the nine latest reviews of the product from newest to oldest. The user is then directed to the customer review html which lists all the reviews found for that product as shown below.
+
+    def customer_reviews(request, id):
+        # Get product from id
+        product=get_object_or_404(Product, id=id)
+        # List latest reviews by date
+        latest_review_list = customer_review.objects.filter(product__id=id).order_by('-date')[:9]
+        # Create view context
+        context = {'latest_review_list':latest_review_list, 'product':product}
+        # Render review page
+        return render(request, 'customer_reviews.html', context)
+
 #### Physical  
+
+This app is used to take the user's physical inputs and calculate either the user bmi or provide information on recommended daily calorie intake and macronutrient ratios. This app contains two models: Physical (for BMI calculations) and Macro (for macronutrient calculations). The views for the Physical and Macro models are described below.
+
+##### BMI form
+
+For the BMI form, the user enters their height and weight in either Imperial or Metric units. The functions contained within the model do any conversion required and calculate the user's BMI. The function then queries the database for the latest post by the user and directs the user to the bmi results html to display the results. If the form data is invalid the user is returned to the form.
+
+    @login_required
+    def bmi_form(request):
+        # Create instance of form
+        form = bmi(request.POST)
+        # Validate form 
+        if form.is_valid():
+            # Get data from form
+            height = form.cleaned_data['height']
+            weight = form.cleaned_data['weight']
+            unit_type = form.cleaned_data['unit_type']
+            # Create instance of model 
+            physical = Physical()
+            # Assign values to model instance
+            physical.height= height
+            physical.weight= weight
+            physical.unit_type = unit_type
+            physical.date_now = datetime.datetime.now()
+            form_save= form.save(commit=False)
+            form_save.user= request.user
+            # Save created instance
+            form_save.save()
+            # Search database for model instance
+            details = Physical.objects.filter(user=request.user).order_by('-date_now')[:1]
+            # Render result with model instance
+            return render(request, 'bmi_result.html', {'details':details})
+            # Render bmi form
+        return render(request, 'bmi_form.html', {'form': form})
+
+##### Macro form
+
+For the Macro form, the user enters their height and weight in either Imperial or Metric units. The functions contained within the model do any conversion required and calculate the user's recommended daily calorie intake and macronutrient ratios based on user golas. The function then queries the database for the latest post by the user and directs the user to the macro results html to display the results. If the form data is invalid the user is returned to the form.
+
+    @login_required
+    def macro_form(request):
+        # Create form instance
+        form = macro(request.POST)
+        # Validate form
+        if form.is_valid():
+            # Get form data
+            height = form.cleaned_data['height']
+            weight = form.cleaned_data['weight']
+            age = form.cleaned_data['age']
+            activity_level = form.cleaned_data['activity_level']
+            aim = form.cleaned_data['aim']
+            # Create model instance
+            macro_calc = Macro()
+            # Assign data to model instance
+            macro_calc.height= height
+            macro_calc.weight= weight
+            macro_calc.age = age
+            macro_calc.activity_level = activity_level
+            macro_calc.aim = aim
+            form_save= form.save(commit=False)
+            form_save.user= request.user
+            # Save model instance
+            form_save.save()
+            # Search database for model instance 
+            details = Macro.objects.filter(user=request.user).order_by('-date')[:1]
+            # Extract weight and percentage data from macro database search
+            for item in details:
+                carb_weight = item.carb_weight
+                protein_weight = item.protein_weight
+                fat_weight = item.fat_weight
+                carb_percent = 100*item.carb_percent
+                protein_percent = 100*item.protein_percent
+                fat_percent = 100*item.fat_percent
+            # Create macro array
+            macros = [carb_weight, protein_weight, fat_weight, carb_percent, protein_percent, fat_percent]
+            # Convert array to JSON
+            macros_json = json.dumps(macros)
+            # Render macro results page passing details and macro_json as arguments
+            return render(request, 'macro_result.html', {'details': details, 'macros': macros_json})
+        # Render macro form
+        return render(request, 'macro_form.html', {'form': form})
 
 #### Products 
 
-The products app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/products).
+The products app used in this project was taken directly from Code Institute's Ecommerce project, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/products). This app is used to define products within the database. The app model itself was modified to include a 'Category' field in addition to modification to existing views or creation of entirely new functions. These will be described in the following.
 
-dsfsdgsdgdsfg
+##### all\_products
+
+The all products function is used in Code Insitute's Ecommerce site for the landing page to show all the products. This was modified to find all products of a particular category ordered by price and limited to three products. Passing this to the landing page template allowed products to be displayed by category and was achieved using the 'weights' category example below.
+
+    def all_products(request):
+        # Get products based on category
+        weights = Product.objects.filter(category='Weights').order_by('-price')[:3] 
+        # Render all products view
+        return render(request, "all_products.html", {"weights": weights})
+
+##### product
+
+This function allows the user to view the product page for a specific product. The function finds the product by means of its ID, it then generates the review form for the product and then renders the product page as shown in the code below.
+
+    def product(request, id):
+        # Get product via id
+        product = Product.objects.get(pk=id)
+        form = ReviewForm()
+        # Get product page
+        return render(request, 'product.html', {'product': product, 'form':form })
+
+##### Create product review 
+
+The create product review view posts the data from the review form, validates the form and then returns the user to the specific product page if the review was posted successfully. The '@login' decorator ensures that only authorised users can post reviews, the code for this function is shown below.
+
+    @login_required
+    def create_or_edit_review(request, product_id):
+        # Get product by id
+        product = Product.objects.get(id=product_id)
+        # Create form instance 
+        form = ReviewForm(request.POST)
+        # Validate form
+        if form.is_valid():
+            # Get data from form
+            rating = form.cleaned_data['rating']
+            comment = form.cleaned_data['comment']
+            username = form.cleaned_data['username']
+            headline = form.cleaned_data['headline']
+            # Create model instance
+            review = customer_review()
+            # Add data to model instance
+            review.product = Product.objects.get(id=product_id)
+            review.username = username
+            review.rating = rating
+            review.comment = comment
+            review.headline = headline
+            review.date = datetime.datetime.now()
+            review.save()
+            # Inform user that review successfully submitted
+            messages.success(request, "You have successfully reviewed this product")
+            # Return to product view
+            return HttpResponseRedirect(reverse('product', args=(product.id,)))
+        # Render product view
+        return render(request, 'product.html', {'product': product, 'form': form})
+
+##### Similar products view
+
+This view is used to allow users to view all products of a particular category. The function finds the product in the database by means of its ID then filters all products of that category in terms of price. The site then directs the user to the product category html page as shown in the code below.
+
+    def view_similar_products(request, product_id):
+        # Get product by id
+        product = Product.objects.get(id=product_id)
+        # Find product category
+        product_category = product.category
+        # Search db for products of category and order by price
+        category = Product.objects.filter(category=product_category).order_by('price')
+        # Display product category page
+        return render(request, "product_category.html", {"products": category})
 
 #### Search
 
-The search app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/search). The only modification made to this was to allow the search criteria to be either a search phrase or a product category. 
+The search app used in this project was taken directly from Code Institute's Ecommerce project, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/search). This app is used to search for products or categories using the search bar and additionally, to search for products using navigation bar links. Modifications were made to the views of this app, as described in the following.
 
-dfsdfdsfgsdfgd
+##### do_search
+
+This function originally only searched for the name of the product, to improve user experience 'OR' functionality was added to include the category field of the product as shown in the code below.
+
+    def do_search(request):
+        products = Product.objects.filter(Q(name__icontains=request.GET['q']) |  Q(category__icontains=request.GET['q'])).order_by('price')
+        return render(request, "product_category.html", {"products": products})
+
+##### category search
+
+A category search feature was added to allow navigation links to query the database for products of a particular category. An example showing the function to search the 'weight' category is shown below.
+
+    def weight_search(request):
+        weights = Product.objects.filter(category='Weights').order_by('price')
+        return render(request, "product_category.html", {"products": weights})
 
 ## Site features
 
