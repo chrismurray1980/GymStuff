@@ -168,15 +168,15 @@ Rather than reinventing the wheel several of the core apps were imported from Co
 
 #### Accounts
 
-The accounts app used in this project was used directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/accounts)
+The accounts app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/accounts).
 
 #### Cart  
 
-[here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/cart)
+The cart app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/cart).
 
 #### Checkout  
 
-[here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/checkout)
+The checkout app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/checkout).
 
 #### Customer reviews  
 
@@ -184,11 +184,15 @@ The accounts app used in this project was used directly from Code Institute's Ec
 
 #### Products 
 
-[here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/products)
+The products app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/products).
+
+dsfsdgsdgdsfg
 
 #### Search
 
-[here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/search)
+The search app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/search). The only modification made to this was to allow the search criteria to be either a search phrase or a product category. 
+
+dfsdfdsfgsdfgd
 
 ## Site features
 
