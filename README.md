@@ -144,12 +144,51 @@ The Gymstuff.com project consists of several applications working together to ge
 
 ### Settings
 
-### URLs
+The settings script within the Gymstuff project directory allows for the setup of the databases used, the configuration of the media storage; email setup; and static file storage. Each of the project apps must be registered here to allow them to function within the website.
 
+#### Database 
+
+The database used within the project was the PostgreSQL database available through Heroku. A superuser was created for this database which allowed full access to the database. This access was available through django admin.
+
+#### Storage
+
+An Amazon S3 bucket was configured and linked to the project to store the static files ( CSS and JS). This is necessary as Heroku will delete static files so an external storage are is required. The S3 bucket was also used to store media files such as images that are used within the site.
+
+#### Environment variables
+
+The secret keys, email passwords, stripe variables and environment variables for S3 were stored within an env.py file during development, this file was never uploaded to the project git repository. During deployment the enviroment variables are stored in heroku.
+
+#### URLs
+
+The URLs script within the Gymstuff project directory itself allows each of the app urls to be accessed via a single location. This allows the content for each app to be accessed throughout the entirety of the website.
 
 ### Apps
 
+Rather than reinventing the wheel several of the core apps were imported from Code Institute's Ecommerce project. In this case, the link will be given to the app code rather providing a description of the code and functionality itself. In the case that the code was either personally generated or heavily modified: a more detailed description will be given.
 
+#### Accounts
+
+The accounts app used in this project was used directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/accounts)
+
+#### Cart  
+
+[here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/cart)
+
+#### Checkout  
+
+[here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/checkout)
+
+#### Customer reviews  
+
+#### Physical  
+
+#### Products 
+
+[here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/products)
+
+#### Search
+
+[here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/search)
 
 ## Site features
 
