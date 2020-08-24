@@ -8,7 +8,7 @@ The planning undertaken prior to beginning the project is described in the follo
 
 ## Wireframe/site configuration development
 
-![Image not available](gymstuff_home_wireframe.JPG)
+![Image not available](/media/images/gymstuff_home_wireframe.JPG)
 
 ![Image not available](home1.JPG)
 
