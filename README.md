@@ -458,7 +458,8 @@ The following technologies were used in the development of the application:
 - [d3.js](https://d3js.org/): Javascript library for manipulating documents based on data
 - [AWS S3](https://aws.amazon.com/s3/): Amazon simple storage device
 - [GitHub](https://github.com/): used to store and save versions of the application  
-- [AWS Cloud9](https://aws.amazon.com/cloud9/): online IDE used to develop the application 
+- [AWS Cloud9](https://aws.amazon.com/cloud9/): online IDE used to develop the application
+- [Stripe API](https://stripe.com/gb?utm_campaign=paid_brand-UK_en_Search_Brand_Stripe-2032860449&utm_medium=cpc&utm_source=google&ad_content=355351450073&utm_term=stripe%20api&utm_matchtype=e&utm_adposition=&utm_device=c&gclid=CjwKCAjwyo36BRAXEiwA24CwGS57sL_ESAoPiQB-CtpG2MG0zj-NJS5GDoFXO6J7O7Yy01--LcXxKRoCTLQQAvD_BwE): A complete payment platform
 
 ## Testing
 
@@ -501,7 +502,13 @@ There is no difference between the deployed and development versions of the appl
 
 The following websites were used for guidance and code snippets used within this application:
 
-- [django reviews](https://django-rated-reviews.readthedocs.io/en/latest/quickstart.html)
+- [Code Insitute Ecommerce Account app](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/accounts)
+- [Code Insitute Ecommerce Cart app](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/cart)
+- [Code Insitute Ecommerce Checkout app](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/checkout)
+- [Code Insitute Ecommerce Product app](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/products)
+- [Django wine review website](https://www.codementor.io/@jadianes/get-started-with-django-building-recommendation-review-app-du107yb1a)
+- [BMI calculator](https://patient.info/doctor/bmi-calculator-calculator)
+- [Macro calculator](https://www.menshealth.com/uk/nutrition/a29366026/macro-calculator-keto-bodybuilding/)
 
 ### Media
 
