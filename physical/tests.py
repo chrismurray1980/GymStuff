@@ -218,7 +218,7 @@ class Macro_Model_Tests(TestCase):
         self.assertEqual(imperial.fat_percent_calc()*100, 30.00)  
 
     #Test macro results page rendered
-    def test_bmi_result_page(self):
+    def test_macro_result_page(self):
         url = reverse('macro_result')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
