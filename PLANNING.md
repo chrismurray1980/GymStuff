@@ -101,6 +101,12 @@ When the user clicks on the 'view related products' button on the home page or t
 
 ![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/all_products.JPG)
 
+### Product page
+
+When the user clicks on the 'view product' link they are directed to the product page. This gives further information on the product; allows the user to add the product to their cart and allows the user to view reviews of that product. Additionally, logged in users can add reviews of that product.
+
+![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/product_page.JPG)
+
 ### Calculator forms
 
 When the user decides to calculate their BMI or macronutrients the user clicks the relevant link and is directed to either the BMI calculator form or the macro calculator form with a layout as shown below.
@@ -122,6 +128,7 @@ When the user decides to calculate their BMI or macronutrients the user clicks t
 - GitHub
 - AWS Cloud9
 - STRIPE API
+- Travis CI
 
 ## Database schema
 

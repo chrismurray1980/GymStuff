@@ -1,14 +1,16 @@
 # Gymstuff.com : Ecommerce Site
 
 This project is a web-based e-commerce site which allows users to view gym products, supplements and vitamins to aid their fitness goals. The user can search products by name or by category. In addition to this, the user can input their current physical attributes and gain insights such as current body mass index; recommended daily calorie intake for a selected aim; and recommended daily macronutrient intake.
-The user is required to register and log-in to access the physical attribute features, the user must also log-in to purchase their chosen products and review products they have purchased. All products, users and physical attributes on the site are located in a PostgreSQL database.
+The user is required to register and log-in to access the physical attribute features, the user must also log-in to purchase their chosen products and review products they have purchased. All products, users and physical attributes on the site are stored within a PostgreSQL relational database.
 
 ## Planning of Gymstuff.com
-The planning undertaken prior to beginning the project is described in the following document: [Project planning document](https://github.com/chrismurray1980/GymStuff/blob/master/PLANNING.md)
+The planning undertaken prior to beginning the project is described in the following document: 
+
+- [Project planning document](https://github.com/chrismurray1980/GymStuff/blob/master/PLANNING.md)
 
 ## Wireframe/site configuration development
 
-The basic layout of the web page consists of all the page content surrounded by the background image. The header, content and footer are all contained within this main container. The header consists of the site brand; navigation links; and a search bar. The header is uniform across all the site's pages. Below the header is where the current page content is shown. Following the current page content is the footer which contains information of the site designer and the date.
+The basic layout of the web page consists of all the page content surrounded by the background image. The header, content and footer are all contained within this main container. The header consists of the site brand; navigation links; and a search bar. The header is uniform across all the site's pages. Below the header is where the current page content is shown. Following the current page content is the footer which contains copyright information.
 
 ### Landing page
 
@@ -16,7 +18,7 @@ The home page of the site shows the top products from each of the product catego
 
 ![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/gumstuff_home_wireframe.JPG)
 
-Fortunately, the layout used gives a clean, clear user experience and needed little modification from the initial wireframe design. The layout of the final homepage are shown in the images below. The products are shown as cards containing product title, image, information and price.
+Fortunately, the layout used gives a clean, clear user experience and needed little modification from the initial wireframe design. The layout of the final homepage is shown in the images below. The products are shown as cards containing product title, image, information and price.
 
 The header of the site, shown below, remains uniform and as stated previously contains the brand, links and search bar.
 
@@ -54,7 +56,7 @@ The final layout of the page is shown below. When the 'add review' button is cli
 
 ### Calculator pages
 
-The site also contains the BMI and Macro calculator features. The user inputs their physical attributes into the BMI or Macro calculator forms and their results are calculated and displayed to the user. The forms use simple bootstrao layout and the wireframe for the BMI form is shown below.
+The site also contains the BMI and Macro calculator features. The user inputs their physical attributes into the BMI or Macro calculator forms and their results are calculated and displayed to the user. The forms use simple bootstrap layout and the wireframe for the BMI form is shown below.
 
 ![Image not available](https://chris-m-ecommerce.s3.amazonaws.com/media/images/bmi_calc.JPG)
 
@@ -97,25 +99,25 @@ In this case the user is the foreign key used to link tables within the database
 
 The Macro model contained within the physical app has the following model definition:
     
-    user = models.ForeignKey(settings.AUTH\_USER\_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     height = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(300)],)
     weight = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(500)],)
     age = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(120)],)
     unit_height = models.FloatField(default=0)
     unit_weight = models.FloatField(default=0)
-    activity\_level = models.CharField(choices=activity\_level, default='', max_length=200)
+    activity_level = models.CharField(choices=activity_level, default='', max_length=200)
     bmr = models.FloatField(default=0)
     TDEE = models.FloatField(default=0)
-    date = models.DateTimeField(auto\_now_add=True)
+    date = models.DateTimeField(auto_now_add=True)
     aim = models.CharField(choices=aim, default='', max_length=200)
-    daily\_calorie_goal = models.FloatField(default=0)
+    daily_calorie_goal = models.FloatField(default=0)
     carb_weight = models.FloatField(default=0)
     protein_weight = models.FloatField(default=0)
     fat_weight = models.FloatField(default=0)
     carb_percent = models.FloatField(default=0)
     protein_percent = models.FloatField(default=0)
     fat_percent = models.FloatField(default=0)
-    unit\_type = models.CharField(choices=unit\_type, default='Metric', max_length=200)
+    unit_type = models.CharField(choices=unit_type, default='Metric', max_length=200)
 
 Again, the user is the foreign key used to link tables within the database. The site user is able to select the 'unit\_type' field based on choices defined within the model itself. This also goes for the 'aim' and 'activity\_level' fields. Again, the majority of the fields are populated by means of methods contained within the model class.
 
@@ -152,7 +154,7 @@ The database used within the project was the PostgreSQL database available throu
 
 #### Storage
 
-An Amazon S3 bucket was configured and linked to the project to store the static files ( CSS and JS). This is necessary as Heroku will delete static files so an external storage are is required. The S3 bucket was also used to store media files such as images that are used within the site.
+An Amazon S3 bucket was configured and linked to the project to store the static files ( CSS and JS). This is necessary as Heroku will delete static files so external storage is required. The S3 bucket was also used to store media files such as images that are used within the site.
 
 #### Environment variables
 
@@ -172,7 +174,7 @@ The accounts app used in this project was taken directly from Code Institute's E
 
 #### Cart  
 
-The cart app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/cart). This app allows users to add products to their cart via a form and amen or remove these products from their cart. The only modification made to this app is detailed below.
+The cart app used in this project was taken directly from Code Institute's Ecommerce project with minimal modification, the link to this application can be found [here](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/cart). This app allows users to add products to their cart via a form and amend or remove these products from their cart. The only modification made to this app is detailed below.
 
 ##### add\_to\_cart function
 
@@ -308,6 +310,7 @@ This function allows the user to view the product page for a specific product. T
     def product(request, id):
         # Get product via id
         product = Product.objects.get(pk=id)
+        # Generate review form
         form = ReviewForm()
         # Get product page
         return render(request, 'product.html', {'product': product, 'form':form })
@@ -366,7 +369,7 @@ The search app used in this project was taken directly from Code Institute's Eco
 
 ##### do_search
 
-This function originally only searched for the name of the product, to improve user experience 'OR' functionality was added to include the category field of the product as shown in the code below.
+This function originally only searched for the name of the product. To improve user experience 'OR' functionality was added to include the category field of the product as shown in the code below.
 
     def do_search(request):
         products = Product.objects.filter(Q(name__icontains=request.GET['q']) |  Q(category__icontains=request.GET['q'])).order_by('price')
@@ -441,9 +444,10 @@ This page displays all products, in the form of product cards, of a specific cat
 Due to time constraints the following features, which would produce a more enjoyable user experience and more professional website, were not implemented:
 
 - Email to user to confirm successful payment and estimated delivery date
+- Ability to provide alternative delivery address for user
 - In bmi and macro forms, a calculator to help users to convert stone to pounds and foot to inches
 - Instead of the three most expensive products in each category on home page: a carousel showing the products bought most frequently
-- A counter to the rating of each product and the number of likes shown on the landing page and the product page
+- A counter for the average rating of each product and the number of likes shown on the landing page and the product page
 
 ## Technologies Used
 
@@ -460,12 +464,17 @@ The following technologies were used in the development of the application:
 - [GitHub](https://github.com/): used to store and save versions of the application  
 - [AWS Cloud9](https://aws.amazon.com/cloud9/): online IDE used to develop the application
 - [Stripe API](https://stripe.com/gb?utm_campaign=paid_brand-UK_en_Search_Brand_Stripe-2032860449&utm_medium=cpc&utm_source=google&ad_content=355351450073&utm_term=stripe%20api&utm_matchtype=e&utm_adposition=&utm_device=c&gclid=CjwKCAjwyo36BRAXEiwA24CwGS57sL_ESAoPiQB-CtpG2MG0zj-NJS5GDoFXO6J7O7Yy01--LcXxKRoCTLQQAvD_BwE): A complete payment platform
+- [Travis CI](https://travis-ci.org/getting_started): A continuous integration service
 
 ## Testing
 
-Both automated and manual testing was undertaken on the application and this is described in detail in the following document: Testing document
+Manual testing of the user experience was undertaken on the site by various helpful volunteers. In addition to this, unit testing was conducted on each of the apps. This was undertaken by running the following command:
+
+    $python3 manage.py test <app name>
 
 ### Travis CI Testing
+
+Continuous integration testing was undertaken using Travis-CI. The results of which are shown below.
 
 [![Build Status](https://travis-ci.org/chrismurray1980/GymStuff.svg?branch=master)](https://travis-ci.org/chrismurray1980/GymStuff)
 
@@ -502,6 +511,7 @@ There is no difference between the deployed and development versions of the appl
 
 The following websites were used for guidance and code snippets used within this application:
 
+- [Django Documentation](https://docs.djangoproject.com/en/3.1/)
 - [Code Insitute Ecommerce Account app](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/accounts)
 - [Code Insitute Ecommerce Cart app](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/cart)
 - [Code Insitute Ecommerce Checkout app](https://github.com/Code-Institute-Solutions/e-commerce/tree/master/2-Completed_Project/checkout)
@@ -509,6 +519,7 @@ The following websites were used for guidance and code snippets used within this
 - [Django wine review website](https://www.codementor.io/@jadianes/get-started-with-django-building-recommendation-review-app-du107yb1a)
 - [BMI calculator](https://patient.info/doctor/bmi-calculator-calculator)
 - [Macro calculator](https://www.menshealth.com/uk/nutrition/a29366026/macro-calculator-keto-bodybuilding/)
+- [Amazon](https://www.amazon.co.uk/)
 
 ### Media
 
