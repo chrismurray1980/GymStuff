@@ -76,7 +76,7 @@ class CustomerReviewTests(TestCase):
         
     #Test customer review page rendered
     def test_customer_review_page(self):
-        url = reverse('customer_reviews/1')
+        url = reverse('customer_reviews', {'product':1})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'customer_reviews.html')
