@@ -222,4 +222,4 @@ class Macro_Model_Tests(TestCase):
         url = reverse('macro_result')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'bmi_result.html')
+        self.assertTemplateUsed(response, 'macro_result.html')
