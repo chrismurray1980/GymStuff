@@ -5,7 +5,7 @@ from .views import bmi_result
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 
 
-############################### BMI Testing.
+### BMI Testing.
 class BMI_Model_Tests(TestCase):
     
     # Test setup by creating new BMI models
@@ -28,8 +28,6 @@ class BMI_Model_Tests(TestCase):
             weight = 200.00,
             unit_type = 'Imperial'
             )
-    
-    ####### Model tests #######
     
     # Get height from user id
     def test_get_height_from_user(self):
@@ -79,26 +77,15 @@ class BMI_Model_Tests(TestCase):
         self.assertEqual(metric.category_calc(), 'Obese')
         self.assertEqual(imperial.category_calc(), 'Healthy')
     
-    
-    ####### Form tests #######    
-        
-        
-    ####### View tests #######
-    
     #Test bmi results page rendered
     def test_bmi_result_page(self):
         url = reverse('bmi_result')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'bmi_result.html')
-        
-    def test_get(self):
-        response = self.client.get('/physical/')
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "<h5>BMI calculator</h5>", html=True)
 
 
-################################## Macro model tests.
+### Macro model tests.
 class Macro_Model_Tests(TestCase):
     
     # Test setup by creating new bmi models
@@ -230,4 +217,9 @@ class Macro_Model_Tests(TestCase):
         self.assertEqual(metric.fat_percent_calc()*100, 30.00)
         self.assertEqual(imperial.fat_percent_calc()*100, 30.00)  
 
-
+    #Test macro results page rendered
+    def test_bmi_result_page(self):
+        url = reverse('macro_result')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'bmi_result.html')
