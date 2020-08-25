@@ -10,6 +10,7 @@ class CustomerReviewTests(TestCase):
     def setUp(self):
         #create product models 
         product1= Product.objects.create(
+            id=1,
             name="10kg weight", 
             category="Weights", 
             short_description="A weight plate",
@@ -17,6 +18,7 @@ class CustomerReviewTests(TestCase):
             price ="50.00"
         )
         product2=Product.objects.create(
+            id=2,
             name="pull up bar", 
             category="Accessories", 
             short_description="A pull up bar",
@@ -39,10 +41,10 @@ class CustomerReviewTests(TestCase):
             rating = 1
         )
         
-     # Test username field of customer review model from product name
+     # Test username field of customer review model from product 
     def test_name_from_category(self):
-        """Username correctly identified from product name"""
-        test_username_object_1 = customer_review.objects.get(product='10kg weight')
+        """Username correctly identified from product """
+        test_username_object_1 = customer_review.objects.get(product=1)
         #test_username_object_2 = customer_review.objects.get(Product.objects.get(name="pull up bar"))
         self.assertEqual(str(test_username_object_1.username), 'Jim')
         #self.assertEqual(str(test_username_object_2.username), 'Bob')
