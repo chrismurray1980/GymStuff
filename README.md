@@ -468,9 +468,9 @@ The following technologies were used in the development of the application:
 
 ## Testing
 
-Manual testing of the user experience was undertaken on the site by various helpful volunteers. In addition to this, unit testing was conducted on each of the apps. This was undertaken by running the following command:
+Manual testing of the user experience was undertaken on the site by various helpful volunteers. In addition to this, unit testing was conducted on each of the apps. The document outlining testing conducted can be viewed by clicking the link below:
 
-    $python3 manage.py test <app name>
+ - [Testing document](https://github.com/chrismurray1980/GymStuff/blob/master/Testing.md)
 
 ### Travis CI Testing
 
