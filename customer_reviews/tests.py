@@ -71,8 +71,8 @@ class CustomerReviewTests(TestCase):
         """Rating correctly identified from product """
         test_rating_object_1 = customer_review.objects.get(product=1)
         test_rating_object_2 = customer_review.objects.get(product=2)
-        self.assertEqual(str(test_rating_object_1.rating), 5)
-        self.assertEqual(str(test_rating_object_2.rating), 1) 
+        self.assertEqual(str(test_rating_object_1.rating), '5')
+        self.assertEqual(str(test_rating_object_2.rating), '1') 
         
     #Test customer review page rendered
     def test_customer_review_page(self):
